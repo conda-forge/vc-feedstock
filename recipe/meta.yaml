@@ -1,22 +1,24 @@
+# Switch the version of this recipe based on the VC_VERSION environment variable.
+{% set VERSION = os.environ.get('VC_VERSION', '9')|string %}
+{% set runtime_years = {'9': '2008', '10': '2010', '14': '2015'} %}
+{% set runtime_year = runtime_years[VERSION] %}
+
 package:
   name: vc
-  version: 9   # [win and py27]
-  version: 10  # [win and py34]
-  version: 14  # [win and py35]
+  version: {{ VERSION }}
 
 build:
   number: 0
   track_features:
-    - vc9     # [win and py27]
-    - vc10    # [win and py34]
-    - vc14    # [win and py35]
+    - vc{{ VERSION }}
   skip: true  # [not win]
 
 requirements:
   run:
-    - vs2008_runtime  # [win and py27]
-    - vs2010_runtime  # [win and py34]
-    - vs2015_runtime  # [win and py35]
+    - vs{{ runtime_year }}_runtime
+
+# We don't need to test anything here - this is purely a metapackage.
+test: {}
 
 about:
   home: https://github.com/conda/conda/wiki/VC-features
