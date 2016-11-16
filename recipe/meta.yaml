@@ -22,7 +22,7 @@ test: {}
 
 about:
   home: https://github.com/conda/conda/wiki/VC-features
-  license: Modified BSD License (3-clause)
+  license: BSD 3-Clause
   summary: A meta-package to track VC features.
 
 extra:
