@@ -33,7 +33,6 @@ conda search vc --channel conda-forge
 ```
 
 
-
 About conda-forge
 =================
 
