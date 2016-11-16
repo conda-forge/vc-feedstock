@@ -3,7 +3,7 @@ About vc
 
 Home: https://github.com/conda/conda/wiki/VC-features
 
-Package license: Modified BSD License (3-clause)
+Package license: BSD 3-Clause
 
 Feedstock license: BSD 3-Clause
 
