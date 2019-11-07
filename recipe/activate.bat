@@ -1,4 +1,3 @@
-@echo on
 :: Set env vars that tell distutils to use the compiler that we put on path
 SET DISTUTILS_USE_SDK=1
 :: This is probably not good. It is for the pre-UCRT msvccompiler.py *not* _msvccompiler.py
@@ -74,5 +73,19 @@ IF NOT "%CONDA_BUILD%" == "" (
   set "CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%;%CMAKE_PREFIX_PATH%"
 )
 
-:: other things added by install_activate.bat at package build time
+IF "%CMAKE_GENERATOR%" == "" IF "%cross_compiler_target_platform%" == "win-64" SET "CMAKE_GENERATOR=Visual Studio %VER% %YEAR% Win64"
+IF "%CMAKE_GENERATOR%" == "" IF "%cross_compiler_target_platform%" == "win-32" SET "CMAKE_GENERATOR=Visual Studio %VER% %YEAR%"
+
+SET "MSBUILDDEFAULTTOOLSVERSION=14.0"
+
+IF "%CI%" == "azure" (
+  IF "%cross_compiler_target_platform%" == "win-64" CALL "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64 -vcvars_ver=14.0
+  IF "%cross_compiler_target_platform%" == "win-32" CALL "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86 -vcvars_ver=14.0
+  GOTO End
+)
+
+IF "%cross_compiler_target_platform%" == "win-64" CALL "%VSINSTALLDIR%..\..\VC\vcvarsall.bat" amd64
+IF "%cross_compiler_target_platform%" == "win-32" CALL "%VSINSTALLDIR%..\..\VC\vcvarsall.bat" x86
+
+:End
 
