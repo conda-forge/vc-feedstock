@@ -55,3 +55,11 @@ outputs:
           depending on Python.
       doc_url: https://github.com/conda/conda/wiki/VC-features
       dev_url: https://github.com/conda/conda/wiki/VC-features
+
+extra:
+  recipe-maintainers:
+    - jakirkham
+    - 183amir
+    - pelson
+    - patricksnape
+    - msarahan
