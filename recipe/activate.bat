@@ -76,4 +76,3 @@ IF NOT "%CONDA_BUILD%" == "" (
 
 :: other things added by install_activate.bat at package build time
 
-:End
