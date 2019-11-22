@@ -23,6 +23,7 @@ outputs:
         #    14.0 with VS2015, and 14.1 with VS2017 - if the major version changes, we're assuming
         #    that binary compatibility breaks.
         - {{ pin_subpackage('vc') }}
+        - {{ pin_subpackage('vs' ~ vsyear ~ '_runtime', max_pin=None) }}
     about:
       summary: Activation and version verification of MSVC {{ vcver }} (VS {{ vsyear }}) compiler
       license: BSD 3-clause
