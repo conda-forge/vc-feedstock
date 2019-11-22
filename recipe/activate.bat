@@ -73,8 +73,8 @@ IF NOT "%CONDA_BUILD%" == "" (
   set "CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%;%CMAKE_PREFIX_PATH%"
 )
 
-IF "%CMAKE_GENERATOR%" == "" IF "%cross_compiler_target_platform%" == "win-64" SET "CMAKE_GENERATOR=Visual Studio %VER% %YEAR% Win64"
-IF "%CMAKE_GENERATOR%" == "" IF "%cross_compiler_target_platform%" == "win-32" SET "CMAKE_GENERATOR=Visual Studio %VER% %YEAR%"
+IF "%CMAKE_GENERATOR%" == "" IF "%cross_compiler_target_platform%" == "win-64" SET "CMAKE_GENERATOR=Visual Studio %VS_MAJOR% %VS_YEAR% Win64"
+IF "%CMAKE_GENERATOR%" == "" IF "%cross_compiler_target_platform%" == "win-32" SET "CMAKE_GENERATOR=Visual Studio %VS_MAJOR% %VS_YEAR%"
 
 SET "MSBUILDDEFAULTTOOLSVERSION=14.0"
 
@@ -88,4 +88,3 @@ IF "%cross_compiler_target_platform%" == "win-64" CALL "%VSINSTALLDIR%..\..\VC\v
 IF "%cross_compiler_target_platform%" == "win-32" CALL "%VSINSTALLDIR%..\..\VC\vcvarsall.bat" x86
 
 :End
-

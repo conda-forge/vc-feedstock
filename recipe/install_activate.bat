@@ -1,5 +1,4 @@
 set YEAR=2015
-set VER=14
 
 mkdir "%PREFIX%\etc\conda\activate.d"
 
