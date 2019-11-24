@@ -1,10 +1,9 @@
-matrix:
-- [[VC_VERSION, 9]]
-- [[VC_VERSION, 10]]
-- [[VC_VERSION, 14]]
 travis:
   secure:
     BINSTAR_TOKEN: KqJidJWu/0O5BOlZJ/XXwhitob86LNhQN70qgc6Dv2BKmdAaHMzNFxYaf/76rrKUt4+sW7eln/a7NDdJHSgGBpqgfrge+ylll97GKfHL4VicSSsbLQjLjUzg/prpdVCy5/Azbo0/jS8QieOogpTJlsuke+rvCFpX7LMvfQHb5tuDszrx0MYkycfLxtZqDRO+fRcqc8QDkRUMLCYo9zEumVozxLzZYEmYDo/CupnKA9A5C/TFpxzi7PK6lQJzNGD+wX22ZN68/qY0MHCKj8HVW3E0yrFS/PZGA1YmQpNb/NGUu5M/N5qglmenxuvnNpmvB9ZxK+fz3/CDIy0gtbttbneyK50d/DeTX3dbvgFlSMkx5WQR/ex51ZSY25zKJhM7RGbm58q34KWCSSzxvP+VwDD0L/SajRdkQKJolzrRCo+F+J7aFF1+Z8/jjJhUYpNWbAggb5gPBLKpcH58aQCDKFM3rmF0YuZEgqRp/Wx66G9gLKXLTEvgyaMaz6mRP4SGAJLxifnhAHzyyIk0sv4+4y50YydWzbPuIKxcuLZt7PtXwKioyaJGljr4ZUG+iCz+a3cySor94FQRuAHmBbeA5yXDd0YY2ZWL6Cu+WXEbbYcw8aw+0kv5NIXokBRoqjk6Dz0M6uoXVxDyMZs5RkdnIaD9qCyFAgNdZVyT2bOHG7s=
 appveyor:
   secure:
     BINSTAR_TOKEN: tumuXLL8PU75WMnRDemRy02ruEq2RpNxeK3dz0MjFssnosPm2v4EFjfNB4PTotA1
+
+provider:
+  win: appveyor
