@@ -1,5 +1,3 @@
-CMAKE_GENERATOR:
-- NMake Makefiles
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -9,8 +7,5 @@ cross_compiler_target_platform:
 pin_run_as_build:
   vc:
     max_pin: x
-target_platform:
-- win-64
 vc:
 - '14'
-- '9'
