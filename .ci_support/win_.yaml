@@ -1,11 +1,21 @@
+VER:
+- '15'
+YEAR:
+- '2017'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+cl_version:
+- 19.16.27032.1
 cross_compiler_target_platform:
 - win-64
 pin_run_as_build:
   vc:
     max_pin: x
+runtime_version:
+- 14.16.27012
+update_version:
+- '9'
 vc:
 - '14'
