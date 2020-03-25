@@ -73,7 +73,7 @@ outputs:
         - {{ pin_subpackage('vs' ~ runtime_year ~ '_runtime', max_pin=None) }}
     about:
       home: https://github.com/conda/conda/wiki/VC-features
-      license: Modified BSD License (3-clause)
+      license: BSD-3-Clause
       license_family: BSD
       summary: A meta-package to impose mutual exclusivity among software built with different VS versions
       description: |
