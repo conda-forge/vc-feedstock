@@ -84,7 +84,7 @@ outputs:
 
 
 about:
-  home: https://github.com/conda/conda/wiki/VC-features
+  home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2017
   summary: |
     Activation and version verification of MSVC {{ vcver }} (VS {{ vsyear }}
     compiler, update {{ update_version }})
