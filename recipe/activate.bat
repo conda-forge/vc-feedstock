@@ -1,71 +1,49 @@
+@echo on
 :: Set env vars that tell distutils to use the compiler that we put on path
 SET DISTUTILS_USE_SDK=1
 :: This is probably not good. It is for the pre-UCRT msvccompiler.py *not* _msvccompiler.py
 SET MSSdk=1
 
-:: http://stackoverflow.com/a/26874379/1170370
-SET platform=
-IF /I [%PROCESSOR_ARCHITECTURE%]==[amd64] set "platform=true"
-IF /I [%PROCESSOR_ARCHITEW6432%]==[amd64] set "platform=true"
-
-if defined platform (
-set "VSREGKEY=HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\14.0"
-)  ELSE (
-set "VSREGKEY=HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\14.0"
-)
-for /f "skip=2 tokens=2,*" %%A in ('reg query "%VSREGKEY%" /v InstallDir') do SET "VSINSTALLDIR=%%B"
-
-if "%VSINSTALLDIR%" == "" (
-   set "VSINSTALLDIR=%VS140COMNTOOLS%"
-)
-
-if "%VSINSTALLDIR%" == "" (
-   ECHO "WARNING: Did not find VS in registry or in VS140COMNTOOLS env var - your compiler may not work"
-   GOTO End
-)
-
-echo "Found VS2014 at %VSINSTALLDIR%"
-
-SET "VS_VERSION=14.0"
-SET "VS_MAJOR=14"
-SET "VS_YEAR=2015"
+SET "VS_VERSION=15.0"
+SET "VS_MAJOR=15"
+SET "VS_YEAR=2017"
 
 set "MSYS2_ARG_CONV_EXCL=/AI;/AL;/OUT;/out"
 set "MSYS2_ENV_CONV_EXCL=CL"
 
 :: For Python 3.5+, ensure that we link with the dynamic runtime.  See
 :: http://stevedower.id.au/blog/building-for-python-3-5-part-two/ for more info
-set "PY_VCRUNTIME_REDIST=%PREFIX%\vcruntime140.dll"
-
-:: ensure that we use the DLL part of the ucrt
-set "CFLAGS=%CFLAGS% -MD -GL"
-set "CXXFLAGS=%CXXFLAGS% -MD -GL"
-set "LDFLAGS_SHARED=%LDFLAGS_SHARED% -LTCG ucrt.lib"
+set "PY_VCRUNTIME_REDIST=%PREFIX%\bin\vcruntime140.dll"
 
 :: set CC and CXX for cmake
 set "CXX=cl.exe"
 set "CC=cl.exe"
 
-:: translate target platform
-IF /I [%target_platform%]==[win-64] (
-   set "folder=x64"
-) else (
-   set "folder=x86"
+set "VSINSTALLDIR="
+:: Try to find actual vs2017 installations
+for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -version ^[15.0^,16.0^) -property installationPath`) do (
+  :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
+  set "VSINSTALLDIR=%%i\"
 )
-
-:: find the most recent Win SDK path and add it to PATH (so that rc.exe gets found)
-for /f "tokens=*" %%I in ('dir "C:\Program Files (x86)\Windows Kits\*1*" /B /O:N') do for %%A in (%%~I) do if "%%A" == "8.1" set win=%%A
-
-for /f "tokens=*" %%I in ('dir "C:\Program Files (x86)\Windows Kits\*1*" /B /O:N') do for %%A in (%%~I) do if "%%A" == "10" set win=%%A
-
-setlocal enabledelayedexpansion
-if "%win%" == "10" (
-   for /f "tokens=*" %%I in ('dir "C:\Program Files (x86)\Windows Kits\10\bin\10*" /B /O:N') do for %%A in (%%~I) do set last=%%A
-   set "sdk_bin_path=C:\Program Files (x86)\Windows Kits\10\bin\!last!\%folder%"
-) else (
-   set "sdk_bin_path=C:\Program Files (x86)\Windows Kits\8.1\bin\%folder%"
+if not exist "%VSINSTALLDIR%" (
+    :: VS2019 install but with vs2017 compiler stuff installed
+	for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v141.x86.x64 -property installationPath`) do (
+	:: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
+	set "VSINSTALLDIR=%%i\"
+	)
 )
-endlocal & set "PATH=%PATH%;%sdk_bin_path%"
+if not exist "%VSINSTALLDIR%" (
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Professional\"
+)
+if not exist "%VSINSTALLDIR%" (
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community\"
+)
+if not exist "%VSINSTALLDIR%" (
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2017\BuildTools\"
+)
+if not exist "%VSINSTALLDIR%" (
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Enterprise\"
+)
 
 IF NOT "%CONDA_BUILD%" == "" (
   set "INCLUDE=%LIBRARY_INC%;%INCLUDE%"
@@ -73,18 +51,48 @@ IF NOT "%CONDA_BUILD%" == "" (
   set "CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%;%CMAKE_PREFIX_PATH%"
 )
 
-IF "%CMAKE_GENERATOR%" == "" IF "%cross_compiler_target_platform%" == "win-64" SET "CMAKE_GENERATOR=Visual Studio %VS_MAJOR% %VS_YEAR% Win64"
-IF "%CMAKE_GENERATOR%" == "" IF "%cross_compiler_target_platform%" == "win-32" SET "CMAKE_GENERATOR=Visual Studio %VS_MAJOR% %VS_YEAR%"
 
-SET "MSBUILDDEFAULTTOOLSVERSION=14.0"
-
-IF "%CI%" == "azure" (
-  IF "%cross_compiler_target_platform%" == "win-64" CALL "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64 -vcvars_ver=14.0
-  IF "%cross_compiler_target_platform%" == "win-32" CALL "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86 -vcvars_ver=14.0
-  GOTO End
+call :GetWin10SdkDir
+:: dir /ON here is sorting the list of folders, such that we use the latest one that we have
+for /F %%i in ('dir /ON /B "%WindowsSdkDir%\include"') DO (
+  SET WindowsSDKVer=%%~i
+)
+if errorlevel 1 (
+    echo "Didn't find any windows 10 SDK. I'm not sure if things will work, but let's try..."
+) else (
+    echo Windows SDK version found as: "%WindowsSDKVer%"
 )
 
-IF "%cross_compiler_target_platform%" == "win-64" CALL "%VSINSTALLDIR%..\..\VC\vcvarsall.bat" amd64
-IF "%cross_compiler_target_platform%" == "win-32" CALL "%VSINSTALLDIR%..\..\VC\vcvarsall.bat" x86
+IF "@cross_compiler_target_platform@" == "win-64" (
+  set "target_platform=amd64"
+  set "CMAKE_GEN=Visual Studio @VER@ @YEAR@ Win64"
+  set "BITS=64"
+) else (
+  set "target_platform=x86"
+  set "CMAKE_GEN=Visual Studio @VER@ @YEAR@"
+  set "BITS=32"
+)
 
-:End
+pushd %VSINSTALLDIR%
+CALL "VC\Auxiliary\Build\vcvars%BITS%.bat" -vcvars_ver=14.16 %WindowsSDKVer%
+popd
+
+IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
+
+:GetWin10SdkDir
+call :GetWin10SdkDirHelper HKLM\SOFTWARE\Wow6432Node > nul 2>&1
+if errorlevel 1 call :GetWin10SdkDirHelper HKCU\SOFTWARE\Wow6432Node > nul 2>&1
+if errorlevel 1 call :GetWin10SdkDirHelper HKLM\SOFTWARE > nul 2>&1
+if errorlevel 1 call :GetWin10SdkDirHelper HKCU\SOFTWARE > nul 2>&1
+if errorlevel 1 exit /B 1
+exit /B 0
+
+
+:GetWin10SdkDirHelper
+@REM `Get Windows 10 SDK installed folder`
+for /F "tokens=1,2*" %%i in ('reg query "%1\Microsoft\Microsoft SDKs\Windows\v10.0" /v "InstallationFolder"') DO (
+    if "%%i"=="InstallationFolder" (
+        SET WindowsSdkDir=%%~k
+    )
+)
+exit /B 0

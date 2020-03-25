@@ -1,9 +1,7 @@
-set YEAR=2015
-
 mkdir "%PREFIX%\etc\conda\activate.d"
-
-echo @echo on > "%PREFIX%\etc\conda\activate.d\vs%YEAR%_compiler_vars.bat"
-echo SET "cross_compiler_target_platform=%cross_compiler_target_platform%" >> "%PREFIX%\etc\conda\activate.d\vs%YEAR%_compiler_vars.bat"
-type "%RECIPE_DIR%\activate.bat" >> "%PREFIX%\etc\conda\activate.d\vs%YEAR%_compiler_vars.bat"
-
-type "%PREFIX%\etc\conda\activate.d\vs%YEAR%_compiler_vars.bat"
+COPY "%RECIPE_DIR%\activate.bat" "%PREFIX%\etc\conda\activate.d\vs%YEAR%_compiler_vars.bat"
+pushd "%PREFIX%\etc\conda\activate.d"
+sed -i 's/@YEAR@/%YEAR%/g' vs%YEAR%_compiler_vars.bat
+sed -i 's/@VER@/%VER%/g' vs%YEAR%_compiler_vars.bat
+sed -i 's/@cross_compiler_target_platform@/%cross_compiler_target_platform%/g' vs%YEAR%_compiler_vars.bat
+popd
