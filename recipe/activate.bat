@@ -56,8 +56,10 @@ call :GetWin10SdkDir
 :: dir /ON here is sorting the list of folders, such that we use the latest one that we have
 for /F %%i in ('dir /ON /B "%WindowsSdkDir%\include"') DO (
   SET testsdk=%%~i
+  echo first %testsdk%
   SET testsdk=%%testsdk:~0,2%%
-  IF "%%testsdk%%" == "10" (
+  echo second %testsdk%  
+  IF "%testsdk%" == "10" (
     SET WindowsSDKVer=%%~i
   )
 )
