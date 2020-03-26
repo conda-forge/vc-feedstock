@@ -55,10 +55,8 @@ IF NOT "%CONDA_BUILD%" == "" (
 call :GetWin10SdkDir
 :: dir /ON here is sorting the list of folders, such that we use the latest one that we have
 for /F %%i in ('dir /ON /B "%WindowsSdkDir%\include"') DO (
-  set var=%%i
-  @echo "%var%"
-  set var=%var:~0,2%
-  @echo "%var%"  
+  set "var=%%i"
+  set "var=%var:~0,2%"
   IF "%var%" == "10" (
     SET WindowsSDKVer=%%~i
   )
