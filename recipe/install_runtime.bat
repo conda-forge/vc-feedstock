@@ -27,7 +27,7 @@ echo "%REDIST_ROOT%"
 
 IF NOT EXIST "%BT_ROOT%\VC\Redist\MSVC\%runtime_version%" (
    echo ============================================================================================
-   set "out=!out! Expected vcruntime140.dll version (from conda_build_config.yaml) was %runtime_version%."
+   set "out=!out! Expected vcruntime141.dll version (from conda_build_config.yaml) was %runtime_version%."
    set "out=!out! That version does not appear to be installed. "
    set "out=!out! Please either install the expected VS %MSC_VER% udpate, or update conda_build_config.yaml "
    set "out=!out! to reflect the current value of the installed version.  See %BT_ROOT%\VC\Redist\MSVC\ for installed versions."
