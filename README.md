@@ -7,7 +7,7 @@ Package license:
 
 Feedstock license: BSD 3-Clause
 
-Summary: MSVC runtimes associated with cl.exe version 19.16.27032.1 (VS 2017 update 9)
+Summary: MSVC runtimes associated with cl.exe version 19.15.26726 (VS 2017 update 8)
 
 
 

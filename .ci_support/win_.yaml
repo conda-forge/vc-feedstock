@@ -1,3 +1,5 @@
+CMAKE_GENERATOR:
+- NMake Makefiles
 VER:
 - '15'
 YEAR:
@@ -7,15 +9,15 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cl_version:
-- 19.16.27032.1
+- 19.15.26726
 cross_compiler_target_platform:
 - win-64
 pin_run_as_build:
   vc:
     max_pin: x
 runtime_version:
-- 14.16.27012
+- 14.15.26706
 update_version:
-- '9'
+- '8'
 vc:
 - '14'
