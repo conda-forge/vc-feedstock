@@ -1,13 +1,13 @@
-About vs2015
+About vs2017
 ============
 
 Home: 
 
-Package license: BSD 3-clause
+Package license: 
 
 Feedstock license: BSD 3-Clause
 
-Summary: Activation and version verification of MSVC 14 (VS 2015) compiler
+Summary: MSVC runtimes associated with cl.exe version 19.16.27032.1 (VS 2017 update 9)
 
 
 
@@ -15,14 +15,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>Appveyor</td>
-    <td>
-      <a href="https://ci.appveyor.com/project/conda-forge/vc-feedstock/branch/master">
-        <img alt="windows" src="https://img.shields.io/appveyor/ci/conda-forge/vc-feedstock/master.svg?label=Windows">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
@@ -36,10 +29,10 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>win_target_platformwin-64</td>
+              <td>win</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master&jobName=win&configuration=win_target_platformwin-64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master&jobName=win&configuration=win_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -74,22 +67,22 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vc-green.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2015_-green.svg)](https://anaconda.org/conda-forge/vs2015_) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2015_.svg)](https://anaconda.org/conda-forge/vs2015_) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2015_.svg)](https://anaconda.org/conda-forge/vs2015_) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2015_.svg)](https://anaconda.org/conda-forge/vs2015_) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2015_runtime-green.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2017_-green.svg)](https://anaconda.org/conda-forge/vs2017_) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2017_.svg)](https://anaconda.org/conda-forge/vs2017_) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2017_.svg)](https://anaconda.org/conda-forge/vs2017_) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2017_.svg)](https://anaconda.org/conda-forge/vs2017_) |
 
-Installing vs2015
+Installing vs2017
 =================
 
-Installing `vs2015` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `vs2017` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `vc, vs2015_, vs2015_runtime` can be installed with:
+Once the `conda-forge` channel has been enabled, `vc, vs2015_runtime, vs2017_` can be installed with:
 
 ```
-conda install vc vs2015_ vs2015_runtime
+conda install vc vs2015_runtime vs2017_
 ```
 
 It is possible to list all of the versions of `vc` available on your platform with:
@@ -113,7 +106,7 @@ A feedstock is made up of a conda recipe (the instructions on what and how to bu
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/)
-and [TravisCI](https://travis-ci.org/) it is possible to build and upload installable
+and [TravisCI](https://travis-ci.com/) it is possible to build and upload installable
 packages to the [conda-forge](https://anaconda.org/conda-forge)
 [Anaconda-Cloud](https://anaconda.org/) channel for Linux, Windows and OSX respectively.
 
@@ -137,17 +130,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating vs2015-feedstock
+Updating vs2017-feedstock
 =========================
 
-If you would like to improve the vs2015 recipe or build a new
+If you would like to improve the vs2017 recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/vs2015-feedstock are
+Note that all branches in the conda-forge/vs2017-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
