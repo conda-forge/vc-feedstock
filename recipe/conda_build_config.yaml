@@ -14,3 +14,7 @@ cl_version:
 runtime_version:
   - 14.16.27032
 # we could zip all these together, and we should do that if there's ever more than one version supported at once.  I don't think that's currently possible, though.
+
+# override the global pinnings just in case
+vc:
+  - 14.1
