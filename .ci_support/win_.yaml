@@ -7,7 +7,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cl_version:
-- 19.16.27032.1
+- 19.16.27038
 cross_compiler_target_platform:
 - win-64
 pin_run_as_build:
