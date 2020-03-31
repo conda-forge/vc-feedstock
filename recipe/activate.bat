@@ -13,7 +13,7 @@ set "MSYS2_ENV_CONV_EXCL=CL"
 
 :: For Python 3.5+, ensure that we link with the dynamic runtime.  See
 :: http://stevedower.id.au/blog/building-for-python-3-5-part-two/ for more info
-set "PY_VCRUNTIME_REDIST=%PREFIX%\bin\vcruntime140.dll"
+set "PY_VCRUNTIME_REDIST=%PREFIX%\bin\vcruntime141.dll"
 
 :: set CC and CXX for cmake
 set "CXX=cl.exe"
