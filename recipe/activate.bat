@@ -64,11 +64,9 @@ if errorlevel 1 (
 )
 
 IF "@cross_compiler_target_platform@" == "win-64" (
-  set "target_platform=amd64"
   set "CMAKE_GEN=Visual Studio @VER@ @YEAR@ Win64"
   set "BITS=64"
 ) else (
-  set "target_platform=x86"
   set "CMAKE_GEN=Visual Studio @VER@ @YEAR@"
   set "BITS=32"
 )

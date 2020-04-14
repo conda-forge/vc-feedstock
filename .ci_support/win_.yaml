@@ -10,9 +10,6 @@ cl_version:
 - 19.16.27038
 cross_compiler_target_platform:
 - win-64
-pin_run_as_build:
-  vc:
-    max_pin: x
 runtime_version:
 - 14.16.27012
 update_version:
