@@ -22,8 +22,7 @@ if not exist "%BT_ROOT%" (
     exit 1
 )
 
-cd "%BT_ROOT%\VC"
-dir /s /b
+dir "%BT_ROOT%\VC" /s /b
 
 set "REDIST_ROOT=%BT_ROOT%\VC\Tools\MSVC\%runtime_version%\%VC_PATH%"
 echo "%REDIST_ROOT%"
