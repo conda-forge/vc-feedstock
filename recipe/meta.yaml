@@ -58,7 +58,7 @@ outputs:
       build:
         - vswhere
     about:
-      summary: MSVC runtimes associated with cl.exe version {{ cl_version  }} (VS {{ vsyear }} update {{ update_version }})
+      summary: MSVC runtimes associated with cl.exe version {{ cl_version }} (VS {{ vsyear }} update {{ update_version }})
   - name: vc
     version: {{ vcver }}
     build:
