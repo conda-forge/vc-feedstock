@@ -13,7 +13,7 @@ package:
   version: {{ fullver }}
 
 build:
-  number: 2
+  number: 3
   skip: True  # [not win]
 
 outputs:
@@ -62,7 +62,7 @@ outputs:
   - name: vc
     version: {{ vcver }}
     build:
-      number: 1
+      number: 2
       track_features:
         - vc{{ vcver.split(".")[0] }}
     requirements:
