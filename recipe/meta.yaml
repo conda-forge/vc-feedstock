@@ -1,64 +1,106 @@
 # version numbering is explained at https://stackoverflow.com/questions/42730478/version-numbers-for-visual-studio-2017-boost-and-cmake
-#     This version number follows the "platform toolset"
+# This version number follows the "platform toolset"
+
 {% set vcver = "14.1" %}
-{% set vsyear = "2017" %}
-{% set fullver = runtime_version %}
-# VS2017 is fundamentally compatible with VS2015.  We name our package vs2015_runtime so that it can't be
-#    mixed up with the runtime from VS2015 - you do actually need VS2017 runtime for things compiled with
-#    VS2017, and the runtime we have here is backwards-compatible with things compiled with VS2015.
+{% set vsyear = "2019" %}
+{% set vsver = "16" %}
+{% set runtime_version = "14.26.28720" %}
+
+# VS2017 is fundamentally compatible with VS2015.  We name our package
+# vs2015_runtime so that it can't be mixed up with the runtime from
+# VS2015 - you do actually need VS2017 runtime for things compiled
+# with VS2017, and the runtime we have here is backwards-compatible
+# with things compiled with VS2015.
 {% set runtime_year = "2015" %}
+
+# the VS update version.  This is the middle digit in the version
+# reported in the VS help->about UI.  It is perhaps a more readily
+# referenceable number.
+{% set update_version = "6" %}
+
+#  This is the version number reported by cl.exe
+{% set cl_version = "19.26.28806" %}
 
 package:
   name: vs{{ vsyear }}
-  version: {{ fullver }}
+  version: {{ runtime_version }}
+
+source:
+  - url: https://aka.ms/vs/16/release/vc_redist.x64.exe  # [win64]
+    sha256: 7d7105c52fcd6766beee1ae162aa81e278686122c1e44890712326634d0b055e  # [win64]
+  - url: https://aka.ms/vs/16/release/vc_redist.x86.exe  # [win32]
+    sha256: a06aac66734a618ab33c1522920654ddfc44fc13cafaa0f0ab85b199c3d51dc0  # [win32]
 
 build:
-  number: 2
+  number: 0
+  # Ignore this number. There is a complex set of build dependencies
+  # in the output.  Increment build numbers for vsXXXX_runtime and vc
   skip: True  # [not win]
 
 outputs:
-  - name: vs{{ vsyear }}_{{ cross_compiler_target_platform }}
+  - name: vs{{ vsyear }}_{{ target_platform }}
     version: {{ cl_version }}
-    script: install_activate.bat
+    script: vc_repack.py
+    script_interpreter: >-
+      python -m vc_repack --activate --arch {{ target_platform }}
+      --activate-year {{ vsyear }} --activate-major {{ vsver }}
     build:
+      number: 0
       track_features:
         - vc{{ vcver.split(".")[0] }}
       run_exports:
         strong:
-          # compatible within major version.  This is MSFT's incrementing of the UCRT version.  It was
-          #    14.0 with VS2015, and 14.1 with VS2017 - if the major version changes, we're assuming
-          #    that binary compatibility breaks.  This has a minimum bound equal to vcver, so building with
-          #    vs2017 here will require the vs2017-era runtime (the package is named vs2015_runtime, but the
-          #    version differs)
+          # compatible within major version.  This is MSFT's
+          # incrementing of the UCRT version.  It was 14.0 with
+          # VS2015, and 14.1 with VS2017 - if the major version
+          # changes, we're assuming that binary compatibility breaks.
+          # This has a minimum bound equal to vcver, so building with
+          # vs2017 here will require the vs2017-era runtime (the
+          # package is named vs2015_runtime, but the version differs)
           - {{ pin_subpackage('vc') }}
-          - {{ pin_subpackage('vs' + runtime_year + '_runtime', max_pin=None) }}
+          - {{ pin_subpackage('vs' ~ runtime_year ~ '_runtime', max_pin=None) }}
     requirements:
       build:
-        - m2-sed
+        - python
       run:
+        # Used to set up the path in the activate script
         - vswhere
-    test:
-      commands:
-        - cl.exe
     about:
-      summary: Activation and version verification of MSVC {{ vcver }} (VS {{ vsyear }} compiler, update {{ update_version }})
+      summary: >-
+        Activation and version verification of MSVC {{ vcver }}
+        (VS {{ vsyear }} compiler, update {{ update_version }})
       license: BSD-3-Clause
   - name: vs{{ runtime_year }}_runtime
     version: {{ runtime_version }}
-    script: install_runtime.bat
+    script: vc_repack.py
+    script_interpreter: >-
+      python -m vc_repack --extract --version {{ runtime_version }}
+      -a {{ target_platform }}
     build:
+      number: 2
+      binary_relocation: false
+      detect_binary_files_with_prefix: false
       no_link:
-        - |
-          *.dll
         - Library/bin/*.dll
       missing_dso_whitelist:
         - "*.dll"
         - "*.DLL"
     requirements:
       build:
-        - vswhere
+        - m2-p7zip
     about:
-      summary: MSVC runtimes associated with cl.exe version {{ cl_version  }} (VS {{ vsyear }} update {{ update_version }})
+      summary: >-
+        MSVC runtimes associated with cl.exe version {{ cl_version }}
+        (VS {{ vsyear }} update {{ update_version }})
+      home: https://visualstudio.microsoft.com/downloads/
+      license: LicenseRef-ProprietaryMicrosoft
+      license_family: Proprietary
+      license_file:
+        - LICENSE.TXT
+        - LICENSE.RTF
+    test:
+      commands:
+        - dir %PREFIX%\\Library\\bin\\*.dll
   - name: vc
     version: {{ vcver }}
     build:
@@ -67,28 +109,31 @@ outputs:
         - vc{{ vcver.split(".")[0] }}
     requirements:
       run:
-        # Set lower bound for runtime (no upper bound).  Upper bound is still present, but
-        #    it's part of the run_exports for the compiler: assume that when vcver's major version changes,
-        #    MSFT has broken our binary compatibility.
+        # Set lower bound for runtime (no upper bound).  Upper bound
+        # is still present, but it's part of the run_exports for the
+        # compiler: assume that when vcver's major version changes,
+        # MSFT has broken our binary compatibility.
         - {{ pin_subpackage('vs' ~ runtime_year ~ '_runtime', max_pin=None) }}
     about:
       home: https://github.com/conda/conda/wiki/VC-features
       license: BSD-3-Clause
       license_family: BSD
-      summary: A meta-package to impose mutual exclusivity among software built with different VS versions
-      description: |
-          This metapackage is used to enforce consistency of runtime
-          dependencies within an environment
+      summary: >-
+        A meta-package to impose mutual exclusivity among software
+        built with different VS versions
+      description: >-
+        This metapackage is used to enforce consistency of runtime
+        dependencies within an environment
       doc_url: https://github.com/conda/conda/wiki/VC-features
       dev_url: https://github.com/conda/conda/wiki/VC-features
 
-
 about:
   home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2017
-  summary: |
+  summary: >-
     Activation and version verification of MSVC {{ vcver }} (VS {{ vsyear }}
     compiler, update {{ update_version }})
-  license: BSD-3-Clause
+  license: LicenseRef-ProprietaryMicrosoft
+  license_family: Proprietary
 
 extra:
   recipe-maintainers:
