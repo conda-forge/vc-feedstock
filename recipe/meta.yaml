@@ -35,10 +35,10 @@ package:
 
 source:
   - url: https://download.visualstudio.microsoft.com/download/pr/{w64_uuid}/{w64_sha}/vc_redist.x64.exe  # [win64]
-    sha256: { w64_sha | lower }  # [win64]
+    sha256: {{ w64_sha | lower }}  # [win64]
     # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x64.exe
   - url: https://download.visualstudio.microsoft.com/download/pr/{w32_uuid}/{w32_sha}/vc_redist.x86.exe
-    sha256: { w32_sha | lower }  # [win32]
+    sha256: {{ w32_sha | lower }}  # [win32]
     # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x86.exe
 
 build:
