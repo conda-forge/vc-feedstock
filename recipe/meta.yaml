@@ -74,7 +74,7 @@ outputs:
         # is still present, but it's part of the run_exports for the
         # compiler: assume that when vcver's major version changes,
         # MSFT has broken our binary compatibility.
-        - {{ pin_subpackage('vs' ~ runtime_year ~ '_runtime', max_pin=None) }}
+        - vs{{ runtime_year }}_runtime >={{ runtime_version }}
     about:
       home: https://github.com/conda/conda/wiki/VC-features
       license: BSD-3-Clause
@@ -106,8 +106,8 @@ outputs:
           # This has a minimum bound equal to vcver, so building with
           # vs2017 here will require the vs2017-era runtime (the
           # package is named vs2015_runtime, but the version differs)
-          - {{ pin_subpackage('vc') }}
-          - {{ pin_subpackage('vs' ~ runtime_year ~ '_runtime', max_pin=None) }}
+          - vc >={{ vcver }},<{{ vcver.split('.')[0] | int + 1 }}
+          - vs{{ runtime_year }}_runtime >={{ runtime_version }}
     requirements:
       build:
         - python
