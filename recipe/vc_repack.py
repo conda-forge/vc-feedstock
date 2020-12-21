@@ -57,7 +57,7 @@ def subs(line, args):
     vcvars_nodots = ".".join(args.runtime_version.split(".")[:2])
     return t.substitute(
          year=args.activate_year, ver=args.activate_major, target=args.arch,
-         vcvars_ver=args.vcvars, ver_plus_one=str(int(args.activate_major)+1),
+         vcvars_ver=args.vcver, ver_plus_one=str(int(args.activate_major)+1),
          vcvars_nodots=vcvars_nodots)
 
 
@@ -226,7 +226,7 @@ def main():
         "--activate-year", help="VS Version Year", default=None,
     )
     parser.add_argument(
-        "--activate-vcvars", help="vcvars Version", default=None,
+        "--activate-vcver", help="VC Version", default=None,
     )
     parser.add_argument(
         "--activate-runtime-version", help="vc Runtime Version", default=None,
