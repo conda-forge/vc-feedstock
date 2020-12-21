@@ -56,7 +56,7 @@ def subs(line, args):
     t = AtTemplate(line)
     return t.substitute(
          year=args.activate_year, ver=args.activate_major, target=args.arch,
-         vcvars_ver=args.vcvars_ver, ver_plus_one=str(int(args.activate_major)+1)
+         vcvars_ver=args.activate_vcvars_ver, ver_plus_one=str(int(args.activate_major)+1)
     )
 
 

@@ -92,7 +92,7 @@ outputs:
     script: vc_repack.py
     script_interpreter: >-
       python -m vc_repack --activate --arch {{ target_platform }}
-      --activate-year {{ vsyear }} --activate-major {{ vsver }}
+      --activate-year {{ vsyear }} --activate-major {{ vsver }} --activate-vcvars-ver {{ vcver }}
     build:
       number: 0
       track_features:
