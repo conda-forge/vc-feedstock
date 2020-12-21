@@ -55,7 +55,8 @@ class AtTemplate(string.Template):
 def subs(line, args):
     t = AtTemplate(line)
     return t.substitute(
-        year=args.activate_year, ver=args.activate_major, target=args.arch
+         year=args.activate_year, ver=args.activate_major, target=args.arch,
+         vcvars_ver=args.vcvars_ver,
     )
 
 
@@ -222,6 +223,9 @@ def main():
     )
     parser.add_argument(
         "--activate-year", help="VS Version Year", default=None,
+    )
+    parser.add_argument(
+        "--activate-vcvars-ver", help="vcvars Version", default=None,
     )
     parser.add_argument(
         "--activate-major", help="VS Major Version", default=None,

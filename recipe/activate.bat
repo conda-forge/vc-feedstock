@@ -33,16 +33,16 @@ if not exist "%VSINSTALLDIR%" (
 	)
 )
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Professional\"
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Professional\"
 )
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community\"
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Community\"
 )
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2017\BuildTools\"
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\BuildTools\"
 )
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Enterprise\"
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Enterprise\"
 )
 
 IF NOT "%CONDA_BUILD%" == "" (
@@ -72,14 +72,10 @@ IF "@{target}" == "win-64" (
 )
 
 pushd %VSINSTALLDIR%
-CALL "VC\Auxiliary\Build\vcvars%BITS%.bat" -vcvars_ver=14.16 %WindowsSDKVer%
+CALL "VC\Auxiliary\Build\vcvars%BITS%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
 popd
 
 IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
-
-exit /B 0
-
-@@REM --------
 
 :GetWin10SdkDir
 call :GetWin10SdkDirHelper HKLM\SOFTWARE\Wow6432Node > nul 2>&1

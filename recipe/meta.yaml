@@ -65,7 +65,7 @@ outputs:
   - name: vc
     version: {{ vcver }}
     build:
-      number: 1
+      number: 2
       track_features:
         - vc{{ vcver.split(".")[0] }}
     requirements:
