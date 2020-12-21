@@ -109,9 +109,6 @@ outputs:
           - vc >={{ vcver }},<{{ vcver.split('.')[0] | int + 1 }}
           - vs{{ runtime_year }}_runtime >={{ runtime_version }}
     requirements:
-      build:
-        - python
-      host:
       run:
         # Used to set up the path in the activate script
         - vswhere
