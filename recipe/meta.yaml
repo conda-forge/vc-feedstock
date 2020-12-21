@@ -1,10 +1,4 @@
 # version numbering is explained at https://stackoverflow.com/questions/42730478/version-numbers-for-visual-studio-2017-boost-and-cmake
-# This version number follows the "platform toolset"
-
-{% set vcver = "14.1" %}
-{% set vsyear = "2019" %}
-{% set vsver = "16" %}
-{% set runtime_version = "14.27.29016" %}
 
 # VS2017 is fundamentally compatible with VS2015.  We name our package
 # vs2015_runtime so that it can't be mixed up with the runtime from
@@ -13,38 +7,27 @@
 # with things compiled with VS2015.
 {% set runtime_year = "2015" %}
 
-# the VS update version.  This is the middle digit in the version
-# reported in the VS help->about UI.  It is perhaps a more readily
-# referenceable number.
-{% set update_version = "6" %}
-
-#  This is the version number reported by cl.exe
-{% set cl_version = "19.26.28806" %}
-
-# Magic versions for Windows 64-bit
-{% set w64_uuid = "fd5d2eea-32b8-4814-b55e-28c83dd72d9c" %}
-{% set w64_sha = "952A0C6CB4A3DD14C3666EF05BB1982C5FF7F87B7103C2BA896354F00651E358" %}
-
-# Magic versions for Windows 32-bit
-{% set w32_uuid = "9fe82b83-f3a1-43f5-8f25-ebe24529854c" %}
-{% set w32_sha = "B4D433E2F66B30B478C0D080CCD5217CA2A963C16E90CAF10B1E0592B7D8D519" %}
+{% if vsyear is not defined %}
+{% set vsyear = "" %}
+{% set runtime_version = "" %}
+{% set cl_version = "" %}
+{% set vcver = "" %}
+{% endif %}
 
 package:
   name: vs{{ vsyear }}
   version: {{ runtime_version }}
 
 source:
-  - url: https://download.visualstudio.microsoft.com/download/pr/{{w64_uuid}}/{{w64_sha}}/vc_redist.x64.exe  # [win64]
-    sha256: {{ w64_sha | lower }}  # [win64]
-    # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x64.exe
-  - url: https://download.visualstudio.microsoft.com/download/pr/{{w32_uuid}}/{{w32_sha}}/vc_redist.x86.exe
-    sha256: {{ w32_sha | lower }}  # [win32]
-    # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x86.exe
+  # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x64.exe
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x64.exe  # [win64]
+    sha256: {{ sha256 | lower }}  # [win64]
+  # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x86.exe
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x86.exe  # [win32]
+    sha256: {{ sha256 | lower }}  # [win32]
 
 build:
   number: 0
-  # Ignore this number. There is a complex set of build dependencies
-  # in the output.  Increment build numbers for vsXXXX_runtime and vc
   skip: True  # [not win]
 
 outputs:
@@ -87,7 +70,7 @@ outputs:
       python -m vc_repack --extract --version {{ runtime_version }}
       -a {{ target_platform }}
     build:
-      number: 2
+      number: 0
       binary_relocation: false
       detect_binary_files_with_prefix: false
       no_link:

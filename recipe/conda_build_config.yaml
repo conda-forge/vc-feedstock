@@ -1,0 +1,39 @@
+vcver:
+ - 14.2
+ - 14.1
+vsyear:
+ - 2019
+ - 2017
+vsver:
+ - 16
+ - 15
+runtime_version:
+ - 14.28.29325
+ - 14.16.27033
+# the VS update version.  This is the middle digit in the version
+# reported in the VS help->about UI.  It is perhaps a more readily
+# referenceable number.
+update_version:
+ - 8
+ - 9
+# This is the version number reported by cl.exe
+cl_version:
+ - 19.28.29325
+ - 19.16.27033
+# This is the uuid in the URL
+uuid:
+ - 89a3b9df-4a09-492e-8474-8f92c115c51d 
+ - 4100b84d-1b4d-487d-9f89-1354a7138c8f
+sha256:
+ - 5B0CBB977F2F5253B1EBE5C9D30EDBDA35DBD68FB70DE7AF5FAAC6423DB575B5
+ - B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178
+
+zip_keys:
+ - - vcver
+   - vsyear
+   - vsver
+   - runtime_version
+   - update_version
+   - cl_version
+   - uuid
+   - sha256
