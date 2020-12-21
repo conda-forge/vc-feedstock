@@ -31,38 +31,6 @@ build:
   skip: True  # [not win]
 
 outputs:
-  - name: vs{{ vsyear }}_{{ target_platform }}
-    version: {{ cl_version }}
-    script: vc_repack.py
-    script_interpreter: >-
-      python -m vc_repack --activate --arch {{ target_platform }}
-      --activate-year {{ vsyear }} --activate-major {{ vsver }}
-    build:
-      number: 0
-      track_features:
-        - vc{{ vcver.split(".")[0] }}
-      run_exports:
-        strong:
-          # compatible within major version.  This is MSFT's
-          # incrementing of the UCRT version.  It was 14.0 with
-          # VS2015, and 14.1 with VS2017 - if the major version
-          # changes, we're assuming that binary compatibility breaks.
-          # This has a minimum bound equal to vcver, so building with
-          # vs2017 here will require the vs2017-era runtime (the
-          # package is named vs2015_runtime, but the version differs)
-          - {{ pin_subpackage('vc') }}
-          - {{ pin_subpackage('vs' ~ runtime_year ~ '_runtime', max_pin=None) }}
-    requirements:
-      build:
-        - python
-      run:
-        # Used to set up the path in the activate script
-        - vswhere
-    about:
-      summary: >-
-        Activation and version verification of MSVC {{ vcver }}
-        (VS {{ vsyear }} compiler, update {{ update_version }})
-      license: BSD-3-Clause
   - name: vs{{ runtime_year }}_runtime
     version: {{ runtime_version }}
     script: vc_repack.py
@@ -119,6 +87,39 @@ outputs:
         dependencies within an environment
       doc_url: https://github.com/conda/conda/wiki/VC-features
       dev_url: https://github.com/conda/conda/wiki/VC-features
+  - name: vs{{ vsyear }}_{{ target_platform }}
+    version: {{ cl_version }}
+    script: vc_repack.py
+    script_interpreter: >-
+      python -m vc_repack --activate --arch {{ target_platform }}
+      --activate-year {{ vsyear }} --activate-major {{ vsver }}
+    build:
+      number: 0
+      track_features:
+        - vc{{ vcver.split(".")[0] }}
+      run_exports:
+        strong:
+          # compatible within major version.  This is MSFT's
+          # incrementing of the UCRT version.  It was 14.0 with
+          # VS2015, and 14.1 with VS2017 - if the major version
+          # changes, we're assuming that binary compatibility breaks.
+          # This has a minimum bound equal to vcver, so building with
+          # vs2017 here will require the vs2017-era runtime (the
+          # package is named vs2015_runtime, but the version differs)
+          - {{ pin_subpackage('vc') }}
+          - {{ pin_subpackage('vs' ~ runtime_year ~ '_runtime', max_pin=None) }}
+    requirements:
+      build:
+        - python
+      host:
+      run:
+        # Used to set up the path in the activate script
+        - vswhere
+    about:
+      summary: >-
+        Activation and version verification of MSVC {{ vcver }}
+        (VS {{ vsyear }} compiler, update {{ update_version }})
+      license: BSD-3-Clause
 
 about:
   home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2017
