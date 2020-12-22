@@ -57,7 +57,7 @@ def subs(line, args):
     vcvars_nodots = ".".join(args.version.split(".")[:2])
     return t.substitute(
          year=args.activate_year, ver=args.activate_major, target=args.arch,
-         vcvars_ver=args.vcver, ver_plus_one=str(int(args.activate_major)+1),
+         vcvars_ver=args.activate_vcver, ver_plus_one=str(int(args.activate_major)+1),
          vcvars_nodots=vcvars_nodots)
 
 
