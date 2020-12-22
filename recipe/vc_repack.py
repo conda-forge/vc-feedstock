@@ -54,11 +54,11 @@ class AtTemplate(string.Template):
 
 def subs(line, args):
     t = AtTemplate(line)
-    vcvars_nodots = ".".join(args.version.split(".")[:2])
+    vcver_nodots = ".".join(args.version.split(".")[:2])
     return t.substitute(
          year=args.activate_year, ver=args.activate_major, target=args.arch,
          vcvars_ver=args.activate_vcver, ver_plus_one=str(int(args.activate_major)+1),
-         vcvars_nodots=vcvars_nodots)
+         vcver_nodots=vcver_nodots)
 
 
 def run(cmd):
