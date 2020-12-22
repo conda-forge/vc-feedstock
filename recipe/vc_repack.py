@@ -88,35 +88,7 @@ def split_self_extract_exe(exe_file, target_directory):
 
 
 def unpack_cab(cabfile, tmpdir, env):
-    cwd = None
-    if sys.platform.startswith("win"):
-        # Behold the ugliness of the hoops you have to go through
-        # to execute 7z here.  It's a Cygwin executable.
-
-        cwd = os.getcwd()
-        # The DLLs needed for executing 7z are in Library\usr\bin,
-        # relative to the prefix directory, so temporarily set the
-        # current directory to contain them.
-        os.chdir(os.path.join(env.prefix, "Library", "usr", "bin"))
-
-        # The executable for 7z is not installed on the path either
-        cmd = [
-            os.path.join(env.prefix, "Library", "usr", "lib", "p7zip", "7z")
-        ]
-
-        # And because it's a Cygwin executable, the drive name is
-        # specially encoded and filenames need to use Unix style paths
-        # rather than DOS style ones.
-        cabfile = cabfile.replace("C:", "/cygdrive/c").replace("\\", "/")
-        tmpdir = tmpdir.replace("C:", "/cygdrive/c").replace("\\", "/")
-    else:
-        # It's so much simpler on Linux
-        cmd = ["7z"]
-
-    cmd.extend(["e", f"-o{tmpdir}", "-bd", cabfile])
-    run(cmd)
-    if cwd:
-        os.chdir(cwd)
+    run(["7z", "e", f"-o{tmpdir}", "-bd", cabfile])
 
 
 def decode_manifest(directory):

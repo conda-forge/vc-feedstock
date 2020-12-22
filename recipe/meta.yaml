@@ -27,7 +27,7 @@ source:
     sha256: {{ sha256 | lower }}  # [win32]
 
 build:
-  number: 0
+  number: 1
   skip: True  # [not win]
 
 outputs:
@@ -48,7 +48,7 @@ outputs:
         - "*.DLL"
     requirements:
       build:
-        - m2-p7zip
+        - 7zip
     about:
       summary: >-
         MSVC runtimes associated with cl.exe version {{ cl_version }}
