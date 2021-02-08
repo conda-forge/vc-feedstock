@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import xml.dom.minidom
+import glob
 
 # Requires m2-p7zip conda package on Windows
 # If cross-building on Linux, requires p7zip installed
@@ -176,6 +177,19 @@ def decode_manifest(directory):
     )
 
 
+def fix_filename_and_copy(source, dest):
+    cwd = os.getcwd()
+    os.chdir(source)
+    for fname in glob.glob("*.dll"):
+        print(f"Found DLL: {fname}")
+        if fname.startswith("api_"):
+            new_fname = fname.replace("_", "-")
+            os.rename(fname, new_fname)
+        else:
+            new_fname = fname
+        shutil.copyfile(new_fname, os.path.join(dest, new_fname))
+    os.chdir(cwd)
+
 def unpack_exe(exe_filename, env, version):
     with tempfile.TemporaryDirectory() as tmpdir:
         cabs = split_self_extract_exe(exe_filename, tmpdir)
@@ -201,6 +215,7 @@ def unpack_exe(exe_filename, env, version):
             unpack_cab(
                 os.path.join(cabdir2, payload["cabfile"]), env.library_bin, env
             )
+        fix_filename_and_copy(env.library_bin, env.prefix)
 
 
 def main():
