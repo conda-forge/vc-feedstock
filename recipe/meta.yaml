@@ -115,9 +115,11 @@ outputs:
         - if not exist %LIBRARY_BIN%\{{ dllname }} exit 1
         - if not exist %PREFIX%\{{ dllname }} exit 1
         {% endfor %}
-        - if not exist %LIBRARY_BIN%\vcruntime140_1.dll exit 1        # [vsyear != "2017"]
-        - if not exist %LIBRARY_BIN%\msvcp140_atomic_wait.dll exit 1  # [vsyear != "2017"]
-        - if not exist %LIBRARY_BIN%\msvcp140_codecvt_ids.dll exit 1  # [vsyear != "2017"]
+        {% if vsyear == "2019" %}
+        - if not exist %LIBRARY_BIN%\vcruntime140_1.dll exit 1
+        - if not exist %LIBRARY_BIN%\msvcp140_atomic_wait.dll exit 1
+        - if not exist %LIBRARY_BIN%\msvcp140_codecvt_ids.dll exit 1
+        {% endif %}
 
   - name: vc
     version: {{ vcver }}
