@@ -112,8 +112,8 @@ outputs:
             'vccorlib140.dll',
             'vcomp140.dll',
             'vcruntime140.dll'] %}
-        - if not exist %LIBRARY_BIN%\{{ dll_name } exit 1
-        - if not exist %PREFIX%\{{ dll_name } exit 1
+        - if not exist %LIBRARY_BIN%\{{ dll_name }} exit 1
+        - if not exist %PREFIX%\{{ dll_name }} exit 1
         {% endfor %}
         - if not exist %LIBRARY_BIN%\vcruntime140_1.dll exit 1        # [vsyear != "2017"]
         - if not exist %LIBRARY_BIN%\msvcp140_atomic_wait.dll exit 1  # [vsyear != "2017"]
