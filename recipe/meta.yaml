@@ -27,7 +27,7 @@ source:
     sha256: {{ sha256 | lower }}  # [win32]
 
 build:
-  number: 1
+  number: 3
   skip: True  # [not win]
 
 outputs:
@@ -38,7 +38,6 @@ outputs:
       python -m vc_repack --extract --version {{ runtime_version }}
       -a {{ target_platform }}
     build:
-      number: 0
       binary_relocation: false
       detect_binary_files_with_prefix: false
       no_link:
@@ -124,7 +123,6 @@ outputs:
   - name: vc
     version: {{ vcver }}
     build:
-      number: 2
       track_features:
         - vc{{ vcver.split(".")[0] }}
     requirements:
@@ -146,6 +144,7 @@ outputs:
         dependencies within an environment
       doc_url: https://github.com/conda/conda/wiki/VC-features
       dev_url: https://github.com/conda/conda/wiki/VC-features
+  
   - name: vs{{ vsyear }}_{{ target_platform }}
     version: {{ cl_version }}
     script: vc_repack.py
@@ -153,7 +152,6 @@ outputs:
       python -m vc_repack --activate --arch {{ target_platform }} --version {{ runtime_version }}
       --activate-year {{ vsyear }} --activate-major {{ vsver }} --activate-vcver {{ vcver }}
     build:
-      number: 0
       track_features:
         - vc{{ vcver.split(".")[0] }}
       run_exports:
