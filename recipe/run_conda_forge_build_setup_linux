@@ -1,0 +1,87 @@
+#!/bin/bash
+
+export PYTHONUNBUFFERED=1
+
+conda config --set show_channel_urls true
+conda config --set auto_update_conda false
+conda config --set add_pip_as_python_dependency false
+
+export "CONDA_BLD_PATH=${FEEDSTOCK_ROOT}/build_artifacts"
+
+set +u
+
+# Don't set the number of CPUs for some CI systems
+if [ "${CI}" = "drone" ]; then
+    export CPU_COUNT=
+else
+    # 2 cores available on CircleCI workers: https://discuss.circleci.com/t/what-runs-on-the-node-container-by-default/1443
+    # 2 cores available on TravisCI workers: https://docs.travis-ci.com/user/reference/overview/
+    # CPU_COUNT is passed through conda build: https://github.com/conda/conda-build/pull/1149
+    export CPU_COUNT="${CPU_COUNT:-2}"
+fi
+
+# Need strict priority for
+# - pypy as defaults is not fixed
+# - cos7 as defaults is not fixed
+# but ppl can turn this off
+conda config --set channel_priority $(cat ${FEEDSTOCK_ROOT}/conda-forge.yml | shyaml get-value channel_priority strict)
+
+# the upstream image nvidia/cuda:9.2-devel-centos6 (on which linux-anvil-cuda:9.2 is based)
+# does not contain libcuda.so; it should be installed in ${CUDA_HOME}/compat-${CUDA_VER},
+# however cuda-compat-${CUDA_VER}.x86_64.rpm is only packaged for 10.x; we abuse
+# cuda-compat-10.0 for this, since the actual dependency containing libcuda for 9.2
+# (xorg-x11-drv-nvidia-libs) pulls in a huge amount of dependencies;
+# this cannot be fixed in the conda-forge linux-anvil-cuda images for licensing reasons
+# (cannot add cuda-package in our image layers), so we add it here for CI purposes only.
+if [[ ! -z "$CUDA_HOME" && -d /usr/local/cuda-9.2 ]]; then
+  # note: $CUDA_HOME is just a symlink to /usr/local/cuda-${CUDA_VER}
+
+  # register cuda-repo with installer, cf.
+  # https://developer.download.nvidia.com/compute/cuda/repos/rhel6/x86_64/
+  if [[ "$(uname -m)" == "x86_64" ]]; then
+    curl -O https://developer.download.nvidia.com/compute/cuda/repos/rhel6/x86_64/cuda-repo-rhel6-9.2.148-1.x86_64.rpm
+  fi
+  if [[ "$(uname -m)" == "ppc64le" ]]; then
+    curl -O https://developer.download.nvidia.com/compute/cuda/repos/rhel7/ppc64le/cuda-repo-rhel7-9.2.148-1.ppc64le.rpm
+  fi
+  sudo yum localinstall -y cuda-repo-*.rpm
+  rm cuda-repo-*.rpm
+  # install latest cuda-compat-10-0
+  sudo yum install -y cuda-compat-10-0.$(uname -m) ;
+  # note: this path is added to ldconfig in linux-anvil-cuda:9.2
+  if [[ ! -f "/usr/local/cuda-10.0/compat/libcuda.so" ]]; then exit 1; fi
+fi
+
+if [ ! -z "$CONFIG" ]; then
+    if [ ! -z "$CI" ]; then
+        echo "" >> ${CI_SUPPORT}/${CONFIG}.yaml
+        echo "CI:" >> ${CI_SUPPORT}/${CONFIG}.yaml
+        echo "- ${CI}" >> ${CI_SUPPORT}/${CONFIG}.yaml
+        echo "" >> ${CI_SUPPORT}/${CONFIG}.yaml
+    fi
+    cat ${CI_SUPPORT}/${CONFIG}.yaml
+fi
+
+set -u
+
+mkdir -p "${CONDA_PREFIX}/etc/conda/activate.d"
+echo "export CONDA_BLD_PATH='${CONDA_BLD_PATH}'"         > "${CONDA_PREFIX}/etc/conda/activate.d/conda-forge-ci-setup-activate.sh"
+if [ -n "${CPU_COUNT}" ]; then
+    echo "export CPU_COUNT='${CPU_COUNT}'"                  >> "${CONDA_PREFIX}/etc/conda/activate.d/conda-forge-ci-setup-activate.sh"
+fi
+echo "export PYTHONUNBUFFERED='${PYTHONUNBUFFERED}'"    >> "${CONDA_PREFIX}/etc/conda/activate.d/conda-forge-ci-setup-activate.sh"
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+source ${SCRIPT_DIR}/cross_compile_support.sh
+
+if [ -f ${CI_SUPPORT}/${CONFIG}.yaml ]; then
+    need_osx_sdk=$(cat ${CI_SUPPORT}/${CONFIG}.yaml | shyaml get-value MACOSX_DEPLOYMENT_TARGET.0 0)
+    if [[ "$need_osx_sdk" != "0" ]]; then
+        OSX_SDK_DIR=$(mktemp -d)
+        source ${SCRIPT_DIR}/download_osx_sdk.sh
+    fi
+fi
+
+conda info
+conda config --show-sources
+conda list --show-channel-urls
