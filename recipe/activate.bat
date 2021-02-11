@@ -63,11 +63,12 @@ if errorlevel 1 (
     echo Windows SDK version found as: "%WindowsSDKVer%"
 )
 
+
 IF "@{target}" == "win-64" (
-  set "CMAKE_GEN=Visual Studio @{ver} @{year} Win64"
+  set "CMAKE_PLAT=x64"
   set "BITS=64"
 ) else (
-  set "CMAKE_GEN=Visual Studio @{ver} @{year}"
+  set "CMAKE_PLAT=x86"
   set "BITS=32"
 )
 
@@ -75,7 +76,9 @@ pushd %VSINSTALLDIR%
 CALL "VC\Auxiliary\Build\vcvars%BITS%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
 popd
 
-IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
+IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=Visual Studio @{ver} @{year}"
+:: see https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR_PLATFORM.html
+IF "%CMAKE_GENERATOR_PLATFORM%" == "" SET "CMAKE_GENERATOR_PLATFORM=%CMAKE_PLAT%"
 
 :GetWin10SdkDir
 call :GetWin10SdkDirHelper HKLM\SOFTWARE\Wow6432Node > nul 2>&1
