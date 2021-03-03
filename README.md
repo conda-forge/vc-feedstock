@@ -1,4 +1,4 @@
-About vs2019
+About vs2017
 ============
 
 Home: https://visualstudio.microsoft.com/downloads/
@@ -7,7 +7,7 @@ Package license: LicenseRef-ProprietaryMicrosoft
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/vc-feedstock/blob/master/LICENSE.txt)
 
-Summary: MSVC runtimes associated with cl.exe version 19.28.29325 (VS 2019 update 8)
+Summary: MSVC runtimes associated with cl.exe version 19.16.27033 (VS 2017 update 9)
 
 Current build status
 ====================
@@ -58,10 +58,10 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2017_linux--64-green.svg)](https://anaconda.org/conda-forge/vs2017_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2017_linux-64.svg)](https://anaconda.org/conda-forge/vs2017_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2017_linux-64.svg)](https://anaconda.org/conda-forge/vs2017_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2017_linux-64.svg)](https://anaconda.org/conda-forge/vs2017_linux-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2019_linux--64-green.svg)](https://anaconda.org/conda-forge/vs2019_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2019_linux-64.svg)](https://anaconda.org/conda-forge/vs2019_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2019_linux-64.svg)](https://anaconda.org/conda-forge/vs2019_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2019_linux-64.svg)](https://anaconda.org/conda-forge/vs2019_linux-64) |
 
-Installing vs2019
+Installing vs2017
 =================
 
-Installing `vs2019` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `vs2017` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
@@ -118,26 +118,26 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating vs2019-feedstock
+Updating vs2017-feedstock
 =========================
 
-If you would like to improve the vs2019 recipe or build a new
+If you would like to improve the vs2017 recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/vs2019-feedstock are
+Note that all branches in the conda-forge/vs2017-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string).
  * If the version of a package **is** being increased, please remember to return
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string)
    back to 0.
 
 Feedstock Maintainers
