@@ -63,12 +63,25 @@ if errorlevel 1 (
     echo Windows SDK version found as: "%WindowsSDKVer%"
 )
 
-IF "@{target}" == "win-64" (
-  set "CMAKE_GEN=Visual Studio @{ver} @{year} Win64"
-  set "BITS=64"
-) else (
-  set "CMAKE_GEN=Visual Studio @{ver} @{year}"
-  set "BITS=32"
+:: set CMAKE_* variables
+:: platform selection changed with VS 16 2019, but for compatibility we keep the older way
+IF @{year} GEQ 2019 (
+    set "CMAKE_GEN=Visual Studio @{ver} @{year}"
+    IF "@{target}" == "win-64" (
+        set "BITS=64"
+        set "CMAKE_PLAT=x64"
+    ) ELSE (
+        set "BITS=32"
+        set "CMAKE_PLAT=Win32"
+    )
+) ELSE (
+    IF "@{target}" == "win-64" (
+        set "CMAKE_GEN=Visual Studio @{ver} @{year} Win64"
+        set "BITS=64"
+	) else (
+        set "CMAKE_GEN=Visual Studio @{ver} @{year}"
+        set "BITS=32"
+    )
 )
 
 pushd %VSINSTALLDIR%
@@ -76,6 +89,11 @@ CALL "VC\Auxiliary\Build\vcvars%BITS%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDK
 popd
 
 IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
+:: see https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR_PLATFORM.html
+IF @{year} GEQ 2019 (
+	IF "%CMAKE_GENERATOR_PLATFORM%" == "" SET "CMAKE_GENERATOR_PLATFORM=%CMAKE_PLAT%"
+)
+
 
 :GetWin10SdkDir
 call :GetWin10SdkDirHelper HKLM\SOFTWARE\Wow6432Node > nul 2>&1
