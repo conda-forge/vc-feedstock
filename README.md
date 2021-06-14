@@ -40,6 +40,13 @@ Current build status
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master&jobName=win&configuration=win_64_cl_version19.28.29325runtime_version14.28.29325sha256B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178update_version8uuid89a3b9df-4a09-492e-8474-8f92c115c51dvcver14.2vsyear2019" alt="variant">
                 </a>
               </td>
+            </tr><tr>
+              <td>win_64_cl_version19.29.30037runtime_version14.29.30037sha256A1592D3DA2B27230C087A3B069409C1E82C2664B0D4C3B511701624702B2E2A3update_version10uuidf1998402-3cc0-466f-bd67-d9fb6cd2379bvcver14.2vsyear2019</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master&jobName=win&configuration=win_64_cl_version19.29.30037runtime_version14.29.30037sha256A1592D3DA2B27230C087A3B069409C1E82C2664B0D4C3B511701624702B2E2A3update_version10uuidf1998402-3cc0-466f-bd67-d9fb6cd2379bvcver14.2vsyear2019" alt="variant">
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -65,6 +72,7 @@ Installing `vs2017` from the `conda-forge` channel can be achieved by adding `co
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
 Once the `conda-forge` channel has been enabled, `vc, vs2015_runtime, vs2017_linux-64, vs2019_linux-64` can be installed with:
