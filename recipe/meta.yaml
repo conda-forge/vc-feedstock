@@ -48,6 +48,9 @@ outputs:
     requirements:
       build:
         - m2-p7zip
+      host:
+      run:
+        - ucrt >=10.0.20348.0  # [vsver >=17 or (vsver == 16 and update_version >= 10)]
     about:
       summary: >-
         MSVC runtimes associated with cl.exe version {{ cl_version }}
