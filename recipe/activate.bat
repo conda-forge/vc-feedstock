@@ -20,29 +20,35 @@ set "CXX=cl.exe"
 set "CC=cl.exe"
 
 set "VSINSTALLDIR="
+
 :: Try to find actual vs2017 installations
-for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -version ^[@{ver}.0^,@{ver_plus_one}.0^) -property installationPath`) do (
-  :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
-  set "VSINSTALLDIR=%%i\"
-)
-if not exist "%VSINSTALLDIR%" (
-    :: VS2019 install but with vs2017 compiler stuff installed
-	for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v@{vcver_nodots}.x86.x64 -property installationPath`) do (
+for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products Microsoft.VisualStudio.Product.BuildTools -version ^[@{ver}.0^,@{ver_plus_one}.0^) -property installationPath`) do (
 	:: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
 	set "VSINSTALLDIR=%%i\"
+)
+
+if not exist "%VSINSTALLDIR%" (
+	:: VS2019 install but with vs2017 compiler stuff installed
+	for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v@{vcver_nodots}.x86.x64 -property installationPath`) do (
+		:: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
+		set "VSINSTALLDIR=%%i\"
 	)
 )
+
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Professional\"
+	set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Professional\"
 )
+
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Community\"
+	set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Community\"
 )
+
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\BuildTools\"
+	set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\BuildTools\"
 )
+
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Enterprise\"
+	set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Enterprise\"
 )
 
 IF NOT "%CONDA_BUILD%" == "" (
@@ -51,8 +57,8 @@ IF NOT "%CONDA_BUILD%" == "" (
   set "CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%;%CMAKE_PREFIX_PATH%"
 )
 
-
 call :GetWin10SdkDir
+
 :: dir /ON here is sorting the list of folders, such that we use the latest one that we have
 for /F %%i in ('dir /ON /B "%WindowsSdkDir%\include\10.*"') DO (
   SET WindowsSDKVer=%%~i
