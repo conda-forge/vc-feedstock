@@ -172,6 +172,11 @@ outputs:
       run:
         # Used to set up the path in the activate script
         - vswhere
+    test:
+      commands:
+        - echo "%CMAKE_GENERATOR%"
+        - echo "%CMAKE_GENERATOR_PLATFORM%"
+        - echo "%CMAKE_GENERATOR_TOOLSET%"
     about:
       summary: >-
         Activation and version verification of MSVC {{ vcver }}
