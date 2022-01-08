@@ -26,13 +26,15 @@ set "NEWER_VS_WITH_OLDER_VC=0"
 for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -version ^[@{ver}.0^,@{ver_plus_one}.0^) -property installationPath`) do (
   :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
   set "VSINSTALLDIR=%%i\"
+  echo "qwe"
 )
 if not exist "%VSINSTALLDIR%" (
     :: VS2019 install but with vs2017 compiler stuff installed
 	for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v@{vcver_nodots}.x86.x64 -property installationPath`) do (
 	:: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
 	set "VSINSTALLDIR=%%i\"
-    set "NEWER_VS_WITH_OLDER_VC=1"
+	set "NEWER_VS_WITH_OLDER_VC=1"
+	echo "asd"
 	)
 )
 if not exist "%VSINSTALLDIR%" (
@@ -87,6 +89,8 @@ IF @{year} GEQ 2019  (
     )
     set "USE_NEW_CMAKE_GEN_SYNTAX=0"
 )
+
+echo "NEWER_VS_WITH_OLDER_VC=%NEWER_VS_WITH_OLDER_VC%"
 
 IF "NEWER_VS_WITH_OLDER_VC" == "1" (
     set "CMAKE_GEN=Visual Studio 16 2019"
