@@ -89,13 +89,9 @@ IF @{year} GEQ 2019  (
 )
 
 IF "NEWER_VS_WITH_OLDER_VC" == "1" (
-    set "CMAKE_GEN=Visual Studio 15 2019"
+    set "CMAKE_GEN=Visual Studio 16 2019"
     set "USE_NEW_CMAKE_GEN_SYNTAX=1"
 )
-
-pushd %VSINSTALLDIR%
-CALL "VC\Auxiliary\Build\vcvars%BITS%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
-popd
 
 IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
 :: see https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR_PLATFORM.html
@@ -104,6 +100,9 @@ IF "USE_NEW_CMAKE_GEN_SYNTAX" == "1" (
 	IF "%CMAKE_GENERATOR_TOOLSET%" == "" SET "CMAKE_GENERATOR_TOOLSET=v@{vcver_nodots}"
 )
 
+pushd %VSINSTALLDIR%
+CALL "VC\Auxiliary\Build\vcvars%BITS%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
+popd
 
 :GetWin10SdkDir
 call :GetWin10SdkDirHelper HKLM\SOFTWARE\Wow6432Node > nul 2>&1
