@@ -7,7 +7,7 @@ Package license: LicenseRef-ProprietaryMicrosoft
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/vc-feedstock/blob/master/LICENSE.txt)
 
-Summary: MSVC runtimes associated with cl.exe version 19.28.29325 (VS 2019 update 8)
+Summary: MSVC runtimes associated with cl.exe version 19.29.30037 (VS 2019 update 10)
 
 Current build status
 ====================
@@ -34,17 +34,17 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.28.29325runtime_version14.28.29325sha256A1592D3DA2B27230C087A3B069409C1E82C2664B0D4C3B511701624702B2E2A3update_version8uuidf1998402-3cc0-466f-bd67-d9fb6cd2379bvcver14.2vsver16vsyear2019</td>
+              <td>win_64_cl_version19.28.29325runtime_version14.28.29325sha256B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178update_version8uuid89a3b9df-4a09-492e-8474-8f92c115c51dvcver14.2vsver16vsyear2019</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master&jobName=win&configuration=win_64_cl_version19.28.29325runtime_version14.28.29325sha256A1592D3DA2B27230C087A3B069409C1E82C2664B0D4C3B511701624702B2E2A3update_version8uuidf1998402-3cc0-466f-bd67-d9fb6cd2379bvcver14.2vsver16vsyear2019" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master&jobName=win&configuration=win_64_cl_version19.28.29325runtime_version14.28.29325sha256B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178update_version8uuid89a3b9df-4a09-492e-8474-8f92c115c51dvcver14.2vsver16vsyear2019" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.29.30037runtime_version14.29.30037sha256B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178update_version10uuid89a3b9df-4a09-492e-8474-8f92c115c51dvcver14.2vsver16vsyear2019</td>
+              <td>win_64_cl_version19.29.30037runtime_version14.29.30037sha256A1592D3DA2B27230C087A3B069409C1E82C2664B0D4C3B511701624702B2E2A3update_version10uuidf1998402-3cc0-466f-bd67-d9fb6cd2379bvcver14.2vsver16vsyear2019</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master&jobName=win&configuration=win_64_cl_version19.29.30037runtime_version14.29.30037sha256B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178update_version10uuid89a3b9df-4a09-492e-8474-8f92c115c51dvcver14.2vsver16vsyear2019" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master&jobName=win&configuration=win_64_cl_version19.29.30037runtime_version14.29.30037sha256A1592D3DA2B27230C087A3B069409C1E82C2664B0D4C3B511701624702B2E2A3update_version10uuidf1998402-3cc0-466f-bd67-d9fb6cd2379bvcver14.2vsver16vsyear2019" alt="variant">
                 </a>
               </td>
             </tr>
