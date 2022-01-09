@@ -20,6 +20,8 @@ set "CXX=cl.exe"
 set "CC=cl.exe"
 
 set "VSINSTALLDIR="
+set "NEWER_VS_WITH_OLDER_VC=0"
+
 :: Try to find actual vs2017 installations
 for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -version ^[@{ver}.0^,@{ver_plus_one}.0^) -property installationPath`) do (
   :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
@@ -30,6 +32,7 @@ if not exist "%VSINSTALLDIR%" (
 	for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v@{vcver_nodots}.x86.x64 -property installationPath`) do (
 	:: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
 	set "VSINSTALLDIR=%%i\"
+	set "NEWER_VS_WITH_OLDER_VC=1"
 	)
 )
 if not exist "%VSINSTALLDIR%" (
@@ -63,37 +66,45 @@ if errorlevel 1 (
     echo Windows SDK version found as: "%WindowsSDKVer%"
 )
 
+IF "@{target}" == "win-64" (
+    set "BITS=64"
+    set "CMAKE_PLAT=x64"
+) ELSE (
+    set "BITS=32"
+    set "CMAKE_PLAT=Win32"
+)
+
 :: set CMAKE_* variables
 :: platform selection changed with VS 16 2019, but for compatibility we keep the older way
-IF @{year} GEQ 2019 (
+IF @{year} GEQ 2019  (
     set "CMAKE_GEN=Visual Studio @{ver} @{year}"
-    IF "@{target}" == "win-64" (
-        set "BITS=64"
-        set "CMAKE_PLAT=x64"
-    ) ELSE (
-        set "BITS=32"
-        set "CMAKE_PLAT=Win32"
-    )
+    set "USE_NEW_CMAKE_GEN_SYNTAX=1"
 ) ELSE (
     IF "@{target}" == "win-64" (
         set "CMAKE_GEN=Visual Studio @{ver} @{year} Win64"
-        set "BITS=64"
 	) else (
         set "CMAKE_GEN=Visual Studio @{ver} @{year}"
-        set "BITS=32"
     )
+    set "USE_NEW_CMAKE_GEN_SYNTAX=0"
+)
+
+echo "NEWER_VS_WITH_OLDER_VC=%NEWER_VS_WITH_OLDER_VC%"
+
+IF "%NEWER_VS_WITH_OLDER_VC%" == "1" (
+    set "CMAKE_GEN=Visual Studio 16 2019"
+    set "USE_NEW_CMAKE_GEN_SYNTAX=1"
+)
+
+IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
+:: see https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR_PLATFORM.html
+IF "%USE_NEW_CMAKE_GEN_SYNTAX%" == "1" (
+	IF "%CMAKE_GENERATOR_PLATFORM%" == "" SET "CMAKE_GENERATOR_PLATFORM=%CMAKE_PLAT%"
+	IF "%CMAKE_GENERATOR_TOOLSET%" == "" SET "CMAKE_GENERATOR_TOOLSET=v@{vcver_nodots}"
 )
 
 pushd %VSINSTALLDIR%
 CALL "VC\Auxiliary\Build\vcvars%BITS%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
 popd
-
-IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
-:: see https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR_PLATFORM.html
-IF @{year} GEQ 2019 (
-	IF "%CMAKE_GENERATOR_PLATFORM%" == "" SET "CMAKE_GENERATOR_PLATFORM=%CMAKE_PLAT%"
-)
-
 
 :GetWin10SdkDir
 call :GetWin10SdkDirHelper HKLM\SOFTWARE\Wow6432Node > nul 2>&1
