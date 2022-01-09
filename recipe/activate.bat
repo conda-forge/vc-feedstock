@@ -26,7 +26,6 @@ set "NEWER_VS_WITH_OLDER_VC=0"
 for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -version ^[@{ver}.0^,@{ver_plus_one}.0^) -property installationPath`) do (
   :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
   set "VSINSTALLDIR=%%i\"
-  echo "qwe"
 )
 if not exist "%VSINSTALLDIR%" (
     :: VS2019 install but with vs2017 compiler stuff installed
@@ -34,7 +33,6 @@ if not exist "%VSINSTALLDIR%" (
 	:: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
 	set "VSINSTALLDIR=%%i\"
 	set "NEWER_VS_WITH_OLDER_VC=1"
-	echo "asd"
 	)
 )
 if not exist "%VSINSTALLDIR%" (
