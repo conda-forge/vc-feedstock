@@ -23,45 +23,45 @@ set "VSINSTALLDIR="
 
 :: Try to find actual vs2017 installations
 for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products Microsoft.VisualStudio.Product.BuildTools -version ^[@{ver}.0^,@{ver_plus_one}.0^) -property installationPath`) do (
-	:: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
-	set "VSINSTALLDIR=%%i\"
+    :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
+    set "VSINSTALLDIR=%%i\"
 )
 
 if not exist "%VSINSTALLDIR%" (
-	:: VS2019 install but with vs2017 compiler stuff installed
-	for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v@{vcver_nodots}.x86.x64 -property installationPath`) do (
-		:: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
-		set "VSINSTALLDIR=%%i\"
-	)
+    :: VS2019 install but with vs2017 compiler stuff installed
+    for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v@{vcver_nodots}.x86.x64 -property installationPath`) do (
+        :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
+        set "VSINSTALLDIR=%%i\"
+    )
 )
 
 if not exist "%VSINSTALLDIR%" (
-	set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Professional\"
+    set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Professional\"
 )
 
 if not exist "%VSINSTALLDIR%" (
-	set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Community\"
+    set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Community\"
 )
 
 if not exist "%VSINSTALLDIR%" (
-	set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\BuildTools\"
+    set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\BuildTools\"
 )
 
 if not exist "%VSINSTALLDIR%" (
-	set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Enterprise\"
+    set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Enterprise\"
 )
 
 IF NOT "%CONDA_BUILD%" == "" (
-  set "INCLUDE=%LIBRARY_INC%;%INCLUDE%"
-  set "LIB=%LIBRARY_LIB%;%LIB%"
-  set "CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%;%CMAKE_PREFIX_PATH%"
+    set "INCLUDE=%LIBRARY_INC%;%INCLUDE%"
+    set "LIB=%LIBRARY_LIB%;%LIB%"
+    set "CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%;%CMAKE_PREFIX_PATH%"
 )
 
 call :GetWin10SdkDir
 
 :: dir /ON here is sorting the list of folders, such that we use the latest one that we have
 for /F %%i in ('dir /ON /B "%WindowsSdkDir%\include\10.*"') DO (
-  SET WindowsSDKVer=%%~i
+    SET WindowsSDKVer=%%~i
 )
 if errorlevel 1 (
     echo "Didn't find any windows 10 SDK. I'm not sure if things will work, but let's try..."
@@ -84,7 +84,7 @@ IF @{year} GEQ 2019 (
     IF "@{target}" == "win-64" (
         set "CMAKE_GEN=Visual Studio @{ver} @{year} Win64"
         set "BITS=64"
-	) else (
+    ) else (
         set "CMAKE_GEN=Visual Studio @{ver} @{year}"
         set "BITS=32"
     )
@@ -97,7 +97,7 @@ popd
 IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
 :: see https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR_PLATFORM.html
 IF @{year} GEQ 2019 (
-	IF "%CMAKE_GENERATOR_PLATFORM%" == "" SET "CMAKE_GENERATOR_PLATFORM=%CMAKE_PLAT%"
+    IF "%CMAKE_GENERATOR_PLATFORM%" == "" SET "CMAKE_GENERATOR_PLATFORM=%CMAKE_PLAT%"
 )
 
 
