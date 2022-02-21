@@ -22,23 +22,24 @@ set "CC=cl.exe"
 set "VSINSTALLDIR="
 set "NEWER_VS_WITH_OLDER_VC=0"
 
-:: Try to find actual vs2017 installations
-for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products Microsoft.VisualStudio.Product.BuildTools -version ^[@{ver}.0^,@{ver_plus_one}.0^) -property installationPath`) do (
-    :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
-    set "VSINSTALLDIR=%%i\"
+:: Try to find actual vs2017 installations, but not Professional because it doesn't work
+:: (https://github.com/conda-forge/vc-feedstock/pull/40)
+for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -version ^[@{ver}.0^,@{ver_plus_one}.0^) -property productId`) do (
+    if not "%%i" == "Microsoft.VisualStudio.Product.Professional" (
+        for /f "usebackq tokens=*" %%j in (`vswhere.exe -nologo -products %%i -version ^[@{ver}.0^,@{ver_plus_one}.0^) -property installationPath`) do (
+	    :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it:
+	    set "VSINSTALLDIR=%%j\"
+	)
+    )
 )
 
 if not exist "%VSINSTALLDIR%" (
     :: VS2019 install but with vs2017 compiler stuff installed
     for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v@{vcver_nodots}.x86.x64 -property installationPath`) do (
-	  :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
+        :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it:
         set "VSINSTALLDIR=%%i\"
         set "NEWER_VS_WITH_OLDER_VC=1"
     )
-)
-
-if not exist "%VSINSTALLDIR%" (
-    set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Professional\"
 )
 
 if not exist "%VSINSTALLDIR%" (
