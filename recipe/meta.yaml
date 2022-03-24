@@ -49,8 +49,9 @@ outputs:
       build:
         - m2-p7zip
       host:
+        - ucrt >=10.0.20348.0
       run:
-        - ucrt >=10.0.20348.0  # [vsver >=17 or (vsver == 16 and update_version >= 10)]
+        - ucrt >=10.0.20348.0
     about:
       summary: >-
         MSVC runtimes associated with cl.exe version {{ cl_version }}
@@ -168,6 +169,7 @@ outputs:
           # package is named vs2015_runtime, but the version differs)
           - vc >={{ vcver }},<{{ vcver.split('.')[0] | int + 1 }}
           - vs{{ runtime_year }}_runtime >={{ runtime_version }}
+          - ucrt >=10.0.20348.0
     requirements:
       run:
         # Used to set up the path in the activate script
