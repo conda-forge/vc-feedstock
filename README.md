@@ -1,13 +1,13 @@
-About vs2019
+About vs2022
 ============
 
 Home: https://visualstudio.microsoft.com/downloads/
 
 Package license: LicenseRef-ProprietaryMicrosoft
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/vc-feedstock/blob/master/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/vc-feedstock/blob/main/LICENSE.txt)
 
-Summary: MSVC runtimes associated with cl.exe version 19.29.30037 (VS 2019 update 10)
+Summary: MSVC runtimes associated with cl.exe version 19.32.31329 (VS 2022 update 2)
 
 Current build status
 ====================
@@ -20,31 +20,38 @@ Current build status
     <td>
       <details>
         <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=master">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master">
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main">
           </a>
         </summary>
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>win_64_cl_version19.16.27033runtime_version14.16.27033sha2565B0CBB977F2F5253B1EBE5C9D30EDBDA35DBD68FB70DE7AF5FAAC6423DB575B5update_version9uuid4100b84d-1b4d-487d-9f89-1354a7138c8fvcver14.1vsver15vsyear2017</td>
+              <td>win_64_cl_version19.16.27033runtime_version14.16.27033sha256B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178update_version9uuid89a3b9df-4a09-492e-8474-8f92c115c51dvcver14.1vsver15vsyear2017</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master&jobName=win&configuration=win_64_cl_version19.16.27033runtime_version14.16.27033sha2565B0CBB977F2F5253B1EBE5C9D30EDBDA35DBD68FB70DE7AF5FAAC6423DB575B5update_version9uuid4100b84d-1b4d-487d-9f89-1354a7138c8fvcver14.1vsver15vsyear2017" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win_64_cl_version19.16.27033runtime_version14.16.27033sha256B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178update_version9uuid89a3b9df-4a09-492e-8474-8f92c115c51dvcver14.1vsver15vsyear2017" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.28.29325runtime_version14.28.29325sha256B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178update_version8uuid89a3b9df-4a09-492e-8474-8f92c115c51dvcver14.2vsver16vsyear2019</td>
+              <td>win_64_cl_version19.28.29325runtime_version14.28.29325sha256426A34C6F10EA8F7DA58A8C976B586AD84DD4BAB42A0CFDBE941F1763B7755E5update_version8uuid6b6923b0-3045-4379-a96f-ef5506a65d5bvcver14.2vsver16vsyear2019</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master&jobName=win&configuration=win_64_cl_version19.28.29325runtime_version14.28.29325sha256B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178update_version8uuid89a3b9df-4a09-492e-8474-8f92c115c51dvcver14.2vsver16vsyear2019" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win_64_cl_version19.28.29325runtime_version14.28.29325sha256426A34C6F10EA8F7DA58A8C976B586AD84DD4BAB42A0CFDBE941F1763B7755E5update_version8uuid6b6923b0-3045-4379-a96f-ef5506a65d5bvcver14.2vsver16vsyear2019" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>win_64_cl_version19.29.30037runtime_version14.29.30037sha256A1592D3DA2B27230C087A3B069409C1E82C2664B0D4C3B511701624702B2E2A3update_version10uuidf1998402-3cc0-466f-bd67-d9fb6cd2379bvcver14.2vsver16vsyear2019</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=master&jobName=win&configuration=win_64_cl_version19.29.30037runtime_version14.29.30037sha256A1592D3DA2B27230C087A3B069409C1E82C2664B0D4C3B511701624702B2E2A3update_version10uuidf1998402-3cc0-466f-bd67-d9fb6cd2379bvcver14.2vsver16vsyear2019" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win_64_cl_version19.29.30037runtime_version14.29.30037sha256A1592D3DA2B27230C087A3B069409C1E82C2664B0D4C3B511701624702B2E2A3update_version10uuidf1998402-3cc0-466f-bd67-d9fb6cd2379bvcver14.2vsver16vsyear2019" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cl_version19.32.31329runtime_version14.32.31326sha2565B0CBB977F2F5253B1EBE5C9D30EDBDA35DBD68FB70DE7AF5FAAC6423DB575B5update_version2uuid4100b84d-1b4d-487d-9f89-1354a7138c8fvcver14.3vsver17vsyear2022</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win_64_cl_version19.32.31329runtime_version14.32.31326sha2565B0CBB977F2F5253B1EBE5C9D30EDBDA35DBD68FB70DE7AF5FAAC6423DB575B5update_version2uuid4100b84d-1b4d-487d-9f89-1354a7138c8fvcver14.3vsver17vsyear2022" alt="variant">
                 </a>
               </td>
             </tr>
@@ -64,27 +71,53 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2015_runtime-green.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2017_linux--64-green.svg)](https://anaconda.org/conda-forge/vs2017_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2017_linux-64.svg)](https://anaconda.org/conda-forge/vs2017_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2017_linux-64.svg)](https://anaconda.org/conda-forge/vs2017_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2017_linux-64.svg)](https://anaconda.org/conda-forge/vs2017_linux-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2019_linux--64-green.svg)](https://anaconda.org/conda-forge/vs2019_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2019_linux-64.svg)](https://anaconda.org/conda-forge/vs2019_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2019_linux-64.svg)](https://anaconda.org/conda-forge/vs2019_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2019_linux-64.svg)](https://anaconda.org/conda-forge/vs2019_linux-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022_linux--64-green.svg)](https://anaconda.org/conda-forge/vs2022_linux-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_linux-64.svg)](https://anaconda.org/conda-forge/vs2022_linux-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_linux-64.svg)](https://anaconda.org/conda-forge/vs2022_linux-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_linux-64.svg)](https://anaconda.org/conda-forge/vs2022_linux-64) |
 
-Installing vs2019
+Installing vs2022
 =================
 
-Installing `vs2019` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `vs2022` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `vc, vs2015_runtime, vs2017_linux-64, vs2019_linux-64` can be installed with:
+Once the `conda-forge` channel has been enabled, `vc, vs2015_runtime, vs2017_linux-64, vs2019_linux-64, vs2022_linux-64` can be installed with `conda`:
 
 ```
-conda install vc vs2015_runtime vs2017_linux-64 vs2019_linux-64
+conda install vc vs2015_runtime vs2017_linux-64 vs2019_linux-64 vs2022_linux-64
 ```
 
-It is possible to list all of the versions of `vc` available on your platform with:
+or with `mamba`:
+
+```
+mamba install vc vs2015_runtime vs2017_linux-64 vs2019_linux-64 vs2022_linux-64
+```
+
+It is possible to list all of the versions of `vc` available on your platform with `conda`:
 
 ```
 conda search vc --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search vc --channel conda-forge
+```
+
+Alternatively, `mamba repoquery` may provide more information:
+
+```
+# Search all versions available on your platform:
+mamba repoquery search vc --channel conda-forge
+
+# List packages depending on `vc`:
+mamba repoquery whoneeds vc --channel conda-forge
+
+# List dependencies of `vc`:
+mamba repoquery depends vc --channel conda-forge
 ```
 
 
@@ -102,10 +135,12 @@ for each of the installable packages. Such a repository is known as a *feedstock
 A feedstock is made up of a conda recipe (the instructions on what and how to build
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
-[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/)
-and [TravisCI](https://travis-ci.com/) it is possible to build and upload installable
-packages to the [conda-forge](https://anaconda.org/conda-forge)
-[Anaconda-Cloud](https://anaconda.org/) channel for Linux, Windows and OSX respectively.
+[Azure](https://azure.microsoft.com/en-us/services/devops/), [GitHub](https://github.com/),
+[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
+[Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
+it is possible to build and upload installable packages to the
+[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
@@ -127,17 +162,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating vs2019-feedstock
+Updating vs2022-feedstock
 =========================
 
-If you would like to improve the vs2019 recipe or build a new
+If you would like to improve the vs2022 recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/vs2019-feedstock are
+Note that all branches in the conda-forge/vs2022-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
