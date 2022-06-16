@@ -91,8 +91,13 @@ IF @{year} GEQ 2019  (
 echo "NEWER_VS_WITH_OLDER_VC=%NEWER_VS_WITH_OLDER_VC%"
 
 IF "%NEWER_VS_WITH_OLDER_VC%" == "1" (
-    set "CMAKE_GEN=Visual Studio 16 2019"
-    set "USE_NEW_CMAKE_GEN_SYNTAX=1"
+    IF @{year} GEQ 2022 (
+      set "CMAKE_GEN=Visual Studio 17 2022"
+      set "USE_NEW_CMAKE_GEN_SYNTAX=1"    
+    ) ELSE (
+      set "CMAKE_GEN=Visual Studio 16 2019"
+      set "USE_NEW_CMAKE_GEN_SYNTAX=1"
+    )
 )
 
 IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
