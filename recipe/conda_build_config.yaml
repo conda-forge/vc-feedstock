@@ -11,6 +11,9 @@ vsver:
  - 16
  - 15
 runtime_version:
+ # the minor version here can show up in the toolset directory path
+ # used by vcvars.bat (see #36), hence we need multiple builds even
+ # though they're from the same vsver-line.
  - 14.29.30139
  - 14.28.29325
  - 14.16.27033
