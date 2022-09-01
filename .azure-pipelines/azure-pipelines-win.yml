@@ -16,14 +16,9 @@ jobs:
       : CONFIG: win_64_cl_version19.28.29325runtime_version14.28.29325sha256B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178update_version8uuid89a3b9df-4a09-492e-8474-8f92c115c51dvcver14.2vsver16vsyear2019
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cl_version19.28.29325runtime_hdf83153fbd
-      ? win_64_cl_version19.29.30037runtime_version14.29.30037sha256A1592D3DA2B27230C087A3B069409C1E82C2664B0D4C3B511701624702B2E2A3update_version10uuidf1998402-3cc0-466f-bd67-d9fb6cd2379bvcver14.2vsver16vsyear2019
-      : CONFIG: win_64_cl_version19.29.30037runtime_version14.29.30037sha256A1592D3DA2B27230C087A3B069409C1E82C2664B0D4C3B511701624702B2E2A3update_version10uuidf1998402-3cc0-466f-bd67-d9fb6cd2379bvcver14.2vsver16vsyear2019
+      ? win_64_cl_version19.29.30139runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-9abe-6324631dcc3avcver14.2vsver16vsyear2019
+      : CONFIG: win_64_cl_version19.29.30139runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-9abe-6324631dcc3avcver14.2vsver16vsyear2019
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.29.30037runtime_hccd527f5fa
-      ? win_64_cl_version19.32.31329runtime_version14.32.31326sha256426A34C6F10EA8F7DA58A8C976B586AD84DD4BAB42A0CFDBE941F1763B7755E5update_version2uuid6b6923b0-3045-4379-a96f-ef5506a65d5bvcver14.3vsver17vsyear2022
-      : CONFIG: win_64_cl_version19.32.31329runtime_version14.32.31326sha256426A34C6F10EA8F7DA58A8C976B586AD84DD4BAB42A0CFDBE941F1763B7755E5update_version2uuid6b6923b0-3045-4379-a96f-ef5506a65d5bvcver14.3vsver17vsyear2022
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.32.31329runtime_ha4dfa5fa1e
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
@@ -66,10 +61,12 @@ jobs:
         call activate base
         run_conda_forge_build_setup
       displayName: conda-forge build setup
-    
 
     - script: |
         call activate base
+        if EXIST LICENSE.txt (
+          copy LICENSE.txt "recipe\\recipe-scripts-license.txt"
+        )
         conda.exe mambabuild "recipe" -m .ci_support\%CONFIG%.yaml --suppress-variables
       displayName: Build recipe
       env:
