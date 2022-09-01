@@ -102,11 +102,11 @@ IF @{year} GEQ 2019  (
 echo "NEWER_VS_WITH_OLDER_VC=%NEWER_VS_WITH_OLDER_VC%"
 
 if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
-  cat "%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
   set /p NEWER_VS=<"%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
-  echo "%NEWER_VS%"
-  set "NEWER_VS=%NEWER_VS:~0,4%"
-  if "%NEWER_VS%" == "14.2" (
+)
+
+if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
+  if "%NEWER_VS:~0,4%" == "14.2" (
     set "CMAKE_GEN=Visual Studio 16 2019"
   ) else (
     set "CMAKE_GEN=Visual Studio 17 2022"
