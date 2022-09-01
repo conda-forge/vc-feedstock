@@ -102,6 +102,7 @@ IF @{year} GEQ 2019  (
 echo "NEWER_VS_WITH_OLDER_VC=%NEWER_VS_WITH_OLDER_VC%"
 
 if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
+  cat "%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
   set /p NEWER_VS=<"%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
   echo "%NEWER_VS%"
   set "NEWER_VS=%NEWER_VS:~0,4%"
@@ -116,8 +117,8 @@ if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
 IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
 :: see https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR_PLATFORM.html
 IF "%USE_NEW_CMAKE_GEN_SYNTAX%" == "1" (
-	IF "%CMAKE_GENERATOR_PLATFORM%" == "" SET "CMAKE_GENERATOR_PLATFORM=%CMAKE_PLAT%"
-	IF "%CMAKE_GENERATOR_TOOLSET%" == "" SET "CMAKE_GENERATOR_TOOLSET=v@{vcver_nodots}"
+  IF "%CMAKE_GENERATOR_PLATFORM%" == "" SET "CMAKE_GENERATOR_PLATFORM=%CMAKE_PLAT%"
+  IF "%CMAKE_GENERATOR_TOOLSET%" == "" SET "CMAKE_GENERATOR_TOOLSET=v@{vcver_nodots}"
 )
 
 pushd %VSINSTALLDIR%
