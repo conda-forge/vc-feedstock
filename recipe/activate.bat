@@ -103,7 +103,8 @@ echo "NEWER_VS_WITH_OLDER_VC=%NEWER_VS_WITH_OLDER_VC%"
 
 if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
   set /p NEWER_VS=<"%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
-  set NEWER_VS=%NEWER_VS:~0,4%
+  echo "%NEWER_VS%"
+  set "NEWER_VS=%NEWER_VS:~0,4%"
   if "%NEWER_VS%" == "14.2" (
     set "CMAKE_GEN=Visual Studio 16 2019"
   ) else (
