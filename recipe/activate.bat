@@ -105,6 +105,8 @@ if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
   set /p NEWER_VS=<"%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
 )
 
+dir "%VSINSTALLDIR%\VC\Redist\MSVC\"
+
 if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
   echo "%NEWER_VS%"
   if "%NEWER_VS:~0,4%" == "14.2" (
