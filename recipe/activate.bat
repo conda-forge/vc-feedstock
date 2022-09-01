@@ -106,6 +106,7 @@ if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
 )
 
 if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
+  echo "%NEWER_VS%"
   if "%NEWER_VS:~0,4%" == "14.2" (
     set "CMAKE_GEN=Visual Studio 16 2019"
   ) else (
