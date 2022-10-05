@@ -27,7 +27,7 @@ source:
     sha256: {{ sha256 | lower }}  # [win32]
 
 build:
-  number: 7
+  number: 8
   skip: True  # [not win]
 
 outputs:
@@ -168,6 +168,7 @@ outputs:
           # package is named vs2015_runtime, but the version differs)
           - vc >={{ vcver }},<{{ vcver.split('.')[0] | int + 1 }}
           - vs{{ runtime_year }}_runtime >={{ runtime_version }}
+          - ucrt >=10.0.20348.0  # [vsver >=17 or (vsver == 16 and update_version >= 10)]
     requirements:
       run:
         # Used to set up the path in the activate script
