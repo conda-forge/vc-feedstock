@@ -104,7 +104,7 @@ echo "NEWER_VS_WITH_OLDER_VC=%NEWER_VS_WITH_OLDER_VC%"
 if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
   set /p NEWER_VS=<"%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
 )
-
+type "%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
 dir "%VSINSTALLDIR%\VC\Redist\MSVC\"
 
 if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
