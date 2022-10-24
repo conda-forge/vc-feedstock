@@ -55,10 +55,9 @@ class AtTemplate(string.Template):
 
 def subs(line, args):
     t = AtTemplate(line)
-    vcvars_ver = ".".join(args.version.split(".")[:2])
     return t.substitute(
          year=args.activate_year, ver=args.activate_major, target=args.arch,
-         vcvars_ver=vcvars_ver, ver_plus_one=str(int(args.activate_major)+1),
+         vcvars_ver=args.activate_vcvars_ver, ver_plus_one=str(int(args.activate_major)+1),
          vcver_nodots=args.activate_vcver.replace(".", ""))
 
 
@@ -242,6 +241,9 @@ def main():
     )
     parser.add_argument(
         "--activate-vcver", help="VC Version", default=None,
+    )
+    parser.add_argument(
+        "--activate-vcvars-ver", help="VC Version", default=None,
     )
     parser.add_argument(
         "--activate-major", help="VS Major Version", default=None,

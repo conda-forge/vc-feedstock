@@ -154,6 +154,7 @@ outputs:
     script_interpreter: >-
       python -m vc_repack --activate --arch {{ target_platform }} --version {{ runtime_version }}
       --activate-year {{ vsyear }} --activate-major {{ vsver }} --activate-vcver {{ vcver }}
+      --activate-vcvars-ver {{ cl_version.split(".")[0]|int - 5 }}.{{ cl_version.split(".")[1] }}
     build:
       track_features:
         - vc{{ vcver.split(".")[0] }}
@@ -193,6 +194,7 @@ about:
   license_family: Proprietary
 
 extra:
+  feedstock-name: vc
   recipe-maintainers:
     - jakirkham
     - 183amir

@@ -1,5 +1,5 @@
-About vs2017
-============
+About vc
+========
 
 Home: https://visualstudio.microsoft.com/downloads/
 
@@ -7,7 +7,7 @@ Package license: LicenseRef-ProprietaryMicrosoft
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/vc-feedstock/blob/main/LICENSE.txt)
 
-Summary: MSVC runtimes associated with cl.exe version 19.16.27033 (VS 2017 update 9)
+Summary: MSVC runtimes associated with cl.exe version 19.28.29325 (VS 2019 update 8)
 
 Current build status
 ====================
@@ -47,6 +47,13 @@ Current build status
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win_64_cl_version19.29.30139runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-9abe-6324631dcc3avcver14.2vsver16vsyear2019" alt="variant">
                 </a>
               </td>
+            </tr><tr>
+              <td>win_64_cl_version19.33.31629runtime_version14.32.31332sha256CE6593A1520591E7DEA2B93FD03116E3FC3B3821A0525322B0A430FAA6B3C0B4update_version2uuid7331f052-6c2d-4890-8041-8058fee5fb0fvcver14.3vsver17vsyear2022</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win_64_cl_version19.33.31629runtime_version14.32.31332sha256CE6593A1520591E7DEA2B93FD03116E3FC3B3821A0525322B0A430FAA6B3C0B4update_version2uuid7331f052-6c2d-4890-8041-8058fee5fb0fvcver14.3vsver17vsyear2022" alt="variant">
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -64,27 +71,28 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2015_runtime-green.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2017_win--64-green.svg)](https://anaconda.org/conda-forge/vs2017_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2017_win-64.svg)](https://anaconda.org/conda-forge/vs2017_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2017_win-64.svg)](https://anaconda.org/conda-forge/vs2017_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2017_win-64.svg)](https://anaconda.org/conda-forge/vs2017_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2019_win--64-green.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022_win--64-green.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) |
 
-Installing vs2017
-=================
+Installing vc
+=============
 
-Installing `vs2017` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `vc` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `vc, vs2015_runtime, vs2017_win-64, vs2019_win-64` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `vc, vs2015_runtime, vs2017_win-64, vs2019_win-64, vs2022_win-64` can be installed with `conda`:
 
 ```
-conda install vc vs2015_runtime vs2017_win-64 vs2019_win-64
+conda install vc vs2015_runtime vs2017_win-64 vs2019_win-64 vs2022_win-64
 ```
 
 or with `mamba`:
 
 ```
-mamba install vc vs2015_runtime vs2017_win-64 vs2019_win-64
+mamba install vc vs2015_runtime vs2017_win-64 vs2019_win-64 vs2022_win-64
 ```
 
 It is possible to list all of the versions of `vc` available on your platform with `conda`:
@@ -154,17 +162,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating vs2017-feedstock
-=========================
+Updating vc-feedstock
+=====================
 
-If you would like to improve the vs2017 recipe or build a new
+If you would like to improve the vc recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/vs2017-feedstock are
+Note that all branches in the conda-forge/vc-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.

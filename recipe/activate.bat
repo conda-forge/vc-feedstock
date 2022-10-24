@@ -27,14 +27,25 @@ for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -version ^[@
   :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
   set "VSINSTALLDIR=%%i\"
 )
+
 if not exist "%VSINSTALLDIR%" (
-    :: VS2019 install but with vs2017 compiler stuff installed
-	for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v@{vcver_nodots}.x86.x64 -property installationPath`) do (
-	:: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
-	set "VSINSTALLDIR=%%i\"
-	set "NEWER_VS_WITH_OLDER_VC=1"
-	)
+  :: VS2022+ install but with vs2017/vs2019 compiler stuff installed
+  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.ComponentGroup.VC.Tools.@{vcver_nodots}.x86.x64 -property installationPath`) do (
+    :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
+    set "VSINSTALLDIR=%%i\"
+    set "NEWER_VS_WITH_OLDER_VC=1"
+  )
 )
+
+if not exist "%VSINSTALLDIR%" (
+  :: VS2019 install but with vs2017 compiler stuff installed
+  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v@{vcver_nodots}.x86.x64 -property installationPath`) do (
+    :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
+    set "VSINSTALLDIR=%%i\"
+    set "NEWER_VS_WITH_OLDER_VC=1"
+  )
+)
+
 if not exist "%VSINSTALLDIR%" (
 set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Professional\"
 )
@@ -90,16 +101,27 @@ IF @{year} GEQ 2019  (
 
 echo "NEWER_VS_WITH_OLDER_VC=%NEWER_VS_WITH_OLDER_VC%"
 
-IF "%NEWER_VS_WITH_OLDER_VC%" == "1" (
+if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
+  set /p NEWER_VS=<"%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
+)
+type "%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
+dir "%VSINSTALLDIR%\VC\Redist\MSVC\"
+
+if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
+  echo "%NEWER_VS%"
+  if "%NEWER_VS:~0,4%" == "14.2" (
     set "CMAKE_GEN=Visual Studio 16 2019"
-    set "USE_NEW_CMAKE_GEN_SYNTAX=1"
+  ) else (
+    set "CMAKE_GEN=Visual Studio 17 2022"
+  )
+  set "USE_NEW_CMAKE_GEN_SYNTAX=1"
 )
 
 IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
 :: see https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR_PLATFORM.html
 IF "%USE_NEW_CMAKE_GEN_SYNTAX%" == "1" (
-	IF "%CMAKE_GENERATOR_PLATFORM%" == "" SET "CMAKE_GENERATOR_PLATFORM=%CMAKE_PLAT%"
-	IF "%CMAKE_GENERATOR_TOOLSET%" == "" SET "CMAKE_GENERATOR_TOOLSET=v@{vcver_nodots}"
+  IF "%CMAKE_GENERATOR_PLATFORM%" == "" SET "CMAKE_GENERATOR_PLATFORM=%CMAKE_PLAT%"
+  IF "%CMAKE_GENERATOR_TOOLSET%" == "" SET "CMAKE_GENERATOR_TOOLSET=v@{vcver_nodots}"
 )
 
 pushd %VSINSTALLDIR%
