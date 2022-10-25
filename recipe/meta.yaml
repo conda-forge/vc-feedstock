@@ -27,7 +27,7 @@ source:
     sha256: {{ sha256 | lower }}  # [win32]
 
 build:
-  number: 8
+  number: 9
   skip: True  # [not win]
 
 outputs:
