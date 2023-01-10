@@ -20,10 +20,10 @@ jobs:
       : CONFIG: win_64_cl_version19.29.30139runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-9abe-6324631dcc3avcver14.2vsver16vsyear2019
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cl_version19.29.30139runtime_h7bc45f3861
-      ? win_64_cl_version19.34.31931runtime_version14.34.31931sha2562257B3FBE3C7559DE8B31170155A433FAF5B83829E67C589D5674FF086B868B9update_version2uuidbcb0cef1-f8cb-4311-8a5c-650a5b694eabvcver14.3vsver17vsyear2022
-      : CONFIG: win_64_cl_version19.34.31931runtime_version14.34.31931sha2562257B3FBE3C7559DE8B31170155A433FAF5B83829E67C589D5674FF086B868B9update_version2uuidbcb0cef1-f8cb-4311-8a5c-650a5b694eabvcver14.3vsver17vsyear2022
+      ? win_64_cl_version19.34.31931runtime_version14.34.31933sha2562257B3FBE3C7559DE8B31170155A433FAF5B83829E67C589D5674FF086B868B9update_version2uuidbcb0cef1-f8cb-4311-8a5c-650a5b694eabvcver14.3vsver17vsyear2022
+      : CONFIG: win_64_cl_version19.34.31931runtime_version14.34.31933sha2562257B3FBE3C7559DE8B31170155A433FAF5B83829E67C589D5674FF086B868B9update_version2uuidbcb0cef1-f8cb-4311-8a5c-650a5b694eabvcver14.3vsver17vsyear2022
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.34.31931runtime_h7130a65768
+        SHORT_CONFIG: win_64_cl_version19.34.31931runtime_h7c7cc860eb
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
