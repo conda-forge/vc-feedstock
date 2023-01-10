@@ -17,7 +17,7 @@ runtime_version:
  # the minor version here can show up in the toolset directory path
  # used by vcvars.bat (see #36), hence we need multiple builds even
  # though they're from the same vsver-line.
- - 14.32.31332
+ - 14.34.31931
  - 14.29.30139
  - 14.28.29325
  - 14.16.27033
@@ -31,19 +31,19 @@ update_version:
  - 9
 # This is the version number reported by cl.exe
 cl_version:
- - 19.33.31629
+ - 19.34.31931
  - 19.29.30139
  - 19.28.29325
  - 19.16.27033
 # This is the uuid in the URL; redirect can be resolved e.g. as follows
 # curl -ILSs https://aka.ms/vs/16/release/vc_redist.x64.exe | grep "Location:"
 uuid:
- - 7331f052-6c2d-4890-8041-8058fee5fb0f
+ - bcb0cef1-f8cb-4311-8a5c-650a5b694eab
  - b929b7fe-5c89-4553-9abe-6324631dcc3a
  - 89a3b9df-4a09-492e-8474-8f92c115c51d
  - 4100b84d-1b4d-487d-9f89-1354a7138c8f
 sha256:
- - CE6593A1520591E7DEA2B93FD03116E3FC3B3821A0525322B0A430FAA6B3C0B4
+ - 2257B3FBE3C7559DE8B31170155A433FAF5B83829E67C589D5674FF086B868B9
  - 296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932F
  - B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178
  - 5B0CBB977F2F5253B1EBE5C9D30EDBDA35DBD68FB70DE7AF5FAAC6423DB575B5
