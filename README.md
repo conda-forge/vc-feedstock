@@ -7,7 +7,7 @@ Package license: LicenseRef-ProprietaryMicrosoft
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/vc-feedstock/blob/main/LICENSE.txt)
 
-Summary: MSVC runtimes associated with cl.exe version 19.34.31931 (VS 2022 update 4)
+Summary: MSVC runtimes associated with cl.exe version 19.33.31629 (VS 2022 update 2)
 
 Current build status
 ====================
@@ -48,10 +48,10 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.33.31629runtime_version14.32.31332sha2562257B3FBE3C7559DE8B31170155A433FAF5B83829E67C589D5674FF086B868B9update_version2uuidbcb0cef1-f8cb-4311-8a5c-650a5b694eabvcver14.3vsver17vsyear2022</td>
+              <td>win_64_cl_version19.33.31629runtime_version14.32.31332sha256CE6593A1520591E7DEA2B93FD03116E3FC3B3821A0525322B0A430FAA6B3C0B4update_version2uuid7331f052-6c2d-4890-8041-8058fee5fb0fvcver14.3vsver17vsyear2022</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.33.31629runtime_version14.32.31332sha2562257B3FBE3C7559DE8B31170155A433FAF5B83829E67C589D5674FF086B868B9update_version2uuidbcb0cef1-f8cb-4311-8a5c-650a5b694eabvcver14.3vsver17vsyear2022" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.33.31629runtime_version14.32.31332sha256CE6593A1520591E7DEA2B93FD03116E3FC3B3821A0525322B0A430FAA6B3C0B4update_version2uuid7331f052-6c2d-4890-8041-8058fee5fb0fvcver14.3vsver17vsyear2022" alt="variant">
                 </a>
               </td>
             </tr><tr>
