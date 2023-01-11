@@ -36,7 +36,7 @@ update_version:
  - 9
 # This is the version number reported by cl.exe
 cl_version:
- - 14.34.31933
+ - 19.34.31933
  - 19.33.31629
  - 19.29.30139
  - 19.28.29325
