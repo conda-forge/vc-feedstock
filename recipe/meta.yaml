@@ -27,7 +27,7 @@ source:
     sha256: {{ sha256 | lower }}  # [win32]
 
 build:
-  number: 9
+  number: 10
   skip: True  # [not win]
 
 outputs:
@@ -186,7 +186,7 @@ outputs:
       license: BSD-3-Clause
 
 about:
-  home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2017
+  home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-{{ vsyear }}
   summary: >-
     Activation and version verification of MSVC {{ vcver }} (VS {{ vsyear }}
     compiler, update {{ update_version }})
