@@ -78,11 +78,16 @@ if errorlevel 1 (
 )
 
 IF "@{target}" == "win-64" (
-    set "BITS=64"
+    set "VCVARSBAT=64"
     set "CMAKE_PLAT=x64"
-) ELSE (
-    set "BITS=32"
-    set "CMAKE_PLAT=Win32"
+ELSE (
+    IF "@{target}" == "win-arm64" (
+        set "VCVARSBAT=amd64_arm64"
+        set "CMAKE_PLAT=ARM64"
+    ) ELSE (
+        set "VCVARSBAT=32"
+        set "CMAKE_PLAT=Win32"
+    )
 )
 
 :: set CMAKE_* variables
@@ -125,7 +130,7 @@ IF "%USE_NEW_CMAKE_GEN_SYNTAX%" == "1" (
 )
 
 pushd %VSINSTALLDIR%
-CALL "VC\Auxiliary\Build\vcvars%BITS%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
+CALL "VC\Auxiliary\Build\vcvars%VCVARSBAT%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
 popd
 
 :GetWin10SdkDir

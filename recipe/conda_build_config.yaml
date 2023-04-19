@@ -48,8 +48,8 @@ cl_version:
  - 19.28.29325
  - 19.16.27033
 # This is the uuid in the URL; redirect can be resolved e.g. as follows
-# curl -ILSs https://aka.ms/vs/16/release/vc_redist.x64.exe | grep "Location:"
-# curl -ILSs https://aka.ms/vs/16/release/vc_redist.arm64.exe | grep "Location:"
+# curl -ILSs https://aka.ms/vs/17/release/vc_redist.x64.exe | grep "Location:"
+# curl -ILSs https://aka.ms/vs/17/release/vc_redist.arm64.exe | grep "Location:"
 uuid:
  - b2519016-4a13-4120-936c-cae003d567c4
  - bcb0cef1-f8cb-4311-8a5c-650a5b694eab
