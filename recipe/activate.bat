@@ -77,18 +77,8 @@ if errorlevel 1 (
     echo Windows SDK version found as: "%WindowsSDKVer%"
 )
 
-IF "@{target}" == "win-64" (
-    set "VCVARSBAT=64"
-    set "CMAKE_PLAT=x64"
-ELSE (
-    IF "@{target}" == "win-arm64" (
-        set "VCVARSBAT=amd64_arm64"
-        set "CMAKE_PLAT=ARM64"
-    ) ELSE (
-        set "VCVARSBAT=32"
-        set "CMAKE_PLAT=Win32"
-    )
-)
+set "CMAKE_PLAT=@{cmake_plat}"
+set "VCVARSBAT=@{vcvarsbat}"
 
 :: set CMAKE_* variables
 :: platform selection changed with VS 16 2019, but for compatibility we keep the older way
@@ -96,7 +86,7 @@ IF @{year} GEQ 2019  (
     set "CMAKE_GEN=Visual Studio @{ver} @{year}"
     set "USE_NEW_CMAKE_GEN_SYNTAX=1"
 ) ELSE (
-    IF "@{target}" == "win-64" (
+    IF "@{target_platform}" == "win-64" (
         set "CMAKE_GEN=Visual Studio @{ver} @{year} Win64"
 	) else (
         set "CMAKE_GEN=Visual Studio @{ver} @{year}"

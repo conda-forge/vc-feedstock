@@ -57,12 +57,54 @@ class AtTemplate(string.Template):
     delimiter = "@"
 
 
+def get_cmake_plat(target_platform):
+    if target_platform == "win-32":
+        return "Win32"
+    elif target_platform == "win-64":
+        return "x64"
+    elif target_platform == "win-arm64":
+        return "ARM64"
+    raise ValueError(f"Unknown target_platform {target_platform}")
+
+
+def get_vcvarsbat(target_platform, host_platform):
+    t = target_platform
+    h = host_platform
+    if h == "win-32" and t == "win-32":
+        return "32"
+    if h == "win-32" and t == "win-64":
+        return "x86_amd64"
+    if h == "win-32" and t == "win-arm64":
+        return "x86_arm64"
+    if h == "win-64" and t == "win-32":
+        return "amd64_x86"
+    if h == "win-64" and t == "win-64":
+        return "64"
+    if h == "win-64" and t == "win-arm64":
+        return "amd64_arm64"
+    if h == "win-arm64" and t == "win-32":
+        return "arm64_x86"
+    if h == "win-arm64" and t == "win-64":
+        return "arm64_amd64"
+    if h == "win-arm64" and t == "win-arm64":
+        return "arm64"
+    raise ValueError("Unknown target and host platform combo: "
+        f"{(target_platform, host_platform)}")
+
+
 def subs(line, args):
     t = AtTemplate(line)
-    return t.substitute(
-         year=args.activate_year, ver=args.activate_major, target=args.arch,
-         vcvars_ver=args.activate_vcvars_ver, ver_plus_one=str(int(args.activate_major)+1),
-         vcver_nodots=args.activate_vcver.replace(".", ""))
+    d = {
+        "year": args.activate_year,
+        "ver": args.activate_major,
+        "target_platform": args.target_platform,
+        "vcvars_ver": args.activate_vcvars_ver,
+        "ver_plus_one": str(int(args.activate_major)+1),
+        "vcver_nodots": args.activate_vcver.replace(".", ""),
+        "cmake_plat": get_cmake_plat(args.target_platform),
+        "vcvarsbat": get_vcvarsbat(args.target_platform, args.host_platform),
+    }
+    return t.substitute(d)
 
 
 def run(cmd):
@@ -227,9 +269,13 @@ def main():
         description="Extract MSVC runtime package"
     )
     parser.add_argument(
-        "-a",
-        "--arch",
-        help="architecture (eg. win-64, win-32)",
+        "--host-platform",
+        help="host architecture (eg. win-64, win-32)",
+        default="win-64",
+    )
+    parser.add_argument(
+        "--target-platform",
+        help="target architecture (eg. win-64, win-32)",
         default="win-64",
     )
     parser.add_argument(
