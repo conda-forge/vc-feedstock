@@ -24,14 +24,14 @@ jobs:
         CONFIG: win_64_cl_version19.33.31629cross_t_h7c0b0521c9
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cl_version19.33.31629cross_t_h7c0b0521c9
-      win_64_cl_version19.34.31933cross_t_h43f41666e6:
-        CONFIG: win_64_cl_version19.34.31933cross_t_h43f41666e6
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.34.31933cross_t_h43f41666e6
       win_64_cl_version19.34.31933cross_t_ha1b23476d0:
         CONFIG: win_64_cl_version19.34.31933cross_t_ha1b23476d0
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cl_version19.34.31933cross_t_ha1b23476d0
+      win_64_cl_version19.34.31933cross_t_hce3d1cfb15:
+        CONFIG: win_64_cl_version19.34.31933cross_t_hce3d1cfb15
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cl_version19.34.31933cross_t_hce3d1cfb15
       win_arm64_cl_version19.16.27033cros_h10441f7228:
         CONFIG: win_arm64_cl_version19.16.27033cros_h10441f7228
         UPLOAD_PACKAGES: 'True'
@@ -48,10 +48,10 @@ jobs:
         CONFIG: win_arm64_cl_version19.33.31629cros_hc9d89599e7
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_arm64_cl_version19.33.31629cros_hc9d89599e7
-      win_arm64_cl_version19.34.31933cros_h18e9d76472:
-        CONFIG: win_arm64_cl_version19.34.31933cros_h18e9d76472
+      win_arm64_cl_version19.34.31933cros_h8344a86c8a:
+        CONFIG: win_arm64_cl_version19.34.31933cros_h8344a86c8a
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_arm64_cl_version19.34.31933cros_h18e9d76472
+        SHORT_CONFIG: win_arm64_cl_version19.34.31933cros_h8344a86c8a
       win_arm64_cl_version19.34.31933cros_hcd8d0d9975:
         CONFIG: win_arm64_cl_version19.34.31933cros_hcd8d0d9975
         UPLOAD_PACKAGES: 'True'
