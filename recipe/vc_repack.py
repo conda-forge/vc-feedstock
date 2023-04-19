@@ -37,7 +37,10 @@ class Environment:
             key = i.lower()
             value = os.environ.get(i, None)
             if value is None:
-                raise RuntimeError(f"{i} not set in environment")
+                if i == "LIBRARY_BIN":
+                    value = os.path.join(os.environ.get("PREFIX"), "Library", "bin")
+                else:
+                    raise RuntimeError(f"{i} not set in environment")
             self.__attrs[key] = value
 
     def __getattr__(self, name):
