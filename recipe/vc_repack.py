@@ -15,6 +15,7 @@ import glob
 MS_CAB_HEADER = b"MSCF\0\0\0\0"
 
 EXE_FILENAMES = {
+    "win-arm64": "vc_redist.arm64.exe",
     "win-64": "vc_redist.x64.exe",
     "win-32": "vc_redist.x86.exe",
 }

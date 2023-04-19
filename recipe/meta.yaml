@@ -22,6 +22,9 @@ source:
   # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x64.exe
   - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x64.exe  # [win64]
     sha256: {{ sha256 | lower }}  # [win64]
+  # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.arm64.exe
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.arm64.exe  # [win and arm64]
+    sha256: {{ sha256 | lower }}  # [win and arm64]
   # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x86.exe
   - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x86.exe  # [win32]
     sha256: {{ sha256 | lower }}  # [win32]
@@ -38,6 +41,7 @@ outputs:
       python -m vc_repack --extract --version {{ runtime_version }}
       -a {{ target_platform }}
     build:
+      skip: True  # [cross_target_platform != target_platform]
       binary_relocation: false
       detect_binary_files_with_prefix: false
       no_link:
@@ -129,6 +133,7 @@ outputs:
     build:
       track_features:
         - vc{{ vcver.split(".")[0] }}
+      skip: True  # [cross_target_platform != target_platform]
     requirements:
       run:
         # Set lower bound for runtime (no upper bound).  Upper bound
@@ -149,7 +154,7 @@ outputs:
       doc_url: https://github.com/conda/conda/wiki/VC-features
       dev_url: https://github.com/conda/conda/wiki/VC-features
   
-  - name: vs{{ vsyear }}_{{ target_platform }}
+  - name: vs{{ vsyear }}_{{ cross_target_platform }}
     version: {{ cl_version }}
     script: vc_repack.py
     script_interpreter: >-

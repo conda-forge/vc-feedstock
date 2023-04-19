@@ -1,3 +1,9 @@
+build_platform:
+  win_arm64: win_64
+# slightly faster rerendering time
+provider:
+  osx_64: None
+  linux_64: None
 conda_forge_output_validation: true
 azure:
   store_build_artifacts: true
