@@ -14,6 +14,8 @@
 {% set vcver = "" %}
 {% endif %}
 
+{% set vc_major = vcver.split(".")[0] %}
+
 package:
   name: vs{{ vsyear }}
   version: {{ runtime_version }}
@@ -34,7 +36,7 @@ build:
   skip: True  # [not win]
 
 outputs:
-  - name: vs{{ runtime_year }}_runtime
+  - name: vc{{ vc_major }}_runtime
     version: {{ runtime_version }}
     script: vc_repack.py
     script_interpreter: >-
@@ -56,6 +58,8 @@ outputs:
       host:
       run:
         - ucrt >=10.0.20348.0  # [vsver >=17 or (vsver == 16 and update_version >= 10)]
+      run_constrained:
+        - vs{{ runtime_year }}_runtime {{ runtime_version }}.*
     about:
       summary: >-
         MSVC runtimes associated with cl.exe version {{ cl_version }}
@@ -128,11 +132,28 @@ outputs:
         - if not exist %LIBRARY_BIN%\msvcp140_codecvt_ids.dll exit 1
         {% endif %}
 
+  - name: vs{{ runtime_year }}_version
+    version: {{ runtime_version }}
+    build:
+      track_features:
+        - vc{{ vc_major }}
+      skip: True  # [cross_target_platform != target_platform or (win and arm64)]
+    requirements:
+      run:
+        - vc{{ vc_major }}_runtime >={{ runtime_version }}
+    about:
+      home: https://github.com/conda-forge/vc-feedstock
+      license: BSD-3-Clause
+      license_family: BSD
+      summary: >-
+        A backwards compatible meta-package. See vc{{ vc_major }}_runtime
+        for the new package.
+
   - name: vc
     version: {{ vcver }}
     build:
       track_features:
-        - vc{{ vcver.split(".")[0] }}
+        - vc{{ vc_major }}
       skip: True  # [cross_target_platform != target_platform]
     requirements:
       run:
@@ -163,7 +184,7 @@ outputs:
       --activate-vcvars-ver {{ cl_version.split(".")[0]|int - 5 }}.{{ cl_version.split(".")[1] }}
     build:
       track_features:
-        - vc{{ vcver.split(".")[0] }}
+        - vc{{ vc_major }}
       run_exports:
         strong:
           # compatible within major version.  This is MSFT's
@@ -173,8 +194,8 @@ outputs:
           # This has a minimum bound equal to vcver, so building with
           # vs2017 here will require the vs2017-era runtime (the
           # package is named vs2015_runtime, but the version differs)
-          - vc >={{ vcver }},<{{ vcver.split('.')[0] | int + 1 }}
-          - vs{{ runtime_year }}_runtime >={{ runtime_version }}
+          - vc >={{ vcver }},<{{ vc_major | int + 1 }}
+          - vc{{ vc_major }}_runtime >={{ runtime_version }}
           - ucrt >=10.0.20348.0  # [vsver >=17 or (vsver == 16 and update_version >= 10)]
     requirements:
       run:
