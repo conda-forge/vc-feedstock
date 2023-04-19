@@ -160,11 +160,12 @@ def decode_manifest(directory):
 
     # The DLL files we want are in the second CAB file, with a name of
     # "packages\vcRuntimeMinimum_amd64\cab1.cab",
+    # "packages\VC_Runtime_arm64\cab1.cab",
     # "packages\vcRuntimeMinimum_x86\cab1.cab" or similar
     runtimes = [
         i.attributes
         for i in containers
-        if (lambda v: ("vcRuntimeMinimum" in v) and v.endswith(".cab"))(
+        if (lambda v: ("vcRuntimeMinimum" in v or "VC_Runtime" in v) and v.endswith(".cab"))(
             i.attributes["FilePath"].value
         )
     ]
