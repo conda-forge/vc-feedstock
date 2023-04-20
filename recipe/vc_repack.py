@@ -321,14 +321,14 @@ def main():
         sys.exit(2)
 
     if args.extract:
-        if args.arch in EXE_FILENAMES:
-            exe_path = os.path.join(env.src_dir, EXE_FILENAMES[args.arch])
+        if args.target_platform in EXE_FILENAMES:
+            exe_path = os.path.join(env.src_dir, EXE_FILENAMES[args.target_platform])
             if os.path.exists(exe_path):
                 unpack_exe(exe_path, env, args.version)
             else:
                 raise RuntimeError(f"{exe_path} not found")
         else:
-            raise RuntimeError(f"Architecture {args.arch} not supported")
+            raise RuntimeError(f"Architecture {args.target_platform} not supported")
     elif args.activate:
         # Populate the activate.bat template, which is used to include
         # the Visual Studio tools into the conda environment.

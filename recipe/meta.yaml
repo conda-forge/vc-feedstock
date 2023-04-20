@@ -41,7 +41,7 @@ outputs:
     script: vc_repack.py
     script_interpreter: >-
       python -m vc_repack --extract --version {{ runtime_version }}
-      -a {{ target_platform }}
+      --target-platform {{ cross_target_platform }}
     build:
       skip: True  # [cross_target_platform != target_platform]
       binary_relocation: false
@@ -57,9 +57,10 @@ outputs:
         - p7zip     # [not build_platform.startswith("win")]
       host:
       run:
-        - ucrt >=10.0.20348.0  # [vsver >=17 or (vsver == 16 and update_version >= 10)]
+        # Need ucrt for windows<10 and when the VC runtime does not bundle it
+        - ucrt >=10.0.20348.0  # [(vsver >=17 or (vsver == 16 and update_version >= 10)) and (cross_target_platform == "win-64" or cross_target_platform == "win-32")]
       run_constrained:
-        - vs{{ runtime_year }}_runtime {{ runtime_version }}.*
+        - vs{{ runtime_year }}_runtime {{ runtime_version }}.*  # [cross_target_platform == "win-64" or cross_target_platform == "win-32"]
     about:
       summary: >-
         MSVC runtimes associated with cl.exe version {{ cl_version }}
@@ -161,7 +162,7 @@ outputs:
         # is still present, but it's part of the run_exports for the
         # compiler: assume that when vcver's major version changes,
         # MSFT has broken our binary compatibility.
-        - vs{{ runtime_year }}_runtime >={{ runtime_version }}
+        - vc{{ vc_major }}_runtime >={{ runtime_version }}
     about:
       home: https://github.com/conda/conda/wiki/VC-features
       license: BSD-3-Clause
@@ -193,11 +194,11 @@ outputs:
           # VS2015, and 14.1 with VS2017 - if the major version
           # changes, we're assuming that binary compatibility breaks.
           # This has a minimum bound equal to vcver, so building with
-          # vs2017 here will require the vs2017-era runtime (the
-          # package is named vs2015_runtime, but the version differs)
+          # vs2017 here will require the vs2017-era runtime
           - vc >={{ vcver }},<{{ vc_major | int + 1 }}
           - vc{{ vc_major }}_runtime >={{ runtime_version }}
-          - ucrt >=10.0.20348.0  # [vsver >=17 or (vsver == 16 and update_version >= 10)]
+          # Need ucrt for windows<10 and when the VC runtime does not bundle it
+          - ucrt >=10.0.20348.0  # [(vsver >=17 or (vsver == 16 and update_version >= 10)) and (cross_target_platform == "win-64" or cross_target_platform == "win-32")]
     requirements:
       run:
         # Used to set up the path in the activate script
