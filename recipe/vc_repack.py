@@ -98,6 +98,7 @@ def subs(line, args):
         "year": args.activate_year,
         "ver": args.activate_major,
         "target_platform": args.target_platform,
+        "host_platform": args.host_platform,
         "vcvars_ver": args.activate_vcvars_ver,
         "ver_plus_one": str(int(args.activate_major)+1),
         "vcver_nodots": args.activate_vcver.replace(".", ""),

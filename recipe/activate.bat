@@ -80,6 +80,10 @@ if errorlevel 1 (
 set "CMAKE_PLAT=@{cmake_plat}"
 set "VCVARSBAT=@{vcvarsbat}"
 
+IF NOT "@{target_platform}" == "@{host_platform}" (
+  set "CONDA_BUILD_CROSS_COMPILATION=1"
+)
+
 :: set CMAKE_* variables
 :: platform selection changed with VS 16 2019, but for compatibility we keep the older way
 IF @{year} GEQ 2019  (
