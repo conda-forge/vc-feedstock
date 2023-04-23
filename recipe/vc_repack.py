@@ -29,6 +29,7 @@ class Environment:
         "RECIPE_DIR",
         "SRC_DIR",
         "PREFIX",
+        "BUILD_PREFIX",
         "LIBRARY_BIN",
     ]
 
@@ -158,7 +159,7 @@ def unpack_cab(cabfile, tmpdir, env):
         tmpdir = tmpdir.replace("C:", "/cygdrive/c").replace("\\", "/")
     else:
         # It's so much simpler on Linux
-        cmd = ["7z"]
+        cmd = [os.path.join(env.build_prefix, "bin", "7z")]
 
     cmd.extend(["e", f"-o{tmpdir}", "-bd", cabfile])
     run(cmd)
