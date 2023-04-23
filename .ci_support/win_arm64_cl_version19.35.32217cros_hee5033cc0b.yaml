@@ -6,6 +6,8 @@ cl_version:
 - 19.35.32217
 cross_target_platform:
 - win-arm64
+docker_image:
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 runtime_version:
 - 14.34.31938
 sha256:

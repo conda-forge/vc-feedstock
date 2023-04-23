@@ -11,22 +11,22 @@ Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-
 Package license: LicenseRef-ProprietaryMicrosoft
 
 Summary: Activation and version verification of MSVC  (VS  compiler, update )
-About vs2015_runtime
---------------------
+About vc14_runtime
+------------------
 
 Home: https://visualstudio.microsoft.com/downloads/
 
 Package license: LicenseRef-ProprietaryMicrosoft
 
 Summary: MSVC runtimes associated with cl.exe version 19.35.32217 (VS 2022 update 5)
-About vs2022_win-64
+About vs2017_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 2)
+Summary: Activation and version verification of MSVC 14.1 (VS 2017 compiler, update 9)
 About vc
 --------
 
@@ -41,22 +41,30 @@ Development: https://github.com/conda/conda/wiki/VC-features
 Documentation: https://github.com/conda/conda/wiki/VC-features
 
 This metapackage is used to enforce consistency of runtime dependencies within an environment
-About vs2017_win-64
+About vs2015_version
+--------------------
+
+Home: https://github.com/conda-forge/vc-feedstock
+
+Package license: BSD-3-Clause
+
+Summary: A backwards compatible meta-package. See vc14_runtime for the new package.
+About vs_win-64
+---------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
+About vs2022_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.1 (VS 2017 compiler, update 9)
-About vs2022_win-arm64
-----------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 5)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 2)
 About vs2019_win-64
 -------------------
 
@@ -65,6 +73,22 @@ About vs2019_win-64
 Package license: BSD-3-Clause
 
 Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
+About vs2022_win-arm64
+----------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 5)
+About vs_win-arm64
+------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 5)
 
 Current build status
 ====================
@@ -181,11 +205,14 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vc-green.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2015_runtime-green.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vc14_runtime-green.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2015_version-green.svg)](https://anaconda.org/conda-forge/vs2015_version) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2015_version.svg)](https://anaconda.org/conda-forge/vs2015_version) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2015_version.svg)](https://anaconda.org/conda-forge/vs2015_version) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2015_version.svg)](https://anaconda.org/conda-forge/vs2015_version) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2017_win--64-green.svg)](https://anaconda.org/conda-forge/vs2017_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2017_win-64.svg)](https://anaconda.org/conda-forge/vs2017_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2017_win-64.svg)](https://anaconda.org/conda-forge/vs2017_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2017_win-64.svg)](https://anaconda.org/conda-forge/vs2017_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2019_win--64-green.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022_win--64-green.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022_win--arm64-green.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs_win--64-green.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs_win--arm64-green.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) |
 
 Installing vc
 =============
@@ -197,16 +224,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `vc, vs2015_runtime, vs2017_win-64, vs2019_win-64, vs2022_win-64, vs2022_win-arm64` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `vc, vc14_runtime, vs2015_version, vs2017_win-64, vs2019_win-64, vs2022_win-64, vs2022_win-arm64, vs_win-64, vs_win-arm64` can be installed with `conda`:
 
 ```
-conda install vc vs2015_runtime vs2017_win-64 vs2019_win-64 vs2022_win-64 vs2022_win-arm64
+conda install vc vc14_runtime vs2015_version vs2017_win-64 vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs_win-64 vs_win-arm64
 ```
 
 or with `mamba`:
 
 ```
-mamba install vc vs2015_runtime vs2017_win-64 vs2019_win-64 vs2022_win-64 vs2022_win-arm64
+mamba install vc vc14_runtime vs2015_version vs2017_win-64 vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs_win-64 vs_win-arm64
 ```
 
 It is possible to list all of the versions of `vc` available on your platform with `conda`:
