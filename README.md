@@ -11,6 +11,22 @@ Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-
 Package license: LicenseRef-ProprietaryMicrosoft
 
 Summary: Activation and version verification of MSVC  (VS  compiler, update )
+About vs2022_win-arm64
+----------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 5)
+About vs_win-arm64
+------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 5)
 About vc14_runtime
 ------------------
 
@@ -19,14 +35,14 @@ Home: https://visualstudio.microsoft.com/downloads/
 Package license: LicenseRef-ProprietaryMicrosoft
 
 Summary: MSVC runtimes associated with cl.exe version 19.35.32217 (VS 2022 update 5)
-About vs2017_win-64
+About vs2022_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.1 (VS 2017 compiler, update 9)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 4)
 About vc
 --------
 
@@ -56,15 +72,7 @@ About vs_win-64
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
-About vs2022_win-64
--------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 2)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 4)
 About vs2019_win-64
 -------------------
 
@@ -73,22 +81,14 @@ About vs2019_win-64
 Package license: BSD-3-Clause
 
 Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
-About vs2022_win-arm64
-----------------------
+About vs2017_win-64
+-------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 5)
-About vs_win-arm64
-------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 5)
+Summary: Activation and version verification of MSVC 14.1 (VS 2017 compiler, update 9)
 
 Current build status
 ====================
