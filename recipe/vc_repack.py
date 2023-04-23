@@ -208,10 +208,18 @@ def decode_manifest(directory):
     runtimes = [
         i.attributes
         for i in containers
-        if (lambda v: ("vcRuntimeMinimum" in v or "VC_Runtime" in v) and v.endswith(".cab"))(
+        if (lambda v: "vcRuntimeMinimum" in v and v.endswith(".cab"))(
             i.attributes["FilePath"].value
         )
     ]
+    if len(runtimes) == 0:
+        runtimes = [
+            i.attributes
+            for i in containers
+            if (lambda v: "VC_Runtime" in v and v.endswith(".cab"))(
+                i.attributes["FilePath"].value
+            )
+        ]
     if len(runtimes) == 0:
         raise RuntimeError("Found no matches in the manifest")
     elif len(runtimes) > 1:
@@ -266,6 +274,7 @@ def unpack_exe(exe_filename, env, version):
 
 
 def main():
+    print("env", os.environ["PATH"])
     parser = argparse.ArgumentParser(
         description="Extract MSVC runtime package"
     )
