@@ -32,7 +32,7 @@ source:
     sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-32"]
 
 build:
-  number: 11
+  number: 12
   skip: True  # [not win]
 
 outputs:
