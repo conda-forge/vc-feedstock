@@ -125,6 +125,14 @@ IF "%USE_NEW_CMAKE_GEN_SYNTAX%" == "1" (
 
 pushd %VSINSTALLDIR%
 CALL "VC\Auxiliary\Build\vcvars%VCVARSBAT%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
+:: if this didn't work and CONDA_BUILD is not set, we're outside
+:: conda-forge CI so retry without vcvars_ver, which is going to
+:: fail on local installs that don't match our exact versions
+if %ERRORLEVEL% neq 0 (
+  if "%CONDA_BUILD%" == "" (
+    CALL "VC\Auxiliary\Build\vcvars%VCVARSBAT%.bat"
+  )
+)
 popd
 
 :GetWin10SdkDir
