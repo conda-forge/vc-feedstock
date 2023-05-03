@@ -32,7 +32,7 @@ source:
     sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-32"]
 
 build:
-  number: 12
+  number: 13
   skip: True  # [not win]
 
 outputs:
@@ -133,7 +133,7 @@ outputs:
         - if not exist %LIBRARY_BIN%\msvcp140_codecvt_ids.dll exit 1
         {% endif %}
 
-  - name: vs{{ runtime_year }}_version
+  - name: vs{{ runtime_year }}_runtime
     version: {{ runtime_version }}
     build:
       track_features:

@@ -80,8 +80,20 @@ if errorlevel 1 (
 set "CMAKE_PLAT=@{cmake_plat}"
 set "VCVARSBAT=@{vcvarsbat}"
 
+set "CMAKE_ARGS=-DCMAKE_BUILD_TYPE=Release"
+IF "%CONDA_BUILD%" == 1 (
+  set "CMAKE_ARGS=%CMAKE_ARGS% -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%"
+  set "CMAKE_ARGS=%CMAKE_ARGS% -DCMAKE_PROGRAM_PATH=%BUILD_PREFIX%\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\Library\bin;%PREFIX%\bin;%PREFIX%\Scripts;%PREFIX%\Library\bin"
+  set CMAKE_PREFIX_PATH=%PREFIX%\Library
+) else (
+  set CMAKE_PREFIX_PATH=%CONDA_PREFIX%\Library
+)
+
 IF NOT "@{target_platform}" == "@{host_platform}" (
   set "CONDA_BUILD_CROSS_COMPILATION=1"
+  set "CMAKE_ARGS=%CMAKE_ARGS% -DCMAKE_SYSTEM_NAME=Windows -DCMAKE_SYSTEM_PROCESSOR=@{target_processor}"
+) else (
+  set "CONDA_BUILD_CROSS_COMPILATION=0"
 )
 
 :: set CMAKE_* variables
