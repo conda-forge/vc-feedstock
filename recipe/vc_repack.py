@@ -15,6 +15,7 @@ import glob
 MS_CAB_HEADER = b"MSCF\0\0\0\0"
 
 EXE_FILENAMES = {
+    "win-arm64": "vc_redist.arm64.exe",
     "win-64": "vc_redist.x64.exe",
     "win-32": "vc_redist.x86.exe",
 }
@@ -28,6 +29,7 @@ class Environment:
         "RECIPE_DIR",
         "SRC_DIR",
         "PREFIX",
+        "BUILD_PREFIX",
         "LIBRARY_BIN",
     ]
 
@@ -37,7 +39,10 @@ class Environment:
             key = i.lower()
             value = os.environ.get(i, None)
             if value is None:
-                raise RuntimeError(f"{i} not set in environment")
+                if i == "LIBRARY_BIN":
+                    value = os.path.join(os.environ.get("PREFIX"), "Library", "bin")
+                else:
+                    raise RuntimeError(f"{i} not set in environment")
             self.__attrs[key] = value
 
     def __getattr__(self, name):
@@ -53,12 +58,55 @@ class AtTemplate(string.Template):
     delimiter = "@"
 
 
+def get_cmake_plat(target_platform):
+    if target_platform == "win-32":
+        return "Win32"
+    elif target_platform == "win-64":
+        return "x64"
+    elif target_platform == "win-arm64":
+        return "ARM64"
+    raise ValueError(f"Unknown target_platform {target_platform}")
+
+
+def get_vcvarsbat(target_platform, host_platform):
+    t = target_platform
+    h = host_platform
+    if h == "win-32" and t == "win-32":
+        return "32"
+    if h == "win-32" and t == "win-64":
+        return "x86_amd64"
+    if h == "win-32" and t == "win-arm64":
+        return "x86_arm64"
+    if h == "win-64" and t == "win-32":
+        return "amd64_x86"
+    if h == "win-64" and t == "win-64":
+        return "64"
+    if h == "win-64" and t == "win-arm64":
+        return "amd64_arm64"
+    if h == "win-arm64" and t == "win-32":
+        return "arm64_x86"
+    if h == "win-arm64" and t == "win-64":
+        return "arm64_amd64"
+    if h == "win-arm64" and t == "win-arm64":
+        return "arm64"
+    raise ValueError("Unknown target and host platform combo: "
+        f"{(target_platform, host_platform)}")
+
+
 def subs(line, args):
     t = AtTemplate(line)
-    return t.substitute(
-         year=args.activate_year, ver=args.activate_major, target=args.arch,
-         vcvars_ver=args.activate_vcvars_ver, ver_plus_one=str(int(args.activate_major)+1),
-         vcver_nodots=args.activate_vcver.replace(".", ""))
+    d = {
+        "year": args.activate_year,
+        "ver": args.activate_major,
+        "target_platform": args.target_platform,
+        "host_platform": args.host_platform,
+        "vcvars_ver": args.activate_vcvars_ver,
+        "ver_plus_one": str(int(args.activate_major)+1),
+        "vcver_nodots": args.activate_vcver.replace(".", ""),
+        "cmake_plat": get_cmake_plat(args.target_platform),
+        "vcvarsbat": get_vcvarsbat(args.target_platform, args.host_platform),
+    }
+    return t.substitute(d)
 
 
 def run(cmd):
@@ -111,7 +159,7 @@ def unpack_cab(cabfile, tmpdir, env):
         tmpdir = tmpdir.replace("C:", "/cygdrive/c").replace("\\", "/")
     else:
         # It's so much simpler on Linux
-        cmd = ["7z"]
+        cmd = [os.path.join(env.build_prefix, "bin", "7z")]
 
     cmd.extend(["e", f"-o{tmpdir}", "-bd", cabfile])
     run(cmd)
@@ -156,14 +204,23 @@ def decode_manifest(directory):
 
     # The DLL files we want are in the second CAB file, with a name of
     # "packages\vcRuntimeMinimum_amd64\cab1.cab",
+    # "packages\VC_Runtime_arm64\cab1.cab",
     # "packages\vcRuntimeMinimum_x86\cab1.cab" or similar
     runtimes = [
         i.attributes
         for i in containers
-        if (lambda v: ("vcRuntimeMinimum" in v) and v.endswith(".cab"))(
+        if (lambda v: "vcRuntimeMinimum" in v and v.endswith(".cab"))(
             i.attributes["FilePath"].value
         )
     ]
+    if len(runtimes) == 0:
+        runtimes = [
+            i.attributes
+            for i in containers
+            if (lambda v: "VC_Runtime" in v and v.endswith(".cab"))(
+                i.attributes["FilePath"].value
+            )
+        ]
     if len(runtimes) == 0:
         raise RuntimeError("Found no matches in the manifest")
     elif len(runtimes) > 1:
@@ -218,13 +275,18 @@ def unpack_exe(exe_filename, env, version):
 
 
 def main():
+    print("env", os.environ["PATH"])
     parser = argparse.ArgumentParser(
         description="Extract MSVC runtime package"
     )
     parser.add_argument(
-        "-a",
-        "--arch",
-        help="architecture (eg. win-64, win-32)",
+        "--host-platform",
+        help="host architecture (eg. win-64, win-32)",
+        default="win-64",
+    )
+    parser.add_argument(
+        "--target-platform",
+        help="target architecture (eg. win-64, win-32)",
         default="win-64",
     )
     parser.add_argument(
@@ -269,14 +331,14 @@ def main():
         sys.exit(2)
 
     if args.extract:
-        if args.arch in EXE_FILENAMES:
-            exe_path = os.path.join(env.src_dir, EXE_FILENAMES[args.arch])
+        if args.target_platform in EXE_FILENAMES:
+            exe_path = os.path.join(env.src_dir, EXE_FILENAMES[args.target_platform])
             if os.path.exists(exe_path):
                 unpack_exe(exe_path, env, args.version)
             else:
                 raise RuntimeError(f"{exe_path} not found")
         else:
-            raise RuntimeError(f"Architecture {args.arch} not supported")
+            raise RuntimeError(f"Architecture {args.target_platform} not supported")
     elif args.activate:
         # Populate the activate.bat template, which is used to include
         # the Visual Studio tools into the conda environment.

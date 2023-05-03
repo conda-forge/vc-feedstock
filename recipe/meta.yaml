@@ -14,30 +14,36 @@
 {% set vcver = "" %}
 {% endif %}
 
+{% set vc_major = vcver.split(".")[0] %}
+
 package:
   name: vs{{ vsyear }}
   version: {{ runtime_version }}
 
 source:
   # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x64.exe
-  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x64.exe  # [win64]
-    sha256: {{ sha256 | lower }}  # [win64]
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x64.exe  # [cross_target_platform == "win-64"]
+    sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-64"]
+  # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.arm64.exe
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.arm64.exe  # [cross_target_platform == "win-arm64"]
+    sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-arm64"]
   # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x86.exe
-  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x86.exe  # [win32]
-    sha256: {{ sha256 | lower }}  # [win32]
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x86.exe  # [cross_target_platform == "win-32"]
+    sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-32"]
 
 build:
-  number: 11
+  number: 12
   skip: True  # [not win]
 
 outputs:
-  - name: vs{{ runtime_year }}_runtime
+  - name: vc{{ vc_major }}_runtime
     version: {{ runtime_version }}
     script: vc_repack.py
     script_interpreter: >-
       python -m vc_repack --extract --version {{ runtime_version }}
-      -a {{ target_platform }}
+      --target-platform {{ cross_target_platform }}
     build:
+      skip: True  # [cross_target_platform != target_platform]
       binary_relocation: false
       detect_binary_files_with_prefix: false
       no_link:
@@ -47,10 +53,14 @@ outputs:
         - "*.DLL"
     requirements:
       build:
-        - m2-p7zip
+        - m2-p7zip  # [build_platform.startswith("win")]
+        - p7zip     # [not build_platform.startswith("win")]
       host:
       run:
-        - ucrt >=10.0.20348.0  # [vsver >=17 or (vsver == 16 and update_version >= 10)]
+        # Need ucrt for windows<10 and when the VC runtime does not bundle it
+        - ucrt >=10.0.20348.0  # [(vsver >=17 or (vsver == 16 and update_version >= 10)) and (cross_target_platform == "win-64" or cross_target_platform == "win-32")]
+      run_constrained:
+        - vs{{ runtime_year }}_runtime {{ runtime_version }}.*  # [cross_target_platform == "win-64" or cross_target_platform == "win-32"]
     about:
       summary: >-
         MSVC runtimes associated with cl.exe version {{ cl_version }}
@@ -123,18 +133,36 @@ outputs:
         - if not exist %LIBRARY_BIN%\msvcp140_codecvt_ids.dll exit 1
         {% endif %}
 
+  - name: vs{{ runtime_year }}_version
+    version: {{ runtime_version }}
+    build:
+      track_features:
+        - vc{{ vc_major }}
+      skip: True  # [cross_target_platform != target_platform or (win and arm64)]
+    requirements:
+      run:
+        - vc{{ vc_major }}_runtime >={{ runtime_version }}
+    about:
+      home: https://github.com/conda-forge/vc-feedstock
+      license: BSD-3-Clause
+      license_family: BSD
+      summary: >-
+        A backwards compatible meta-package. See vc{{ vc_major }}_runtime
+        for the new package.
+
   - name: vc
     version: {{ vcver }}
     build:
       track_features:
-        - vc{{ vcver.split(".")[0] }}
+        - vc{{ vc_major }}
+      skip: True  # [cross_target_platform != target_platform]
     requirements:
       run:
         # Set lower bound for runtime (no upper bound).  Upper bound
         # is still present, but it's part of the run_exports for the
         # compiler: assume that when vcver's major version changes,
         # MSFT has broken our binary compatibility.
-        - vs{{ runtime_year }}_runtime >={{ runtime_version }}
+        - vc{{ vc_major }}_runtime >={{ runtime_version }}
     about:
       home: https://github.com/conda/conda/wiki/VC-features
       license: BSD-3-Clause
@@ -148,16 +176,17 @@ outputs:
       doc_url: https://github.com/conda/conda/wiki/VC-features
       dev_url: https://github.com/conda/conda/wiki/VC-features
   
-  - name: vs{{ vsyear }}_{{ target_platform }}
+  - name: vs{{ vsyear }}_{{ cross_target_platform }}
     version: {{ cl_version }}
     script: vc_repack.py
     script_interpreter: >-
-      python -m vc_repack --activate --arch {{ target_platform }} --version {{ runtime_version }}
+      python -m vc_repack --activate --host-platform {{ target_platform }}
+      --target-platform {{ cross_target_platform }} --version {{ runtime_version }}
       --activate-year {{ vsyear }} --activate-major {{ vsver }} --activate-vcver {{ vcver }}
       --activate-vcvars-ver {{ cl_version.split(".")[0]|int - 5 }}.{{ cl_version.split(".")[1] }}
     build:
       track_features:
-        - vc{{ vcver.split(".")[0] }}
+        - vc{{ vc_major }}
       run_exports:
         strong:
           # compatible within major version.  This is MSFT's
@@ -165,15 +194,46 @@ outputs:
           # VS2015, and 14.1 with VS2017 - if the major version
           # changes, we're assuming that binary compatibility breaks.
           # This has a minimum bound equal to vcver, so building with
-          # vs2017 here will require the vs2017-era runtime (the
-          # package is named vs2015_runtime, but the version differs)
-          - vc >={{ vcver }},<{{ vcver.split('.')[0] | int + 1 }}
-          - vs{{ runtime_year }}_runtime >={{ runtime_version }}
-          - ucrt >=10.0.20348.0  # [vsver >=17 or (vsver == 16 and update_version >= 10)]
+          # vs2017 here will require the vs2017-era runtime
+          - vc >={{ vcver }},<{{ vc_major | int + 1 }}
+          - vc{{ vc_major }}_runtime >={{ runtime_version }}
+          # Need ucrt for windows<10 and when the VC runtime does not bundle it
+          - ucrt >=10.0.20348.0  # [(vsver >=17 or (vsver == 16 and update_version >= 10)) and (cross_target_platform == "win-64" or cross_target_platform == "win-32")]
     requirements:
       run:
         # Used to set up the path in the activate script
         - vswhere
+    test:
+      commands:
+        - echo "%CMAKE_GENERATOR%"
+        - echo "%CMAKE_GENERATOR_PLATFORM%"
+        - echo "%CMAKE_GENERATOR_TOOLSET%"
+    about:
+      summary: >-
+        Activation and version verification of MSVC {{ vcver }}
+        (VS {{ vsyear }} compiler, update {{ update_version }})
+      license: BSD-3-Clause
+
+  - name: vs_{{ cross_target_platform }}
+    version: {{ vsyear }}.{{ update_version }}
+    build:
+      track_features:
+        - vc{{ vc_major }}
+      run_exports:
+        strong:
+          # compatible within major version.  This is MSFT's
+          # incrementing of the UCRT version.  It was 14.0 with
+          # VS2015, and 14.1 with VS2017 - if the major version
+          # changes, we're assuming that binary compatibility breaks.
+          # This has a minimum bound equal to vcver, so building with
+          # vs2017 here will require the vs2017-era runtime
+          - vc >={{ vcver }},<{{ vc_major | int + 1 }}
+          - vc{{ vc_major }}_runtime >={{ runtime_version }}
+          # Need ucrt for windows<10 and when the VC runtime does not bundle it
+          - ucrt >=10.0.20348.0  # [(vsver >=17 or (vsver == 16 and update_version >= 10)) and (cross_target_platform == "win-64" or cross_target_platform == "win-32")]
+    requirements:
+      run:
+        - vs{{ vsyear }}_{{ cross_target_platform }} {{ cl_version }}
     test:
       commands:
         - echo "%CMAKE_GENERATOR%"

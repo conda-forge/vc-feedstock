@@ -77,12 +77,11 @@ if errorlevel 1 (
     echo Windows SDK version found as: "%WindowsSDKVer%"
 )
 
-IF "@{target}" == "win-64" (
-    set "BITS=64"
-    set "CMAKE_PLAT=x64"
-) ELSE (
-    set "BITS=32"
-    set "CMAKE_PLAT=Win32"
+set "CMAKE_PLAT=@{cmake_plat}"
+set "VCVARSBAT=@{vcvarsbat}"
+
+IF NOT "@{target_platform}" == "@{host_platform}" (
+  set "CONDA_BUILD_CROSS_COMPILATION=1"
 )
 
 :: set CMAKE_* variables
@@ -91,7 +90,7 @@ IF @{year} GEQ 2019  (
     set "CMAKE_GEN=Visual Studio @{ver} @{year}"
     set "USE_NEW_CMAKE_GEN_SYNTAX=1"
 ) ELSE (
-    IF "@{target}" == "win-64" (
+    IF "@{target_platform}" == "win-64" (
         set "CMAKE_GEN=Visual Studio @{ver} @{year} Win64"
 	) else (
         set "CMAKE_GEN=Visual Studio @{ver} @{year}"
@@ -125,13 +124,13 @@ IF "%USE_NEW_CMAKE_GEN_SYNTAX%" == "1" (
 )
 
 pushd %VSINSTALLDIR%
-CALL "VC\Auxiliary\Build\vcvars%BITS%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
+CALL "VC\Auxiliary\Build\vcvars%VCVARSBAT%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
 :: if this didn't work and CONDA_BUILD is not set, we're outside
 :: conda-forge CI so retry without vcvars_ver, which is going to
 :: fail on local installs that don't match our exact versions
 if %ERRORLEVEL% neq 0 (
   if "%CONDA_BUILD%" == "" (
-    CALL "VC\Auxiliary\Build\vcvars%BITS%.bat"
+    CALL "VC\Auxiliary\Build\vcvars%VCVARSBAT%.bat"
   )
 )
 popd
