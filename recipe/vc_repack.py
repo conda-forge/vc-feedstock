@@ -93,12 +93,23 @@ def get_vcvarsbat(target_platform, host_platform):
         f"{(target_platform, host_platform)}")
 
 
+def get_target_processor(target_platform):
+    if target_platform == "win-32":
+        return "x86"
+    elif target_platform == "win-64":
+        return "AMD64"
+    elif target_platform == "win-arm64":
+        return "ARM64"
+    raise ValueError(f"Unknown target_platform {target_platform}")
+
+
 def subs(line, args):
     t = AtTemplate(line)
     d = {
         "year": args.activate_year,
         "ver": args.activate_major,
         "target_platform": args.target_platform,
+        "target_processor": get_target_processor(args.target_platform),
         "host_platform": args.host_platform,
         "vcvars_ver": args.activate_vcvars_ver,
         "ver_plus_one": str(int(args.activate_major)+1),
