@@ -15,7 +15,7 @@
 {% endif %}
 
 {% set vc_major = vcver.split(".")[0] %}
-{% set build_num = 14 %}
+{% set build_num = 15 %}
 
 package:
   name: vs{{ vsyear }}
@@ -137,8 +137,6 @@ outputs:
   - name: vs{{ runtime_year }}_runtime
     version: {{ runtime_version }}
     build:
-      track_features:
-        - vc{{ vc_major }}
       skip: True  # [cross_target_platform != target_platform or (win and arm64)]
     requirements:
       run:
