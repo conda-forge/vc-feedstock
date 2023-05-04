@@ -15,6 +15,7 @@
 {% endif %}
 
 {% set vc_major = vcver.split(".")[0] %}
+{% set build_num = 14 %}
 
 package:
   name: vs{{ vsyear }}
@@ -32,7 +33,7 @@ source:
     sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-32"]
 
 build:
-  number: 13
+  number: {{ build_num }}
   skip: True  # [not win]
 
 outputs:
@@ -60,7 +61,7 @@ outputs:
         # Need ucrt for windows<10 and when the VC runtime does not bundle it
         - ucrt >=10.0.20348.0  # [(vsver >=17 or (vsver == 16 and update_version >= 10)) and (cross_target_platform == "win-64" or cross_target_platform == "win-32")]
       run_constrained:
-        - vs{{ runtime_year }}_runtime {{ runtime_version }}.*  # [cross_target_platform == "win-64" or cross_target_platform == "win-32"]
+        - vs{{ runtime_year }}_runtime {{ runtime_version }}.* *_{{ build_num }}  # [cross_target_platform == "win-64" or cross_target_platform == "win-32"]
     about:
       summary: >-
         MSVC runtimes associated with cl.exe version {{ cl_version }}
