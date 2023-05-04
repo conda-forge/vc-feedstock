@@ -15,7 +15,7 @@
 {% endif %}
 
 {% set vc_major = vcver.split(".")[0] %}
-{% set build_num = 15 %}
+{% set build_num = 16 %}
 
 package:
   name: vs{{ vsyear }}
