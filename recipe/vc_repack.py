@@ -247,10 +247,17 @@ def decode_manifest(directory):
 def fix_filename_and_copy(source, dest):
     cwd = os.getcwd()
     os.chdir(source)
-    for fname in glob.glob("*.dll"):
+    # as of VS 17.6, the artefact contains intermediate DLL extensions,
+    # which get renamed correctly upon installation; do it manually
+    candidates = glob.glob("*.dll") + glob.glob("*.dll_amd64")
+    for fname in candidates:
         print(f"Found DLL: {fname}")
         if fname.startswith("api_"):
             new_fname = fname.replace("_", "-")
+            os.rename(fname, new_fname)
+        elif fname.endswith(".dll_amd64"):
+            # 10 = len(".dll_amd64")
+            new_fname = fname[:-10] + ".dll"
             os.rename(fname, new_fname)
         else:
             new_fname = fname
