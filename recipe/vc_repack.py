@@ -6,7 +6,7 @@ import subprocess
 import sys
 import tempfile
 import xml.dom.minidom
-import glob
+from glob import glob
 
 # Requires m2-p7zip conda package on Windows
 # If cross-building on Linux, requires p7zip installed
@@ -249,14 +249,14 @@ def fix_filename_and_copy(source, dest):
     os.chdir(source)
     # as of VS 17.6, the artefact contains intermediate DLL extensions,
     # which get renamed correctly upon installation; do it manually
-    candidates = glob.glob("*.dll") + glob.glob("*.dll_amd64")
-    for fname in candidates:
+    dlls = glob("*.dll") + glob("*.dll_amd64") + glob("*.dll_arm64")
+    for fname in dlls:
         print(f"Found DLL: {fname}")
         if fname.startswith("api_"):
             new_fname = fname.replace("_", "-")
             os.rename(fname, new_fname)
-        elif fname.endswith(".dll_amd64"):
-            # 10 = len(".dll_amd64")
+        elif fname.endswith(".dll_amd64") or fname.endswith(".dll_arm64"):
+            # 10 == len(".dll_amd64") == len(".dll_arm64")
             new_fname = fname[:-10] + ".dll"
             os.rename(fname, new_fname)
         else:
