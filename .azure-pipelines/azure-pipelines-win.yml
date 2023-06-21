@@ -36,6 +36,10 @@ jobs:
         CONFIG: win_64_cl_version19.36.32532cross_t_h23db042d00
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cl_version19.36.32532cross_t_h23db042d00
+      win_64_cl_version19.36.32532cross_t_hc40340d1e0:
+        CONFIG: win_64_cl_version19.36.32532cross_t_hc40340d1e0
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cl_version19.36.32532cross_t_hc40340d1e0
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\

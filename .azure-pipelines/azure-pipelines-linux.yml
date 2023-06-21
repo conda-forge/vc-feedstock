@@ -43,6 +43,11 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
         SHORT_CONFIG: win_arm64_cl_version19.36.32532cros_h0267430ae8
+      win_arm64_cl_version19.36.32532cros_hd5bd5a4e25:
+        CONFIG: win_arm64_cl_version19.36.32532cros_hd5bd5a4e25
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+        SHORT_CONFIG: win_arm64_cl_version19.36.32532cros_hd5bd5a4e25
   timeoutInMinutes: 360
 
   steps:
