@@ -2,10 +2,14 @@ vcver:
  - 14.3
  - 14.3
  - 14.3
+ - 14.3
+ - 14.3
  - 14.2
  - 14.2
  - 14.1
 vsyear:
+ - 2022
+ - 2022
  - 2022
  - 2022
  - 2022
@@ -16,6 +20,8 @@ vsver:
  - 17
  - 17
  - 17
+ - 17
+ - 17
  - 16
  - 16
  - 15
@@ -23,6 +29,8 @@ runtime_version:
  # the minor version here can show up in the toolset directory path
  # used by vcvars.bat (see #36), hence we need multiple builds even
  # though they're from the same vsver-line.
+ - 14.36.32532
+ - 14.36.32532
  - 14.34.31938
  - 14.34.31931
  - 14.32.31332
@@ -33,6 +41,8 @@ runtime_version:
 # reported in the VS help->about UI.  It is perhaps a more readily
 # referenceable number.
 update_version:
+ - 6
+ - 6
  - 5
  - 4
  - 2
@@ -41,6 +51,8 @@ update_version:
  - 9
 # This is the version number reported by cl.exe
 cl_version:
+ - 19.36.32532
+ - 19.36.32532
  - 19.35.32217
  - 19.34.31933
  - 19.33.31629
@@ -51,6 +63,8 @@ cl_version:
 # curl -ILSs https://aka.ms/vs/17/release/vc_redist.x64.exe | grep "Location:"
 # curl -ILSs https://aka.ms/vs/17/release/vc_redist.arm64.exe | grep "Location:"
 uuid:
+ - eaab1f82-787d-4fd7-8c73-f782341a0c63
+ - eaab1f82-787d-4fd7-8c73-f782341a0c63
  - b2519016-4a13-4120-936c-cae003d567c4
  - bcb0cef1-f8cb-4311-8a5c-650a5b694eab
  - 7331f052-6c2d-4890-8041-8058fee5fb0f
@@ -58,6 +72,8 @@ uuid:
  - 89a3b9df-4a09-492e-8474-8f92c115c51d
  - 4100b84d-1b4d-487d-9f89-1354a7138c8f
 sha256:
+ - 37342E0ABDAEAE0297F64A889F842AC9453139639FB0178C0754A7D2F330043A
+ - 917C37D816488545B70AFFD77D6E486E4DD27E2ECE63F6BBAAF486B178B2B888
  - EC530B52C87AF9DBECBCCE83E5945FD0CAA57969A858D7497E4D5CBBD6F53F60
  - 2257B3FBE3C7559DE8B31170155A433FAF5B83829E67C589D5674FF086B868B9
  - CE6593A1520591E7DEA2B93FD03116E3FC3B3821A0525322B0A430FAA6B3C0B4
@@ -65,6 +81,8 @@ sha256:
  - B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178
  - 5B0CBB977F2F5253B1EBE5C9D30EDBDA35DBD68FB70DE7AF5FAAC6423DB575B5
 cross_target_platform:
+ - win-arm64
+ - win-64
  - win-arm64
  - win-64
  - win-64
