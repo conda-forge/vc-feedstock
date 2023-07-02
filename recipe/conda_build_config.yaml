@@ -1,41 +1,24 @@
 vcver:
  - 14.3
  - 14.3
- - 14.3
- - 14.3
- - 14.3
- - 14.2
  - 14.2
  - 14.1
 vsyear:
  - 2022
  - 2022
- - 2022
- - 2022
- - 2022
- - 2019
  - 2019
  - 2017
 vsver:
  - 17
  - 17
- - 17
- - 17
- - 17
- - 16
  - 16
  - 15
 runtime_version:
- # the minor version here can show up in the toolset directory path
- # used by vcvars.bat (see #36), hence we need multiple builds even
- # though they're from the same vsver-line.
+ # the azure/github images only contain the latest minor version per vs-line;
+ # if there is a use-case for having older minor versions, they can be added when requested.
  - 14.36.32532
  - 14.36.32532
- - 14.34.31938
- - 14.34.31931
- - 14.32.31332
  - 14.29.30139
- - 14.28.29325
  - 14.16.27033
 # the VS update version.  This is the middle digit in the version
 # reported in the VS help->about UI.  It is perhaps a more readily
@@ -43,21 +26,13 @@ runtime_version:
 update_version:
  - 6
  - 6
- - 5
- - 4
- - 2
  - 11
- - 8
  - 9
 # This is the version number reported by cl.exe
 cl_version:
  - 19.36.32532
  - 19.36.32532
- - 19.35.32217
- - 19.34.31933
- - 19.33.31629
  - 19.29.30139
- - 19.28.29325
  - 19.16.27033
 # This is the uuid in the URL; redirect can be resolved e.g. as follows
 # curl -ILSs https://aka.ms/vs/17/release/vc_redist.x64.exe | grep "Location:"
@@ -65,27 +40,15 @@ cl_version:
 uuid:
  - eaab1f82-787d-4fd7-8c73-f782341a0c63
  - eaab1f82-787d-4fd7-8c73-f782341a0c63
- - b2519016-4a13-4120-936c-cae003d567c4
- - bcb0cef1-f8cb-4311-8a5c-650a5b694eab
- - 7331f052-6c2d-4890-8041-8058fee5fb0f
  - b929b7fe-5c89-4553-9abe-6324631dcc3a
- - 89a3b9df-4a09-492e-8474-8f92c115c51d
  - 4100b84d-1b4d-487d-9f89-1354a7138c8f
 sha256:
  - 37342E0ABDAEAE0297F64A889F842AC9453139639FB0178C0754A7D2F330043A
  - 917C37D816488545B70AFFD77D6E486E4DD27E2ECE63F6BBAAF486B178B2B888
- - EC530B52C87AF9DBECBCCE83E5945FD0CAA57969A858D7497E4D5CBBD6F53F60
- - 2257B3FBE3C7559DE8B31170155A433FAF5B83829E67C589D5674FF086B868B9
- - CE6593A1520591E7DEA2B93FD03116E3FC3B3821A0525322B0A430FAA6B3C0B4
  - 296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932F
- - B1A32C71A6B7D5978904FB223763263EA5A7EB23B2C44A0D60E90D234AD99178
  - 5B0CBB977F2F5253B1EBE5C9D30EDBDA35DBD68FB70DE7AF5FAAC6423DB575B5
 cross_target_platform:
  - win-arm64
- - win-64
- - win-arm64
- - win-64
- - win-64
  - win-64
  - win-64
  - win-64
