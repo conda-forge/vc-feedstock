@@ -14,9 +14,8 @@ vsver:
  - 16
  - 15
 runtime_version:
- # the images only contain the latest minor version per vs-line;
- # for users that have a different version installed, there's a
- # fallback in the activation script, see #56
+ # the azure/github images only contain the latest minor version per vs-line;
+ # if there is a use-case for having older minor versions, they can be added when requested.
  - 14.36.32532
  - 14.36.32532
  - 14.29.30139
