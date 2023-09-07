@@ -24,14 +24,14 @@ runtime_version:
 # reported in the VS help->about UI.  It is perhaps a more readily
 # referenceable number.
 update_version:
- - 6
- - 6
+ - 7
+ - 7
  - 11
  - 9
 # This is the version number reported by cl.exe
 cl_version:
- - 19.36.32532
- - 19.36.32532
+ - 19.37.32822
+ - 19.37.32822
  - 19.29.30139
  - 19.16.27033
 # This is the uuid in the URL; redirect can be resolved e.g. as follows

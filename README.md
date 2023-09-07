@@ -3,6 +3,7 @@ About vc-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/vc-feedstock/blob/main/LICENSE.txt)
 
+
 About vc
 --------
 
@@ -11,6 +12,7 @@ Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-
 Package license: LicenseRef-ProprietaryMicrosoft
 
 Summary: Activation and version verification of MSVC  (VS  compiler, update )
+
 About vs2022_win-arm64
 ----------------------
 
@@ -18,7 +20,8 @@ About vs2022_win-arm64
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 6)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 7)
+
 About vs_win-arm64
 ------------------
 
@@ -26,7 +29,8 @@ About vs_win-arm64
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 6)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 7)
+
 About vc14_runtime
 ------------------
 
@@ -34,15 +38,17 @@ Home: https://visualstudio.microsoft.com/downloads/
 
 Package license: LicenseRef-ProprietaryMicrosoft
 
-Summary: MSVC runtimes associated with cl.exe version 19.36.32532 (VS 2022 update 6)
-About vs2022_win-64
+Summary: MSVC runtimes associated with cl.exe version 19.37.32822 (VS 2022 update 7)
+
+About vs2019_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 6)
+Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
+
 About vc
 --------
 
@@ -57,6 +63,7 @@ Development: https://github.com/conda/conda/wiki/VC-features
 Documentation: https://github.com/conda/conda/wiki/VC-features
 
 This metapackage is used to enforce consistency of runtime dependencies within an environment
+
 About vs2015_runtime
 --------------------
 
@@ -65,6 +72,7 @@ Home: https://github.com/conda-forge/vc-feedstock
 Package license: BSD-3-Clause
 
 Summary: A backwards compatible meta-package. See vc14_runtime for the new package.
+
 About vs_win-64
 ---------------
 
@@ -72,7 +80,8 @@ About vs_win-64
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 7)
+
 About vs2017_win-64
 -------------------
 
@@ -81,14 +90,15 @@ About vs2017_win-64
 Package license: BSD-3-Clause
 
 Summary: Activation and version verification of MSVC 14.1 (VS 2017 compiler, update 9)
-About vs2019_win-64
+
+About vs2022_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 7)
 
 Current build status
 ====================
@@ -122,17 +132,17 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.36.32532cross_t_h23db042d00</td>
+              <td>win_64_cl_version19.37.32822cross_t_h5bb07cb262</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.36.32532cross_t_h23db042d00" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.37.32822cross_t_h5bb07cb262" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.36.32532cross_t_hc40340d1e0</td>
+              <td>win_64_cl_version19.37.32822cross_t_hb0fc03c3d5</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.36.32532cross_t_hc40340d1e0" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.37.32822cross_t_hb0fc03c3d5" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -150,17 +160,17 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_arm64_cl_version19.36.32532cros_h0267430ae8</td>
+              <td>win_arm64_cl_version19.37.32822cros_h9bdb558ad7</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.36.32532cros_h0267430ae8" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.37.32822cros_h9bdb558ad7" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_arm64_cl_version19.36.32532cros_hd5bd5a4e25</td>
+              <td>win_arm64_cl_version19.37.32822cros_ha1107d439d</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.36.32532cros_hd5bd5a4e25" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.37.32822cros_ha1107d439d" alt="variant">
                 </a>
               </td>
             </tr>
