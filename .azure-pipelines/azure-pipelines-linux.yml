@@ -18,24 +18,19 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
         SHORT_CONFIG: win_arm64_cl_version19.29.30139cros_h5ab1bbeecd
-      win_arm64_cl_version19.36.32532cros_h0267430ae8:
-        CONFIG: win_arm64_cl_version19.36.32532cros_h0267430ae8
+      win_arm64_cl_version19.37.32822cros_h9bdb558ad7:
+        CONFIG: win_arm64_cl_version19.37.32822cros_h9bdb558ad7
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: win_arm64_cl_version19.36.32532cros_h0267430ae8
-      win_arm64_cl_version19.36.32532cros_hd5bd5a4e25:
-        CONFIG: win_arm64_cl_version19.36.32532cros_hd5bd5a4e25
+        SHORT_CONFIG: win_arm64_cl_version19.37.32822cros_h9bdb558ad7
+      win_arm64_cl_version19.37.32822cros_ha1107d439d:
+        CONFIG: win_arm64_cl_version19.37.32822cros_ha1107d439d
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: win_arm64_cl_version19.36.32532cros_hd5bd5a4e25
+        SHORT_CONFIG: win_arm64_cl_version19.37.32822cros_ha1107d439d
   timeoutInMinutes: 360
 
   steps:
-  - script: |
-         rm -rf /opt/ghc
-         df -h
-    displayName: Manage disk space
-
   # configure qemu binfmt-misc running.  This allows us to run docker containers
   # embedded qemu-static
   - script: |
