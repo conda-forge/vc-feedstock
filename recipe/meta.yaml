@@ -23,14 +23,14 @@ package:
 
 source:
   # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x64.exe
-  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x64.exe  # [cross_target_platform == "win-64"]
-    sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-64"]
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x64.exe      # [cross_target_platform == "win-64"]
+    sha256: {{ sha256 | lower }}                                                                                # [cross_target_platform == "win-64"]
   # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.arm64.exe
-  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.arm64.exe  # [cross_target_platform == "win-arm64"]
-    sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-arm64"]
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.arm64.exe    # [cross_target_platform == "win-arm64"]
+    sha256: {{ sha256 | lower }}                                                                                # [cross_target_platform == "win-arm64"]
   # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x86.exe
-  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x86.exe  # [cross_target_platform == "win-32"]
-    sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-32"]
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x86.exe      # [cross_target_platform == "win-32"]
+    sha256: {{ sha256 | lower }}                                                                                # [cross_target_platform == "win-32"]
 
 build:
   number: {{ build_num }}
