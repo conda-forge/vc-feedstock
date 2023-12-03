@@ -15,6 +15,7 @@
 {% endif %}
 
 {% set vc_major = vcver.split(".")[0] %}
+{% set vcvars_ver = ".".join(runtime_version.split(".")[:2]) %}
 {% set build_num = 17 %}
 
 package:
@@ -182,7 +183,7 @@ outputs:
       python -m vc_repack --activate --host-platform {{ target_platform }}
       --target-platform {{ cross_target_platform }} --version {{ runtime_version }}
       --activate-year {{ vsyear }} --activate-major {{ vsver }} --activate-vcver {{ vcver }}
-      --activate-vcvars-ver {{ cl_version.split(".")[0]|int - 5 }}.{{ cl_version.split(".")[1] }}
+      --activate-vcvars-ver {{ vcvars_ver }}
     build:
       track_features:
         - vc{{ vc_major }}
