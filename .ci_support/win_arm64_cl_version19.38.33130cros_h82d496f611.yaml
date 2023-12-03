@@ -3,19 +3,21 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cl_version:
-- 19.37.32822
+- 19.38.33130
 cross_target_platform:
-- win-64
+- win-arm64
+docker_image:
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 runtime_version:
-- 14.36.32532
+- 14.38.33130
 sha256:
-- 917C37D816488545B70AFFD77D6E486E4DD27E2ECE63F6BBAAF486B178B2B888
+- BAC344CBC947DB8E306986BFB45A33052E1AAEE8F104ADBD9E461EB8199E27D2
 target_platform:
-- win-64
+- win-arm64
 update_version:
-- '7'
+- '8'
 uuid:
-- eaab1f82-787d-4fd7-8c73-f782341a0c63
+- a061be25-c14a-489a-8c7c-bb72adfb3cab
 vc:
 - '14'
 vcver:

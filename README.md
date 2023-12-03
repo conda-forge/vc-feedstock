@@ -11,25 +11,7 @@ Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-
 
 Package license: LicenseRef-ProprietaryMicrosoft
 
-Summary: Activation and version verification of MSVC  (VS  compiler, update )
-
-About vs2022_win-arm64
-----------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 7)
-
-About vs_win-arm64
-------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 7)
+Summary: Activation and version verification of MSVC  (VS  compiler, update update_version)
 
 About vc14_runtime
 ------------------
@@ -38,16 +20,16 @@ Home: https://visualstudio.microsoft.com/downloads/
 
 Package license: LicenseRef-ProprietaryMicrosoft
 
-Summary: MSVC runtimes associated with cl.exe version 19.37.32822 (VS 2022 update 7)
+Summary: MSVC runtimes associated with cl.exe version 19.38.33130 (VS 2022 update 8)
 
-About vs2019_win-64
+About vs2017_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
+Summary: Activation and version verification of MSVC 14.1 (VS 2017 compiler, update 9)
 
 About vc
 --------
@@ -80,16 +62,7 @@ About vs_win-64
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 7)
-
-About vs2017_win-64
--------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.1 (VS 2017 compiler, update 9)
+Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
 
 About vs2022_win-64
 -------------------
@@ -98,7 +71,34 @@ About vs2022_win-64
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 7)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 8)
+
+About vs2019_win-64
+-------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
+
+About vs2022_win-arm64
+----------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 8)
+
+About vs_win-arm64
+------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 8)
 
 Current build status
 ====================
@@ -132,17 +132,17 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.37.32822cross_t_h5bb07cb262</td>
+              <td>win_64_cl_version19.38.33130cross_t_hae6817084a</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.37.32822cross_t_h5bb07cb262" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.38.33130cross_t_hae6817084a" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.37.32822cross_t_hb0fc03c3d5</td>
+              <td>win_64_cl_version19.38.33130cross_t_hb91178803b</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.37.32822cross_t_hb0fc03c3d5" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.38.33130cross_t_hb91178803b" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -153,24 +153,24 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_arm64_cl_version19.29.30139cros_h5ab1bbeecd</td>
+              <td>win_arm64_cl_version19.29.30139cros_hdf27cf77b5</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.29.30139cros_h5ab1bbeecd" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.29.30139cros_hdf27cf77b5" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_arm64_cl_version19.37.32822cros_h9bdb558ad7</td>
+              <td>win_arm64_cl_version19.38.33130cros_h78f5b8adaf</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.37.32822cros_h9bdb558ad7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.38.33130cros_h78f5b8adaf" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_arm64_cl_version19.37.32822cros_ha1107d439d</td>
+              <td>win_arm64_cl_version19.38.33130cros_h82d496f611</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.37.32822cros_ha1107d439d" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.38.33130cros_h82d496f611" alt="variant">
                 </a>
               </td>
             </tr>
@@ -262,7 +262,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance

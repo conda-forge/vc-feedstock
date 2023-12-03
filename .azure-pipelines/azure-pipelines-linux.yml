@@ -13,21 +13,21 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
         SHORT_CONFIG: win_arm64_cl_version19.16.27033cros_h10441f7228
-      win_arm64_cl_version19.29.30139cros_h5ab1bbeecd:
-        CONFIG: win_arm64_cl_version19.29.30139cros_h5ab1bbeecd
+      win_arm64_cl_version19.29.30139cros_hdf27cf77b5:
+        CONFIG: win_arm64_cl_version19.29.30139cros_hdf27cf77b5
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: win_arm64_cl_version19.29.30139cros_h5ab1bbeecd
-      win_arm64_cl_version19.37.32822cros_h9bdb558ad7:
-        CONFIG: win_arm64_cl_version19.37.32822cros_h9bdb558ad7
+        SHORT_CONFIG: win_arm64_cl_version19.29.30139cros_hdf27cf77b5
+      win_arm64_cl_version19.38.33130cros_h78f5b8adaf:
+        CONFIG: win_arm64_cl_version19.38.33130cros_h78f5b8adaf
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: win_arm64_cl_version19.37.32822cros_h9bdb558ad7
-      win_arm64_cl_version19.37.32822cros_ha1107d439d:
-        CONFIG: win_arm64_cl_version19.37.32822cros_ha1107d439d
+        SHORT_CONFIG: win_arm64_cl_version19.38.33130cros_h78f5b8adaf
+      win_arm64_cl_version19.38.33130cros_h82d496f611:
+        CONFIG: win_arm64_cl_version19.38.33130cros_h82d496f611
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: win_arm64_cl_version19.37.32822cros_ha1107d439d
+        SHORT_CONFIG: win_arm64_cl_version19.38.33130cros_h82d496f611
   timeoutInMinutes: 360
 
   steps:
@@ -41,6 +41,9 @@ jobs:
 
   - script: |
         export CI=azure
+        export flow_run_id=azure_$(Build.BuildNumber).$(System.JobAttempt)
+        export remote_url=$(Build.Repository.Uri)
+        export sha=$(Build.SourceVersion)
         export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
         export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
         if [[ "${BUILD_REASON:-}" == "PullRequest" ]]; then
