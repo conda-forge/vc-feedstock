@@ -134,6 +134,9 @@ outputs:
         - if not exist %LIBRARY_BIN%\msvcp140_atomic_wait.dll exit 1
         - if not exist %LIBRARY_BIN%\msvcp140_codecvt_ids.dll exit 1
         {% endif %}
+        {% if vsyear | int >= 2022 %}
+        - if not exist %LIBRARY_BIN%\vcruntime140_threads.dll exit 1
+        {% endif %}
 
   - name: vs{{ runtime_year }}_runtime
     version: {{ runtime_version }}
