@@ -16,7 +16,7 @@
 
 {% set vc_major = vcver.split(".")[0] %}
 {% set vcvars_ver = ".".join(runtime_version.split(".")[:2]) %}
-{% set build_num = 17 %}
+{% set build_num = 18 %}
 
 package:
   name: vs{{ vsyear }}
