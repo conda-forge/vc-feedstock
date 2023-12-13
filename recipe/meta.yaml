@@ -15,7 +15,8 @@
 {% endif %}
 
 {% set vc_major = vcver.split(".")[0] %}
-{% set build_num = 17 %}
+{% set vcvars_ver = ".".join(runtime_version.split(".")[:2]) %}
+{% set build_num = 18 %}
 
 package:
   name: vs{{ vsyear }}
@@ -23,14 +24,14 @@ package:
 
 source:
   # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x64.exe
-  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x64.exe  # [cross_target_platform == "win-64"]
-    sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-64"]
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x64.exe      # [cross_target_platform == "win-64"]
+    sha256: {{ sha256 | lower }}                                                                                # [cross_target_platform == "win-64"]
   # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.arm64.exe
-  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.arm64.exe  # [cross_target_platform == "win-arm64"]
-    sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-arm64"]
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.arm64.exe    # [cross_target_platform == "win-arm64"]
+    sha256: {{ sha256 | lower }}                                                                                # [cross_target_platform == "win-arm64"]
   # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x86.exe
-  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x86.exe  # [cross_target_platform == "win-32"]
-    sha256: {{ sha256 | lower }}  # [cross_target_platform == "win-32"]
+  - url: https://download.visualstudio.microsoft.com/download/pr/{{ uuid }}/{{ sha256 }}/vc_redist.x86.exe      # [cross_target_platform == "win-32"]
+    sha256: {{ sha256 | lower }}                                                                                # [cross_target_platform == "win-32"]
 
 build:
   number: {{ build_num }}
@@ -124,15 +125,17 @@ outputs:
             'vcamp140.dll',
             'vccorlib140.dll',
             'vcomp140.dll',
-            'vcruntime140.dll'] %}
+            'vcruntime140.dll',
+        ] + (vsyear | int >= 2019) * [
+            'msvcp140_atomic_wait.dll',
+            'msvcp140_codecvt_ids.dll',
+            'vcruntime140_1.dll',
+        ] + (vsyear | int >= 2022) * [
+            'vcruntime140_threads.dll',
+        ]%}
         - if not exist %LIBRARY_BIN%\{{ dllname }} exit 1
         - if not exist %PREFIX%\{{ dllname }} exit 1
         {% endfor %}
-        {% if vsyear == "2019" %}
-        - if not exist %LIBRARY_BIN%\vcruntime140_1.dll exit 1
-        - if not exist %LIBRARY_BIN%\msvcp140_atomic_wait.dll exit 1
-        - if not exist %LIBRARY_BIN%\msvcp140_codecvt_ids.dll exit 1
-        {% endif %}
 
   - name: vs{{ runtime_year }}_runtime
     version: {{ runtime_version }}
@@ -182,7 +185,7 @@ outputs:
       python -m vc_repack --activate --host-platform {{ target_platform }}
       --target-platform {{ cross_target_platform }} --version {{ runtime_version }}
       --activate-year {{ vsyear }} --activate-major {{ vsver }} --activate-vcver {{ vcver }}
-      --activate-vcvars-ver {{ cl_version.split(".")[0]|int - 5 }}.{{ cl_version.split(".")[1] }}
+      --activate-vcvars-ver {{ vcvars_ver }}
     build:
       track_features:
         - vc{{ vc_major }}
