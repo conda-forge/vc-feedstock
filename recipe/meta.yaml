@@ -55,7 +55,7 @@ outputs:
         - "*.DLL"
     requirements:
       build:
-        - m2-p7zip  # [build_platform.startswith("win")]
+        - m2-p7zip <10  # [build_platform.startswith("win")]
         - p7zip     # [not build_platform.startswith("win")]
       host:
       run:
@@ -205,6 +205,8 @@ outputs:
       run:
         # Used to set up the path in the activate script
         - vswhere
+      run_constrained:
+        - vs_{{ cross_target_platform }} {{ vsyear }}.{{ update_version }}
     test:
       commands:
         - echo "%CMAKE_GENERATOR%"
