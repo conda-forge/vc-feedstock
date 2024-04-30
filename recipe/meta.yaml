@@ -55,7 +55,7 @@ outputs:
         - "*.DLL"
     requirements:
       build:
-        - m2-p7zip  # [build_platform.startswith("win")]
+        - m2-p7zip <10  # [build_platform.startswith("win")]
         - p7zip     # [not build_platform.startswith("win")]
       host:
       run:
