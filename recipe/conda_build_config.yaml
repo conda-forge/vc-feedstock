@@ -17,7 +17,7 @@ runtime_version:
  # the azure/github images only contain the latest minor version per vs-line;
  # if there is a use-case for having older minor versions, they can be added when requested.
  - 14.38.33135
- - 14.39.33519
+ - 14.38.33135
  - 14.29.30139
  - 14.16.27033
 # the VS update version.  This is the middle digit in the version
@@ -31,7 +31,7 @@ update_version:
 # This is the version number reported by cl.exe
 cl_version:
  - 19.38.33135
- - 19.39.33519
+ - 19.38.33135
  - 19.29.30139
  - 19.16.27033
 # This is the uuid in the URL; redirect can be resolved e.g. as follows
