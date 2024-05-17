@@ -16,14 +16,14 @@ jobs:
         CONFIG: win_64_cl_version19.29.30139cross_t_h16fbe5123a
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cl_version19.29.30139cross_t_h16fbe5123a
+      win_64_cl_version19.38.33135cross_t_hb850a121fd:
+        CONFIG: win_64_cl_version19.38.33135cross_t_hb850a121fd
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cl_version19.38.33135cross_t_hb850a121fd
       win_64_cl_version19.39.33519cross_t_h307727d160:
         CONFIG: win_64_cl_version19.39.33519cross_t_h307727d160
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cl_version19.39.33519cross_t_h307727d160
-      win_64_cl_version19.39.33519cross_t_h359be7516b:
-        CONFIG: win_64_cl_version19.39.33519cross_t_h359be7516b
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.39.33519cross_t_h359be7516b
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
