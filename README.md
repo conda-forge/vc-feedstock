@@ -62,16 +62,16 @@ About vs_win-64
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.1 (VS 2017 compiler, update 9)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
 
-About vs2022_win-64
+About vs2017_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
+Summary: Activation and version verification of MSVC 14.1 (VS 2017 compiler, update 9)
 
 About vs2022_win-arm64
 ----------------------
@@ -91,14 +91,14 @@ Package license: BSD-3-Clause
 
 Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
 
-About vs2017_win-64
+About vs2022_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.1 (VS 2017 compiler, update 9)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
 
 Current build status
 ====================
