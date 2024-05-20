@@ -10,13 +10,15 @@
 {% if vsyear is not defined %}
 {% set vsyear = "" %}
 {% set runtime_version = "" %}
-{% set cl_version = "" %}
+{% set cl_version = "19.39" %}
 {% set vcver = "" %}
 {% endif %}
 
 {% set vc_major = vcver.split(".")[0] %}
-{% set vcvars_ver = ".".join(runtime_version.split(".")[:2]) %}
-{% set build_num = 19 %}
+{% set vcvars_ver_maj = cl_version.split(".")[0]|int - 5 %}
+{% set vcvars_ver_min = cl_version.split(".")[1]|int %}
+{% set vcvars_ver = vcvars_ver_maj ~ "." ~ vcvars_ver_min %}
+{% set build_num = 20 %}
 
 package:
   name: vs{{ vsyear }}

@@ -1,14 +1,20 @@
 vcver:
  - 14.3
  - 14.3
+ - 14.3
+ - 14.3
  - 14.2
  - 14.1
 vsyear:
  - 2022
  - 2022
+ - 2022
+ - 2022
  - 2019
  - 2017
 vsver:
+ - 17
+ - 17
  - 17
  - 17
  - 16
@@ -18,6 +24,8 @@ runtime_version:
  # if there is a use-case for having older minor versions, they can be added when requested.
  - 14.38.33135
  - 14.38.33135
+ - 14.38.33130
+ - 14.38.33130
  - 14.29.30139
  - 14.16.27033
 # the VS update version.  This is the middle digit in the version
@@ -26,10 +34,14 @@ runtime_version:
 update_version:
  - 9
  - 9
+ - 8
+ - 8
  - 11
  - 9
 # This is the version number reported by cl.exe
 cl_version:
+ - 19.39.33519
+ - 19.39.33519
  - 19.38.33135
  - 19.38.33135
  - 19.29.30139
@@ -40,14 +52,20 @@ cl_version:
 uuid:
  - 71c6392f-8df5-4b61-8d50-dba6a525fb9d
  - c7707d68-d6ce-4479-973e-e2a3dc4341fe
+ - a061be25-c14a-489a-8c7c-bb72adfb3cab
+ - a061be25-c14a-489a-8c7c-bb72adfb3cab
  - b929b7fe-5c89-4553-9abe-6324631dcc3a
  - 4100b84d-1b4d-487d-9f89-1354a7138c8f
 sha256:
  - 9378E04AE461E29CE5E46787D20F81700C80AD305B9417710D147C1D7FF0C970
  - 1AD7988C17663CC742B01BEF1A6DF2ED1741173009579AD50A94434E54F56073
+ - BAC344CBC947DB8E306986BFB45A33052E1AAEE8F104ADBD9E461EB8199E27D2
+ - 4DFE83C91124CD542F4222FE2C396CABEAC617BB6F59BDCBDF89FD6F0DF0A32F
  - 296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932F
  - 5B0CBB977F2F5253B1EBE5C9D30EDBDA35DBD68FB70DE7AF5FAAC6423DB575B5
 cross_target_platform:
+ - win-arm64
+ - win-64
  - win-arm64
  - win-64
  - win-64
