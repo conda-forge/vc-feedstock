@@ -40,14 +40,14 @@ Package license: LicenseRef-ProprietaryMicrosoft
 
 Summary: MSVC runtimes associated with cl.exe version 19.38.33135 (VS 2022 update 8)
 
-About vs2019_win-64
+About vs2022_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
 
 About vc
 --------
@@ -80,16 +80,16 @@ About vs_win-64
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 8)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
 
-About vs2022_win-64
+About vs2019_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 8)
+Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
 
 About vs2017_win-64
 -------------------
