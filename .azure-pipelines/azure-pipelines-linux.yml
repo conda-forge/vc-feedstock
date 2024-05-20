@@ -13,22 +13,23 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
         SHORT_CONFIG: win_arm64_cl_version19.16.27033cros_h10441f7228
-      win_arm64_cl_version19.29.30139cros_hdf27cf77b5:
-        CONFIG: win_arm64_cl_version19.29.30139cros_hdf27cf77b5
+      win_arm64_cl_version19.29.30139cros_h5ab1bbeecd:
+        CONFIG: win_arm64_cl_version19.29.30139cros_h5ab1bbeecd
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: win_arm64_cl_version19.29.30139cros_hdf27cf77b5
-      win_arm64_cl_version19.38.33130cros_h78f5b8adaf:
-        CONFIG: win_arm64_cl_version19.38.33130cros_h78f5b8adaf
+        SHORT_CONFIG: win_arm64_cl_version19.29.30139cros_h5ab1bbeecd
+      win_arm64_cl_version19.38.33135cros_had3617690f:
+        CONFIG: win_arm64_cl_version19.38.33135cros_had3617690f
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: win_arm64_cl_version19.38.33130cros_h78f5b8adaf
-      win_arm64_cl_version19.38.33130cros_h82d496f611:
-        CONFIG: win_arm64_cl_version19.38.33130cros_h82d496f611
+        SHORT_CONFIG: win_arm64_cl_version19.38.33135cros_had3617690f
+      win_arm64_cl_version19.38.33135cros_he1295ab63f:
+        CONFIG: win_arm64_cl_version19.38.33135cros_he1295ab63f
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: win_arm64_cl_version19.38.33130cros_h82d496f611
+        SHORT_CONFIG: win_arm64_cl_version19.38.33135cros_he1295ab63f
   timeoutInMinutes: 360
+  variables: {}
 
   steps:
   # configure qemu binfmt-misc running.  This allows us to run docker containers
