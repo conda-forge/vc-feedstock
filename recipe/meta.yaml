@@ -10,7 +10,7 @@
 {% if vsyear is not defined %}
 {% set vsyear = "" %}
 {% set runtime_version = "" %}
-{% set cl_version = "19.39" %}
+{% set cl_version = "19.40" %}
 {% set vcver = "" %}
 {% endif %}
 
