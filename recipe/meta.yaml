@@ -146,6 +146,8 @@ outputs:
     requirements:
       run:
         - vc{{ vc_major }}_runtime >={{ runtime_version }}
+    test:
+      commands: echo "this is an empty wrapper package"
     about:
       home: https://github.com/conda-forge/vc-feedstock
       license: BSD-3-Clause
@@ -167,6 +169,8 @@ outputs:
         # compiler: assume that when vcver's major version changes,
         # MSFT has broken our binary compatibility.
         - vc{{ vc_major }}_runtime >={{ runtime_version }}
+    test:
+      commands: echo "this is an empty wrapper package"
     about:
       home: https://github.com/conda/conda/wiki/VC-features
       license: BSD-3-Clause
