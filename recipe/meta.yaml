@@ -225,7 +225,7 @@ outputs:
       license: BSD-3-Clause
 
   - name: vs_{{ cross_target_platform }}
-    version: {{ vsyear }}.{{ update_version }}
+    version: "{{ vsyear }}.{{ update_version }}"
     build:
       track_features:
         - vc{{ vc_major }}
