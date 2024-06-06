@@ -10,7 +10,7 @@
 {% if vsyear is not defined %}
 {% set vsyear = "" %}
 {% set runtime_version = "" %}
-{% set cl_version = "19.39" %}
+{% set cl_version = "19.40" %}
 {% set vcver = "" %}
 {% endif %}
 
@@ -146,6 +146,8 @@ outputs:
     requirements:
       run:
         - vc{{ vc_major }}_runtime >={{ runtime_version }}
+    test:
+      commands: echo "this is an empty wrapper package"
     about:
       home: https://github.com/conda-forge/vc-feedstock
       license: BSD-3-Clause
@@ -167,6 +169,8 @@ outputs:
         # compiler: assume that when vcver's major version changes,
         # MSFT has broken our binary compatibility.
         - vc{{ vc_major }}_runtime >={{ runtime_version }}
+    test:
+      commands: echo "this is an empty wrapper package"
     about:
       home: https://github.com/conda/conda/wiki/VC-features
       license: BSD-3-Clause
@@ -221,7 +225,7 @@ outputs:
       license: BSD-3-Clause
 
   - name: vs_{{ cross_target_platform }}
-    version: {{ vsyear }}.{{ update_version }}
+    version: "{{ vsyear }}.{{ update_version }}"
     build:
       track_features:
         - vc{{ vc_major }}

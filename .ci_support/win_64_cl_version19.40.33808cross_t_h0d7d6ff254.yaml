@@ -3,19 +3,19 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cl_version:
-- 19.38.33135
+- 19.40.33808
 cross_target_platform:
-- win-arm64
+- win-64
 runtime_version:
-- 14.38.33130
+- 14.40.33810
 sha256:
-- BAC344CBC947DB8E306986BFB45A33052E1AAEE8F104ADBD9E461EB8199E27D2
+- 3642E3F95D50CC193E4B5A0B0FFBF7FE2C08801517758B4C8AEB7105A091208A
 target_platform:
 - win-64
 update_version:
-- '8'
+- '10'
 uuid:
-- a061be25-c14a-489a-8c7c-bb72adfb3cab
+- 1754ea58-11a6-44ab-a262-696e194ce543
 vc:
 - '14'
 vcver:
