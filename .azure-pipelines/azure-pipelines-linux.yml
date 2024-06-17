@@ -8,11 +8,6 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      win_arm64_cl_version19.16.27033cros_h10441f7228:
-        CONFIG: win_arm64_cl_version19.16.27033cros_h10441f7228
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: win_arm64_cl_version19.16.27033cros_h10441f7228
       win_arm64_cl_version19.29.30139cros_h5ab1bbeecd:
         CONFIG: win_arm64_cl_version19.29.30139cros_h5ab1bbeecd
         UPLOAD_PACKAGES: 'True'
