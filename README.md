@@ -22,14 +22,14 @@ Package license: LicenseRef-ProprietaryMicrosoft
 
 Summary: MSVC runtimes associated with cl.exe version 19.39.33519 (VS 2022 update 9)
 
-About vs2019_win-64
+About vs2022_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 11)
 
 About vc
 --------
@@ -62,16 +62,7 @@ About vs_win-64
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
-
-About vs2022_win-64
--------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 11)
 
 About vs2022_win-arm64
 ----------------------
@@ -90,6 +81,15 @@ About vs_win-arm64
 Package license: BSD-3-Clause
 
 Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
+
+About vs2019_win-64
+-------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
 
 Current build status
 ====================
@@ -144,6 +144,20 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>win_64_cl_version19.41.34120cross_t_hce58adb501</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.41.34120cross_t_hce58adb501" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cl_version19.41.34120cross_t_hd9d6fca87a</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.41.34120cross_t_hd9d6fca87a" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>win_arm64_cl_version19.29.30139cros_h5ab1bbeecd</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
@@ -176,6 +190,20 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.40.33808cros_h98edac65ce" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_arm64_cl_version19.41.34120cros_hf07a69c0f6</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.41.34120cros_hf07a69c0f6" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_arm64_cl_version19.41.34120cros_hfcbbf4eb76</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.41.34120cros_hfcbbf4eb76" alt="variant">
                 </a>
               </td>
             </tr>

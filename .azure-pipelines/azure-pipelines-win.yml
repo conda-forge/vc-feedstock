@@ -28,6 +28,14 @@ jobs:
         CONFIG: win_64_cl_version19.40.33808cross_t_h50d9fe5020
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cl_version19.40.33808cross_t_h50d9fe5020
+      win_64_cl_version19.41.34120cross_t_hce58adb501:
+        CONFIG: win_64_cl_version19.41.34120cross_t_hce58adb501
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cl_version19.41.34120cross_t_hce58adb501
+      win_64_cl_version19.41.34120cross_t_hd9d6fca87a:
+        CONFIG: win_64_cl_version19.41.34120cross_t_hd9d6fca87a
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cl_version19.41.34120cross_t_hd9d6fca87a
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
@@ -41,7 +49,7 @@ jobs:
         scriptSource: inline
         script: |
           import urllib.request
-          url = 'https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Windows-x86_64.exe'
+          url = 'https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe'
           path = r"$(Build.ArtifactStagingDirectory)/Miniforge.exe"
           urllib.request.urlretrieve(url, path)
 
