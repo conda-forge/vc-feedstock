@@ -13,24 +13,6 @@ Package license: LicenseRef-ProprietaryMicrosoft
 
 Summary: Activation and version verification of MSVC  (VS  compiler, update update_version)
 
-About vs2022_win-arm64
-----------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
-
-About vs_win-arm64
-------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
-
 About vc14_runtime
 ------------------
 
@@ -38,16 +20,16 @@ Home: https://visualstudio.microsoft.com/downloads/
 
 Package license: LicenseRef-ProprietaryMicrosoft
 
-Summary: MSVC runtimes associated with cl.exe version 19.39.33519 (VS 2022 update 9)
+Summary: MSVC runtimes associated with cl.exe version 19.41.34120 (VS 2022 update 11)
 
-About vs2019_win-64
+About vs2022_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
 
 About vc
 --------
@@ -82,14 +64,32 @@ Package license: BSD-3-Clause
 
 Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
 
-About vs2022_win-64
+About vs2022_win-arm64
+----------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 11)
+
+About vs_win-arm64
+------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 11)
+
+About vs2019_win-64
 -------------------
 
 
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 9)
+Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
 
 Current build status
 ====================
