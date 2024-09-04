@@ -33,16 +33,16 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
         SHORT_CONFIG: win_arm64_cl_version19.40.33808cros_h98edac65ce
-      win_arm64_cl_version19.41.34120cros_hf07a69c0f6:
-        CONFIG: win_arm64_cl_version19.41.34120cros_hf07a69c0f6
+      win_arm64_cl_version19.41.34120cros_h52e9794d29:
+        CONFIG: win_arm64_cl_version19.41.34120cros_h52e9794d29
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: win_arm64_cl_version19.41.34120cros_hf07a69c0f6
-      win_arm64_cl_version19.41.34120cros_hfcbbf4eb76:
-        CONFIG: win_arm64_cl_version19.41.34120cros_hfcbbf4eb76
+        SHORT_CONFIG: win_arm64_cl_version19.41.34120cros_h52e9794d29
+      win_arm64_cl_version19.41.34120cros_h5e5a55cb3b:
+        CONFIG: win_arm64_cl_version19.41.34120cros_h5e5a55cb3b
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: win_arm64_cl_version19.41.34120cros_hfcbbf4eb76
+        SHORT_CONFIG: win_arm64_cl_version19.41.34120cros_h5e5a55cb3b
   timeoutInMinutes: 360
   variables: {}
 
