@@ -26,8 +26,8 @@ vsver:
 runtime_version:
  # the azure/github images only contain the latest minor version per vs-line;
  # if there is a use-case for having older minor versions, they can be added when requested.
- - 14.40.33810
- - 14.40.33810
+ - 14.41.34120
+ - 14.41.34120
  - 14.40.33810
  - 14.40.33810
  - 14.38.33135
