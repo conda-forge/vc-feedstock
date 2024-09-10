@@ -108,15 +108,13 @@ IF @{year} GEQ 2019  (
 
 echo "NEWER_VS_WITH_OLDER_VC=%NEWER_VS_WITH_OLDER_VC%"
 
-if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
-  set /p NEWER_VS=<"%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
-)
+set /p LATEST_VS=<"%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
 type "%VSINSTALLDIR%\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
 dir "%VSINSTALLDIR%\VC\Redist\MSVC\"
 
 if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
-  echo "%NEWER_VS%"
-  if "%NEWER_VS:~0,4%" == "14.2" (
+  echo "%LATEST_VS%"
+  if "%LATEST_VS:~0,4%" == "14.2" (
     set "CMAKE_GEN=Visual Studio 16 2019"
   ) else (
     set "CMAKE_GEN=Visual Studio 17 2022"
@@ -132,7 +130,12 @@ IF "%USE_NEW_CMAKE_GEN_SYNTAX%" == "1" (
 )
 
 pushd %VSINSTALLDIR%
-CALL "VC\Auxiliary\Build\vcvars%VCVARSBAT%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
+if "%LATEST_VS:~0,5%-@{vcvars_ver}" == "14.40-14.41" (
+  :: 14.41 and 14.40 have the same runtime version requirement, so it's okay
+  CALL "VC\Auxiliary\Build\vcvars%VCVARSBAT%.bat" -vcvars_ver=%LATEST_VS:~0,5% %WindowsSDKVer%
+) else (
+  CALL "VC\Auxiliary\Build\vcvars%VCVARSBAT%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
+)
 :: if this didn't work and CONDA_BUILD is not set, we're outside
 :: conda-forge CI so retry without vcvars_ver, which is going to
 :: fail on local installs that don't match our exact versions
