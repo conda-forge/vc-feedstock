@@ -5,13 +5,15 @@ channel_targets:
 cl_version:
 - 19.41.34120
 cross_target_platform:
-- win-arm64
-runtime_version:
-- 14.40.33810
-sha256:
-- 15B8F5B2106DC7A7BD83AB57B796770E0F4ECB891AD19BF655C9D6A9DA650AD2
-target_platform:
 - win-64
+docker_image:
+- quay.io/condaforge/linux-anvil-cos7-x86_64
+runtime_version:
+- 14.41.34120
+sha256:
+- 3642E3F95D50CC193E4B5A0B0FFBF7FE2C08801517758B4C8AEB7105A091208A
+target_platform:
+- win-arm64
 update_version:
 - '11'
 uuid:
