@@ -18,7 +18,7 @@
 {% set vcvars_ver_maj = cl_version.split(".")[0]|int - 5 %}
 {% set vcvars_ver_min = cl_version.split(".")[1]|int %}
 {% set vcvars_ver = vcvars_ver_maj ~ "." ~ vcvars_ver_min %}
-{% set build_num = 21 %}
+{% set build_num = 22 %}
 
 package:
   name: vs{{ vsyear }}
@@ -70,7 +70,7 @@ outputs:
         MSVC runtimes associated with cl.exe version {{ cl_version }}
         (VS {{ vsyear }} update {{ update_version }})
       home: https://visualstudio.microsoft.com/downloads/
-      license: LicenseRef-ProprietaryMicrosoft
+      license: LicenseRef-MicrosoftVisualCpp2015-2022Runtime
       license_family: Proprietary
       license_file:
         - LICENSE.TXT

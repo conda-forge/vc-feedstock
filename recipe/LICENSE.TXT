@@ -6,7 +6,7 @@ and should not be considered authoritative.
 
 MICROSOFT SOFTWARE LICENSE TERMS
 
-MICROSOFT VISUAL C++ 2019 RUNTIME
+MICROSOFT VISUAL C++ 2015 - 2022 RUNTIME
 
 These license terms are an agreement between Microsoft Corporation (or
 based on where you live, one of its affiliates) and you. They apply to
@@ -34,7 +34,7 @@ IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW.
 
     -   THIRD PARTY COMPONENTS.  The software may include third party
         components with separate legal notices or governed by other
-        agreements, as may be described in the ThirdPartyNotices file(s)
+        agreements, as may be described in the notices file(s)
         accompanying the software. 
 
 -   SCOPE OF LICENSE. The software is licensed, not sold. This agreement
@@ -56,11 +56,13 @@ IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW.
     -   remove, minimize, block or modify any notices of Microsoft or
         its suppliers in the software;
 
-    -   use the software in any way that is against the law; or
+    -   use the software in any way that is against the law;
 
-    -   share, publish, rent or lease the software, or provide the
-        software as a stand-alone offering for others to use, or
-        transfer the software or this agreement to any third party.
+    -   share, publish, rent or lease the software; or
+
+    -   provide the software as a stand-alone offering or combined with
+        any of your applications for others to use, or transfer the
+	software or this agreement to any third party.
 
 -   EXPORT RESTRICTIONS. You must comply with all domestic and
     international export laws and regulations that apply to the
@@ -146,3 +148,5 @@ IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW.
     may not apply to you because your country may not allow the
     exclusion or limitation of incidental, consequential or other
     damages.
+
+EULA ID: Cpp_2015-2022_ENU.1033
