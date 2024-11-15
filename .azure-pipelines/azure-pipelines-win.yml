@@ -36,10 +36,10 @@ jobs:
         CONFIG: win_64_cl_version19.41.34120cross_t_hd9d6fca87a
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cl_version19.41.34120cross_t_hd9d6fca87a
-      win_64_cl_version19.42.34433cross_t_hccf03af028:
-        CONFIG: win_64_cl_version19.42.34433cross_t_hccf03af028
+      win_64_cl_version19.42.34433cross_t_h89dbb0e25e:
+        CONFIG: win_64_cl_version19.42.34433cross_t_h89dbb0e25e
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.42.34433cross_t_hccf03af028
+        SHORT_CONFIG: win_64_cl_version19.42.34433cross_t_h89dbb0e25e
       win_64_cl_version19.42.34433cross_t_hefdc3107f9:
         CONFIG: win_64_cl_version19.42.34433cross_t_hefdc3107f9
         UPLOAD_PACKAGES: 'True'
