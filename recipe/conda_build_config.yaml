@@ -5,8 +5,12 @@ vcver:
  - 14.3
  - 14.3
  - 14.3
+ - 14.3
+ - 14.3
  - 14.2
 vsyear:
+ - 2022
+ - 2022
  - 2022
  - 2022
  - 2022
@@ -21,11 +25,15 @@ vsver:
  - 17
  - 17
  - 17
+ - 17
+ - 17
  - 16
 # vc_repack.py checks the expected runtime version (which can be used to find out of course)
 runtime_version:
  # the azure/github images only contain the latest minor version per vs-line;
  # if there is a use-case for having older minor versions, they can be added when requested.
+ - 14.42.34433
+ - 14.42.34433
  - 14.40.33810
  - 14.40.33810
  - 14.40.33810
@@ -37,6 +45,8 @@ runtime_version:
 # reported in the VS help->about UI.  It is perhaps a more readily
 # referenceable number.
 update_version:
+ - 12
+ - 12
  - 11
  - 11
  - 10
@@ -48,6 +58,8 @@ update_version:
 # candidates can be found with a github code search (adapt minor number as necessary):
 # https://github.com/search?q=%2F19%5C.40%5C.3%5Cd%5Cd%5Cd%5Cd%2F&type=code
 cl_version:
+ - 19.42.34433
+ - 19.42.34433
  - 19.41.34120
  - 19.41.34120
  - 19.40.33808
@@ -59,6 +71,8 @@ cl_version:
 # curl -ILSs https://aka.ms/vs/17/release/vc_redist.x64.exe | grep "Location:"
 # curl -ILSs https://aka.ms/vs/17/release/vc_redist.arm64.exe | grep "Location:"
 uuid:
+ - 5319f718-2a84-4aff-86be-8dbdefd92ca1
+ - c7dac50a-e3e8-40f6-bbb2-9cc4e3dfcabe
  - 1754ea58-11a6-44ab-a262-696e194ce543
  - 1754ea58-11a6-44ab-a262-696e194ce543
  - 1754ea58-11a6-44ab-a262-696e194ce543
@@ -67,6 +81,8 @@ uuid:
  - c7707d68-d6ce-4479-973e-e2a3dc4341fe
  - b929b7fe-5c89-4553-9abe-6324631dcc3a
 sha256:
+ - C176B30681576B86068F8B55FAE512391EE4217511494B24393C1C9476BC2169
+ - 1821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940
  - 15B8F5B2106DC7A7BD83AB57B796770E0F4ECB891AD19BF655C9D6A9DA650AD2
  - 3642E3F95D50CC193E4B5A0B0FFBF7FE2C08801517758B4C8AEB7105A091208A
  - 15B8F5B2106DC7A7BD83AB57B796770E0F4ECB891AD19BF655C9D6A9DA650AD2
@@ -75,6 +91,8 @@ sha256:
  - 1AD7988C17663CC742B01BEF1A6DF2ED1741173009579AD50A94434E54F56073
  - 296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932F
 cross_target_platform:
+ - win-arm64
+ - win-64
  - win-arm64
  - win-64
  - win-arm64
