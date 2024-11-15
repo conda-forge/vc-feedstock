@@ -1,4 +1,5 @@
 @@echo on
+
 :: Set env vars that tell distutils to use the compiler that we put on path
 SET DISTUTILS_USE_SDK=1
 :: This is probably not good. It is for the pre-UCRT msvccompiler.py *not* _msvccompiler.py
@@ -130,12 +131,15 @@ IF "%USE_NEW_CMAKE_GEN_SYNTAX%" == "1" (
 )
 
 pushd %VSINSTALLDIR%
-if "%LATEST_VS:~0,5%-@{vcvars_ver}" == "14.40-14.41" (
-  :: 14.41 and 14.40 have the same runtime version requirement, so it's okay
+if "%LATEST_VS:~0,5%" LSS "@{vcvars_ver}" (
+  :: Installed latest VS is older than the conda package version, which means the
+  :: lower bound of run_export is too high, but there's nothing we can do.
+  :: For eg we have a 14.42 package but sometimes CI has 14.41
   CALL "VC\Auxiliary\Build\vcvars%VCVARSBAT%.bat" -vcvars_ver=%LATEST_VS:~0,5% %WindowsSDKVer%
 ) else (
   CALL "VC\Auxiliary\Build\vcvars%VCVARSBAT%.bat" -vcvars_ver=@{vcvars_ver} %WindowsSDKVer%
 )
+
 :: if this didn't work and CONDA_BUILD is not set, we're outside
 :: conda-forge CI so retry without vcvars_ver, which is going to
 :: fail on local installs that don't match our exact versions
