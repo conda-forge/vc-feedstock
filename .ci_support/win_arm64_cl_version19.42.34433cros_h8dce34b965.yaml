@@ -7,7 +7,7 @@ cl_version:
 cross_target_platform:
 - win-arm64
 docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- quay.io/condaforge/linux-anvil-x86_64:alma9
 runtime_version:
 - 14.42.34433
 sha256:
@@ -18,8 +18,6 @@ update_version:
 - '12'
 uuid:
 - 5319f718-2a84-4aff-86be-8dbdefd92ca1
-vc:
-- '14'
 vcver:
 - '14.3'
 vsver:
