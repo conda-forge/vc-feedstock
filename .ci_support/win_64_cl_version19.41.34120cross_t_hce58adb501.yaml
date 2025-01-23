@@ -16,8 +16,6 @@ update_version:
 - '11'
 uuid:
 - 1754ea58-11a6-44ab-a262-696e194ce543
-vc:
-- '14'
 vcver:
 - '14.3'
 vsver:
