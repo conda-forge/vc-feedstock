@@ -61,9 +61,15 @@ set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Enterprise
 )
 
 IF NOT "%CONDA_BUILD%" == "" (
+  :: building packages
   set "INCLUDE=%LIBRARY_INC%;%INCLUDE%"
   set "LIB=%LIBRARY_LIB%;%LIB%"
   set "CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%;%CMAKE_PREFIX_PATH%"
+) else (
+  :: normal environment
+  set "INCLUDE=%CONDA_PREFIX%\Library\include;%INCLUDE%"
+  set "LIB=%CONDA_PREFIX%\Library\lib;%LIB%"
+  set "CMAKE_PREFIX_PATH=%CONDA_PREFIX%\Library;%CMAKE_PREFIX_PATH%"
 )
 
 
@@ -101,7 +107,7 @@ IF @{year} GEQ 2019  (
 ) ELSE (
     IF "@{target_platform}" == "win-64" (
         set "CMAKE_GEN=Visual Studio @{ver} @{year} Win64"
-	) else (
+    ) else (
         set "CMAKE_GEN=Visual Studio @{ver} @{year}"
     )
     set "USE_NEW_CMAKE_GEN_SYNTAX=0"
