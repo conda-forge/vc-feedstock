@@ -1,3 +1,20 @@
+@@echo off
+setlocal enabledelayedexpansion
+
+:: save existing variables for deactivation script; initialize all backups to a placeholder
+:: (empty is the same as undefined), and only overwrite them if a value exists
+for %%X in (
+    CC CXX CMAKE_ARGS CMAKE_GEN CMAKE_GENERATOR CMAKE_GENERATOR_PLATFORM CMAKE_GENERATOR_TOOLSET
+    CMAKE_PLAT CMAKE_PREFIX_PATH CONDA_BUILD_CROSS_COMPILATION DISTUTILS_USE_SDK INCLUDE LATEST_VS
+    LIB MSSdk MSYS2_ARG_CONV_EXCL MSYS2_ENV_CONV_EXCL NEWER_VS_WITH_OLDER_VC PY_VCRUNTIME_REDIST
+    USE_NEW_CMAKE_GEN_SYNTAX VCVARSBAT VSINSTALLDIR VS_MAJOR VS_VERSION VS_YEAR WindowsSDKVer
+) do (
+    set "_CONDA_BACKUP_%%X=placeholder"
+    if defined %%X (
+        set "_CONDA_BACKUP_%%X=!%%X!"
+    )
+)
+
 @@echo on
 
 :: Set env vars that tell distutils to use the compiler that we put on path
