@@ -5,11 +5,11 @@ channel_targets:
 cl_version:
 - 19.43.34604
 cross_target_platform:
-- win-arm64
+- win-64
 runtime_version:
-- 19.43.34604
+- 14.42.34438
 sha256:
-- 8A81A52B7FF6B194CB88E1BB48D597B6588D2B840552909359F286FB1699235C
+- 8F9FB1B3CFE6E5092CF1225ECD6659DAB7CE50B8BF935CB79BFEDE1F3C895240
 target_platform:
 - win-64
 update_version:
