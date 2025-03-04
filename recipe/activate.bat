@@ -4,8 +4,8 @@ setlocal enabledelayedexpansion
 :: save existing variables for deactivation script; initialize all backups to a placeholder
 :: (empty is the same as undefined), and only overwrite them if a value exists
 for %%X in (
-    CC CXX CMAKE_ARGS CMAKE_GEN CMAKE_GENERATOR CMAKE_GENERATOR_PLATFORM CMAKE_GENERATOR_TOOLSET
-    CMAKE_PLAT CMAKE_PREFIX_PATH CONDA_BUILD_CROSS_COMPILATION DISTUTILS_USE_SDK INCLUDE
+    CC CXX CMAKE_ARGS CMAKE_GENERATOR CMAKE_GENERATOR_PLATFORM CMAKE_GENERATOR_TOOLSET
+    CMAKE_PREFIX_PATH CONDA_BUILD_CROSS_COMPILATION DISTUTILS_USE_SDK INCLUDE
     LIB MSSdk MSYS2_ARG_CONV_EXCL MSYS2_ENV_CONV_EXCL PY_VCRUNTIME_REDIST
     VS_MAJOR VS_VERSION VS_YEAR
 ) do (
@@ -174,6 +174,8 @@ if %ERRORLEVEL% neq 0 (
 popd
 
 :: unset auxiliary variables
+set "CMAKE_GEN="
+set "CMAKE_PLAT="
 set "LATEST_VS="
 set "NEWER_VS_WITH_OLDER_VC="
 set "USE_NEW_CMAKE_GEN_SYNTAX="
