@@ -11,5 +11,7 @@ for %%X in (
     if defined _CONDA_BACKUP_%%X (
         set "%%X=!_CONDA_BACKUP_%%X!"
         set "_CONDA_BACKUP_%%X="
+    ) else (
+        set "%%X="
     )
 )
