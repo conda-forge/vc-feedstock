@@ -8,26 +8,46 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_cl_version19.29.30139cross_t_h16fbe5123a:
-        CONFIG: win_64_cl_version19.29.30139cross_t_h16fbe5123a
+      ? win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-9abe-6324631dcc3avcver14.2vsyear2019
+      : CONFIG: win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-9abe-6324631dcc3avcver14.2vsyear2019
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.29.30139cross_t_h16fbe5123a
-      win_64_cl_version19.42.34433cross_t_h89dbb0e25e:
-        CONFIG: win_64_cl_version19.42.34433cross_t_h89dbb0e25e
+        SHORT_CONFIG: win_64_cl_version19.29.30139cross_t_hacb78b8f4a
+      win_64_cl_version19.42.34433cross_t_h9f2bad863e:
+        CONFIG: win_64_cl_version19.42.34433cross_t_h9f2bad863e
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.42.34433cross_t_h89dbb0e25e
-      win_64_cl_version19.42.34433cross_t_hefdc3107f9:
-        CONFIG: win_64_cl_version19.42.34433cross_t_hefdc3107f9
+        SHORT_CONFIG: win_64_cl_version19.42.34433cross_t_h9f2bad863e
+      ? win_64_cl_version19.42.34433cross_target_platformwin-64runtime_version14.42.34433sha2561821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940update_version12uuidc7dac50a-e3e8-40f6-bbb2-9cc4e3dfcabevcver14.3vsyear2022
+      : CONFIG: win_64_cl_version19.42.34433cross_target_platformwin-64runtime_version14.42.34433sha2561821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940update_version12uuidc7dac50a-e3e8-40f6-bbb2-9cc4e3dfcabevcver14.3vsyear2022
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.42.34433cross_t_hefdc3107f9
-      win_64_cl_version19.43.34604cross_t_h60bfe582ee:
-        CONFIG: win_64_cl_version19.43.34604cross_t_h60bfe582ee
+        SHORT_CONFIG: win_64_cl_version19.42.34433cross_t_h40087b3508
+      win_64_cl_version19.43.34604cross_t_h220149ea89:
+        CONFIG: win_64_cl_version19.43.34604cross_t_h220149ea89
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.43.34604cross_t_h60bfe582ee
-      win_64_cl_version19.43.34604cross_t_h6e0c7babb0:
-        CONFIG: win_64_cl_version19.43.34604cross_t_h6e0c7babb0
+        SHORT_CONFIG: win_64_cl_version19.43.34604cross_t_h220149ea89
+      ? win_64_cl_version19.43.34604cross_target_platformwin-64runtime_version14.42.34438sha2568F9FB1B3CFE6E5092CF1225ECD6659DAB7CE50B8BF935CB79BFEDE1F3C895240update_version13uuid285b28c7-3cf9-47fb-9be8-01cf5323a8dfvcver14.3vsyear2022
+      : CONFIG: win_64_cl_version19.43.34604cross_target_platformwin-64runtime_version14.42.34438sha2568F9FB1B3CFE6E5092CF1225ECD6659DAB7CE50B8BF935CB79BFEDE1F3C895240update_version13uuid285b28c7-3cf9-47fb-9be8-01cf5323a8dfvcver14.3vsyear2022
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.43.34604cross_t_h6e0c7babb0
+        SHORT_CONFIG: win_64_cl_version19.43.34604cross_t_h8124e00c25
+      win_arm64_cl_version19.29.30139cros_hea466f03b8:
+        CONFIG: win_arm64_cl_version19.29.30139cros_hea466f03b8
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_arm64_cl_version19.29.30139cros_hea466f03b8
+      win_arm64_cl_version19.42.34433cros_h1689e2ec35:
+        CONFIG: win_arm64_cl_version19.42.34433cros_h1689e2ec35
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_arm64_cl_version19.42.34433cros_h1689e2ec35
+      win_arm64_cl_version19.42.34433cros_h63aee34649:
+        CONFIG: win_arm64_cl_version19.42.34433cros_h63aee34649
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_arm64_cl_version19.42.34433cros_h63aee34649
+      win_arm64_cl_version19.43.34604cros_h3f40b687c8:
+        CONFIG: win_arm64_cl_version19.43.34604cros_h3f40b687c8
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_arm64_cl_version19.43.34604cros_h3f40b687c8
+      win_arm64_cl_version19.43.34604cros_h49c66238f0:
+        CONFIG: win_arm64_cl_version19.43.34604cros_h49c66238f0
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_arm64_cl_version19.43.34604cros_h49c66238f0
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
