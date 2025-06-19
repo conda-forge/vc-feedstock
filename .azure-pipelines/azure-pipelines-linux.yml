@@ -8,31 +8,31 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      win_arm64_cl_version19.29.30139cros_h5ab1bbeecd:
-        CONFIG: win_arm64_cl_version19.29.30139cros_h5ab1bbeecd
+      ? win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-45_hea466f03
+      : CONFIG: win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-45_hea466f03
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: win_arm64_cl_version19.29.30139cros_h5ab1bbeecd
-      win_arm64_cl_version19.42.34433cros_h380eed0bef:
-        CONFIG: win_arm64_cl_version19.42.34433cros_h380eed0bef
+        SHORT_CONFIG: win_arm64_cl_version19.29.30139cross_tar_hea466f03
+      ? win_arm64_cl_version19.42.34433cross_target_platformwin-64runtime_version14.42.34433sha2561821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940update_version12uuidc7dac50a-e3e8-40_h1689e2ec
+      : CONFIG: win_arm64_cl_version19.42.34433cross_target_platformwin-64runtime_version14.42.34433sha2561821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940update_version12uuidc7dac50a-e3e8-40_h1689e2ec
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: win_arm64_cl_version19.42.34433cros_h380eed0bef
-      win_arm64_cl_version19.42.34433cros_h8dce34b965:
-        CONFIG: win_arm64_cl_version19.42.34433cros_h8dce34b965
+        SHORT_CONFIG: win_arm64_cl_version19.42.34433cross_tar_h1689e2ec
+      ? win_arm64_cl_version19.42.34433cross_target_platformwin-arm64runtime_version14.42.34433sha256C176B30681576B86068F8B55FAE512391EE4217511494B24393C1C9476BC2169update_version12uuid5319f718-2a84_h63aee346
+      : CONFIG: win_arm64_cl_version19.42.34433cross_target_platformwin-arm64runtime_version14.42.34433sha256C176B30681576B86068F8B55FAE512391EE4217511494B24393C1C9476BC2169update_version12uuid5319f718-2a84_h63aee346
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: win_arm64_cl_version19.42.34433cros_h8dce34b965
-      win_arm64_cl_version19.43.34604cros_h3738bf069c:
-        CONFIG: win_arm64_cl_version19.43.34604cros_h3738bf069c
+        SHORT_CONFIG: win_arm64_cl_version19.42.34433cross_tar_h63aee346
+      ? win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-1480-4c_h369391eb
+      : CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-1480-4c_h369391eb
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: win_arm64_cl_version19.43.34604cros_h3738bf069c
-      win_arm64_cl_version19.43.34604cros_hd0ed0287fc:
-        CONFIG: win_arm64_cl_version19.43.34604cros_hd0ed0287fc
+        SHORT_CONFIG: win_arm64_cl_version19.44.35207cross_tar_h369391eb
+      ? win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-1480_hb89f60bd
+      : CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-1480_hb89f60bd
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: win_arm64_cl_version19.43.34604cros_hd0ed0287fc
+        SHORT_CONFIG: win_arm64_cl_version19.44.35207cross_tar_hb89f60bd
   timeoutInMinutes: 360
   variables: {}
 
