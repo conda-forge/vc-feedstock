@@ -8,26 +8,26 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_cl_version19.29.30139cross_t_h16fbe5123a:
-        CONFIG: win_64_cl_version19.29.30139cross_t_h16fbe5123a
+      ? win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-_hacb78b8f
+      : CONFIG: win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-_hacb78b8f
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.29.30139cross_t_h16fbe5123a
-      win_64_cl_version19.42.34433cross_t_h89dbb0e25e:
-        CONFIG: win_64_cl_version19.42.34433cross_t_h89dbb0e25e
+        SHORT_CONFIG: win_64_cl_version19.29.30139cross_target_hacb78b8f
+      ? win_64_cl_version19.42.34433cross_target_platformwin-64runtime_version14.42.34433sha2561821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940update_version12uuidc7dac50a-e3e8-40f6-_h40087b35
+      : CONFIG: win_64_cl_version19.42.34433cross_target_platformwin-64runtime_version14.42.34433sha2561821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940update_version12uuidc7dac50a-e3e8-40f6-_h40087b35
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.42.34433cross_t_h89dbb0e25e
-      win_64_cl_version19.42.34433cross_t_hefdc3107f9:
-        CONFIG: win_64_cl_version19.42.34433cross_t_hefdc3107f9
+        SHORT_CONFIG: win_64_cl_version19.42.34433cross_target_h40087b35
+      ? win_64_cl_version19.42.34433cross_target_platformwin-arm64runtime_version14.42.34433sha256C176B30681576B86068F8B55FAE512391EE4217511494B24393C1C9476BC2169update_version12uuid5319f718-2a84-4a_h9f2bad86
+      : CONFIG: win_64_cl_version19.42.34433cross_target_platformwin-arm64runtime_version14.42.34433sha256C176B30681576B86068F8B55FAE512391EE4217511494B24393C1C9476BC2169update_version12uuid5319f718-2a84-4a_h9f2bad86
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.42.34433cross_t_hefdc3107f9
-      win_64_cl_version19.43.34604cross_t_h60bfe582ee:
-        CONFIG: win_64_cl_version19.43.34604cross_t_h60bfe582ee
+        SHORT_CONFIG: win_64_cl_version19.42.34433cross_target_h9f2bad86
+      ? win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-1480-4caf-_h1f00c6cd
+      : CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-1480-4caf-_h1f00c6cd
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.43.34604cross_t_h60bfe582ee
-      win_64_cl_version19.43.34604cross_t_h6e0c7babb0:
-        CONFIG: win_64_cl_version19.43.34604cross_t_h6e0c7babb0
+        SHORT_CONFIG: win_64_cl_version19.44.35207cross_target_h1f00c6cd
+      ? win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-1480-4c_h0ffcc03f
+      : CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-1480-4c_h0ffcc03f
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cl_version19.43.34604cross_t_h6e0c7babb0
+        SHORT_CONFIG: win_64_cl_version19.44.35207cross_target_h0ffcc03f
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\

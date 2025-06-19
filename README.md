@@ -13,24 +13,6 @@ Package license: LicenseRef-ProprietaryMicrosoft
 
 Summary: Activation and version verification of MSVC  (VS  compiler, update update_version)
 
-About vc14_runtime
-------------------
-
-Home: https://visualstudio.microsoft.com/downloads/
-
-Package license: LicenseRef-MicrosoftVisualCpp2015-2022Runtime
-
-Summary: MSVC runtimes associated with cl.exe version 19.43.34604 (VS 2022 update 13)
-
-About vs2022_win-64
--------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 12)
-
 About vc
 --------
 
@@ -46,6 +28,15 @@ Documentation: https://github.com/conda/conda/wiki/VC-features
 
 This metapackage is used to enforce consistency of runtime dependencies within an environment
 
+About vc14_runtime
+------------------
+
+Home: https://visualstudio.microsoft.com/downloads/
+
+Package license: LicenseRef-MicrosoftVisualCpp2015-2022Runtime
+
+Summary: MSVC runtimes associated with cl.exe version 19.44.35207 (VS 2022 update 14)
+
 About vs2015_runtime
 --------------------
 
@@ -55,33 +46,6 @@ Package license: BSD-3-Clause
 
 Summary: A backwards compatible meta-package. See vc14_runtime for the new package.
 
-About vs_win-64
----------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
-
-About vs2022_win-arm64
-----------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 13)
-
-About vs_win-arm64
-------------------
-
-
-
-Package license: BSD-3-Clause
-
-Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 13)
-
 About vs2019_win-64
 -------------------
 
@@ -90,6 +54,42 @@ About vs2019_win-64
 Package license: BSD-3-Clause
 
 Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
+
+About vs2022_win-64
+-------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 14)
+
+About vs2022_win-arm64
+----------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 14)
+
+About vs_win-64
+---------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 14)
+
+About vs_win-arm64
+------------------
+
+
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 14)
 
 Current build status
 ====================
@@ -109,73 +109,73 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>win_64_cl_version19.29.30139cross_t_h16fbe5123a</td>
+              <td>win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-_hacb78b8f</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.29.30139cross_t_h16fbe5123a" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-_hacb78b8f" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.42.34433cross_t_h89dbb0e25e</td>
+              <td>win_64_cl_version19.42.34433cross_target_platformwin-64runtime_version14.42.34433sha2561821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940update_version12uuidc7dac50a-e3e8-40f6-_h40087b35</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.42.34433cross_t_h89dbb0e25e" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.42.34433cross_target_platformwin-64runtime_version14.42.34433sha2561821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940update_version12uuidc7dac50a-e3e8-40f6-_h40087b35" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.42.34433cross_t_hefdc3107f9</td>
+              <td>win_64_cl_version19.42.34433cross_target_platformwin-arm64runtime_version14.42.34433sha256C176B30681576B86068F8B55FAE512391EE4217511494B24393C1C9476BC2169update_version12uuid5319f718-2a84-4a_h9f2bad86</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.42.34433cross_t_hefdc3107f9" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.42.34433cross_target_platformwin-arm64runtime_version14.42.34433sha256C176B30681576B86068F8B55FAE512391EE4217511494B24393C1C9476BC2169update_version12uuid5319f718-2a84-4a_h9f2bad86" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.43.34604cross_t_h60bfe582ee</td>
+              <td>win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-1480-4caf-_h1f00c6cd</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.43.34604cross_t_h60bfe582ee" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-1480-4caf-_h1f00c6cd" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cl_version19.43.34604cross_t_h6e0c7babb0</td>
+              <td>win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-1480-4c_h0ffcc03f</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.43.34604cross_t_h6e0c7babb0" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-1480-4c_h0ffcc03f" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_arm64_cl_version19.29.30139cros_h5ab1bbeecd</td>
+              <td>win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-45_hea466f03</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.29.30139cros_h5ab1bbeecd" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-45_hea466f03" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_arm64_cl_version19.42.34433cros_h380eed0bef</td>
+              <td>win_arm64_cl_version19.42.34433cross_target_platformwin-64runtime_version14.42.34433sha2561821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940update_version12uuidc7dac50a-e3e8-40_h1689e2ec</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.42.34433cros_h380eed0bef" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.42.34433cross_target_platformwin-64runtime_version14.42.34433sha2561821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940update_version12uuidc7dac50a-e3e8-40_h1689e2ec" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_arm64_cl_version19.42.34433cros_h8dce34b965</td>
+              <td>win_arm64_cl_version19.42.34433cross_target_platformwin-arm64runtime_version14.42.34433sha256C176B30681576B86068F8B55FAE512391EE4217511494B24393C1C9476BC2169update_version12uuid5319f718-2a84_h63aee346</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.42.34433cros_h8dce34b965" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.42.34433cross_target_platformwin-arm64runtime_version14.42.34433sha256C176B30681576B86068F8B55FAE512391EE4217511494B24393C1C9476BC2169update_version12uuid5319f718-2a84_h63aee346" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_arm64_cl_version19.43.34604cros_h3738bf069c</td>
+              <td>win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-1480-4c_h369391eb</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.43.34604cros_h3738bf069c" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-1480-4c_h369391eb" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_arm64_cl_version19.43.34604cros_hd0ed0287fc</td>
+              <td>win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-1480_hb89f60bd</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.43.34604cros_hd0ed0287fc" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-1480_hb89f60bd" alt="variant">
                 </a>
               </td>
             </tr>
@@ -192,13 +192,13 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vc-green.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-vc14_runtime-green.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2015_runtime-green.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2019_win--64-green.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022_win--64-green.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022_win--arm64-green.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-vs_win--64-green.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-vs_win--arm64-green.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vc14__runtime-green.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2015__runtime-green.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2019__win--64-green.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022__win--64-green.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022__win--arm64-green.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs__win--64-green.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs__win--arm64-green.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) |
 
 Installing vc
 =============
