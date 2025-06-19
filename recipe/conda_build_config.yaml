@@ -20,8 +20,8 @@ vsver:
 runtime_version:
  # the azure/github images only contain the latest minor version per vs-line;
  # if there is a use-case for having older minor versions, they can be added when requested.
- - 14.42.34438
- - 14.42.34438
+ - 14.44.35208
+ - 14.44.35208
  - 14.42.34433
  - 14.42.34433
  - 14.29.30139
@@ -29,8 +29,8 @@ runtime_version:
 # reported in the VS help->about UI.  It is perhaps a more readily
 # referenceable number.
 update_version:
- - 13
- - 13
+ - 14
+ - 14
  - 12
  - 12
  - 11
@@ -38,8 +38,8 @@ update_version:
 # candidates can be found with a github code search (adapt minor number as necessary):
 # https://github.com/search?q=%2F19%5C.40%5C.3%5Cd%5Cd%5Cd%5Cd%2F&type=code
 cl_version:
- - 19.43.34604
- - 19.43.34604
+ - 19.44.35207
+ - 19.44.35207
  - 19.42.34433
  - 19.42.34433
  - 19.29.30139
@@ -47,14 +47,14 @@ cl_version:
 # curl -ILSs https://aka.ms/vs/17/release/vc_redist.x64.exe | grep "Location:"
 # curl -ILSs https://aka.ms/vs/17/release/vc_redist.arm64.exe | grep "Location:"
 uuid:
- - 285b28c7-3cf9-47fb-9be8-01cf5323a8df
- - 285b28c7-3cf9-47fb-9be8-01cf5323a8df
+ - 40b59c73-1480-4caf-ab5b-4886f176bf71
+ - 40b59c73-1480-4caf-ab5b-4886f176bf71
  - 5319f718-2a84-4aff-86be-8dbdefd92ca1
  - c7dac50a-e3e8-40f6-bbb2-9cc4e3dfcabe
  - b929b7fe-5c89-4553-9abe-6324631dcc3a
 sha256:
- - 8A81A52B7FF6B194CB88E1BB48D597B6588D2B840552909359F286FB1699235C
- - 8F9FB1B3CFE6E5092CF1225ECD6659DAB7CE50B8BF935CB79BFEDE1F3C895240
+ - 1DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724C
+ - D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14A
  - C176B30681576B86068F8B55FAE512391EE4217511494B24393C1C9476BC2169
  - 1821577409C35B2B9505AC833E246376CC68A8262972100444010B57226F0940
  - 296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932F
