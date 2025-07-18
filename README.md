@@ -315,6 +315,7 @@ Feedstock Maintainers
 =====================
 
 * [@183amir](https://github.com/183amir/)
+* [@h-vetinari](https://github.com/h-vetinari/)
 * [@isuruf](https://github.com/isuruf/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@msarahan](https://github.com/msarahan/)

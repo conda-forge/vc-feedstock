@@ -1,3 +1,18 @@
+@@echo off
+setlocal enabledelayedexpansion
+
+:: save existing variables for deactivation script
+for %%X in (
+    CC CXX CMAKE_ARGS CMAKE_GENERATOR CMAKE_GENERATOR_PLATFORM CMAKE_GENERATOR_TOOLSET
+    CMAKE_PREFIX_PATH CONDA_BUILD_CROSS_COMPILATION DISTUTILS_USE_SDK INCLUDE
+    LIB MSSdk MSYS2_ARG_CONV_EXCL MSYS2_ENV_CONV_EXCL PY_VCRUNTIME_REDIST
+    VCVARSBAT VS_MAJOR VS_VERSION VS_YEAR VSINSTALLDIR WindowsSDKVer
+) do (
+    if defined %%X (
+        set "_CONDA_BACKUP_%%X=!%%X!"
+    )
+)
+
 @@echo on
 
 :: Set env vars that tell distutils to use the compiler that we put on path
@@ -155,6 +170,13 @@ if %ERRORLEVEL% neq 0 (
   )
 )
 popd
+
+:: unset auxiliary variables
+set "CMAKE_GEN="
+set "CMAKE_PLAT="
+set "LATEST_VS="
+set "NEWER_VS_WITH_OLDER_VC="
+set "USE_NEW_CMAKE_GEN_SYNTAX="
 
 :GetWin10SdkDir
 call :GetWin10SdkDirHelper HKLM\SOFTWARE\Wow6432Node > nul 2>&1
