@@ -1,18 +1,3 @@
-@@echo off
-setlocal enabledelayedexpansion
-
-:: save existing variables for deactivation script
-for %%X in (
-    CC CXX CMAKE_ARGS CMAKE_GENERATOR CMAKE_GENERATOR_PLATFORM CMAKE_GENERATOR_TOOLSET
-    CMAKE_PREFIX_PATH CONDA_BUILD_CROSS_COMPILATION DISTUTILS_USE_SDK INCLUDE
-    LIB MSSdk MSYS2_ARG_CONV_EXCL MSYS2_ENV_CONV_EXCL PY_VCRUNTIME_REDIST
-    VCVARSBAT VS_MAJOR VS_VERSION VS_YEAR VSINSTALLDIR WindowsSDKVer
-) do (
-    if defined %%X (
-        set "_CONDA_BACKUP_%%X=!%%X!"
-    )
-)
-
 @@echo on
 
 :: Set env vars that tell distutils to use the compiler that we put on path
@@ -105,6 +90,8 @@ set "VCVARSBAT=@{vcvarsbat}"
 set "CMAKE_ARGS=-DCMAKE_BUILD_TYPE=Release"
 IF "%CONDA_BUILD%" == "1" (
   set "CMAKE_ARGS=%CMAKE_ARGS% -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PROGRAM_PATH=%BUILD_PREFIX%\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\Library\bin;%PREFIX%\bin;%PREFIX%\Scripts;%PREFIX%\Library\bin"
+  :: see https://github.com/conda-forge/conda-smithy/issues/2319
+  set "CMAKE_ARGS=%CMAKE_ARGS% -DPython_FIND_REGISTRY=NEVER -DPython3_FIND_REGISTRY=NEVER"
 )
 
 IF NOT "@{target_platform}" == "@{host_platform}" (
@@ -170,13 +157,6 @@ if %ERRORLEVEL% neq 0 (
   )
 )
 popd
-
-:: unset auxiliary variables
-set "CMAKE_GEN="
-set "CMAKE_PLAT="
-set "LATEST_VS="
-set "NEWER_VS_WITH_OLDER_VC="
-set "USE_NEW_CMAKE_GEN_SYNTAX="
 
 :GetWin10SdkDir
 call :GetWin10SdkDirHelper HKLM\SOFTWARE\Wow6432Node > nul 2>&1
