@@ -92,7 +92,7 @@ set "CMAKE_ARGS=-DCMAKE_BUILD_TYPE=Release"
 IF "%CONDA_BUILD%" == "1" (
   set "CMAKE_ARGS=%CMAKE_ARGS% -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PROGRAM_PATH=%BUILD_PREFIX%\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\Library\bin;%PREFIX%\bin;%PREFIX%\Scripts;%PREFIX%\Library\bin"
   :: see https://github.com/conda-forge/conda-smithy/issues/2319
-  set "CMAKE_ARGS=%CMAKE_ARGS% -DPython_FIND_REGISTRY=NEVER -DPython3_FIND_REGISTRY=NEVER"
+  set "CMAKE_ARGS=!CMAKE_ARGS! -DPython_FIND_REGISTRY=NEVER -DPython3_FIND_REGISTRY=NEVER"
 )
 
 IF NOT "@{target_platform}" == "@{host_platform}" (
