@@ -156,11 +156,11 @@ def unpack_cab(cabfile, tmpdir, env):
         # The DLLs needed for executing 7z are in Library\usr\bin,
         # relative to the prefix directory, so temporarily set the
         # current directory to contain them.
-        os.chdir(os.path.join(env.prefix, "Library", "usr", "bin"))
+        os.chdir(os.path.join(env.build_prefix, "Library", "usr", "bin"))
 
         # The executable for 7z is not installed on the path either
         cmd = [
-            os.path.join(env.prefix, "Library", "usr", "lib", "p7zip", "7z")
+            os.path.join(env.build_prefix, "Library", "usr", "lib", "p7zip", "7z")
         ]
 
         # And because it's a Cygwin executable, the drive name is
