@@ -45,6 +45,7 @@ requirements:
   build:
     - m2-p7zip <10  # [build_platform.startswith("win")]
     - p7zip     # [not build_platform.startswith("win")]
+    - python
   host:
   run:
 

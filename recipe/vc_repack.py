@@ -259,6 +259,10 @@ def fix_filename(source):
             # 10 == len(".dll_amd64") == len(".dll_arm64")
             new_fname = fname[:-10] + ".dll"
             os.rename(fname, new_fname)
+        elif fname.endswith(".dll_system_arm64"):
+            # 17 == len(".dll_system_arm64")
+            new_fname = fname[:-17] + ".dll"
+            os.rename(fname, new_fname)
         else:
             new_fname = fname
     os.chdir(cwd)
@@ -277,6 +281,8 @@ def copy_vcomp(env):
 def copy_runtime(env):
     cwd = os.getcwd()
     os.chdir(os.path.join(env.src_dir, "dest"))
+    os.makedirs(env.library_bin, exist_ok=True)
+    os.makedirs(env.prefix, exist_ok=True)
     for fname in glob("*.dll"):
         if fname in glob("vcomp*.dll"):
             continue
