@@ -18,7 +18,7 @@
 {% set vcvars_ver_maj = cl_version.split(".")[0]|int - 5 %}
 {% set vcvars_ver_min = cl_version.split(".")[1]|int %}
 {% set vcvars_ver = vcvars_ver_maj ~ "." ~ vcvars_ver_min %}
-{% set build_num = 30 %}
+{% set build_num = 31 %}
 
 package:
   name: vs{{ vsyear }}
@@ -38,14 +38,63 @@ source:
 build:
   number: {{ build_num }}
   skip: True  # [not win]
+  script: |
+    python {{ RECIPE_DIR }}/vc_repack.py --extract --version {{ runtime_version }} --target-platform {{ cross_target_platform }}
+
+requirements:
+  build:
+    - m2-p7zip <10  # [build_platform.startswith("win")]
+    - p7zip     # [not build_platform.startswith("win")]
+    - python
+  host:
+  run:
 
 outputs:
+  - name: vcomp{{ vc_major }}
+    version: {{ runtime_version }}
+    script: vc_repack.py
+    script_interpreter: >-
+      python -m vc_repack --install-vcomp
+    build:
+      skip: True  # [cross_target_platform != target_platform]
+      binary_relocation: false
+      detect_binary_files_with_prefix: false
+      no_link:
+        - Library/bin/*.dll
+      missing_dso_whitelist:
+        - "*.dll"
+        - "*.DLL"
+      run_exports:
+        strong:
+          - {{ pin_subpackage("vcomp" ~ vc_major, max_pin=None) }}
+    requirements:
+      build:
+      host:
+      run:
+        # Need ucrt for windows<10 and when the VC runtime does not bundle it
+        - ucrt >=10.0.20348.0  # [(vsver >=17 or (vsver == 16 and update_version >= 10)) and (cross_target_platform == "win-64" or cross_target_platform == "win-32")]
+      run_constrained:
+        - vs{{ runtime_year }}_runtime {{ runtime_version }}.* *_{{ build_num }}  # [cross_target_platform == "win-64" or cross_target_platform == "win-32"]
+    about:
+      summary: >-
+        MSVC OpenMP runtime associated with cl.exe version {{ cl_version }}
+        (VS {{ vsyear }} update {{ update_version }})
+      home: https://visualstudio.microsoft.com/downloads/
+      license: LicenseRef-MicrosoftVisualCpp2015-2022Runtime
+      license_family: Proprietary
+      license_file:
+        - LICENSE.TXT
+        - LICENSE.RTF
+    test:
+      commands:
+        - if not exist %LIBRARY_BIN%\vcomp140.dll exit 1
+        - if not exist %PREFIX%\vcomp140.dll exit 1
+
   - name: vc{{ vc_major }}_runtime
     version: {{ runtime_version }}
     script: vc_repack.py
     script_interpreter: >-
-      python -m vc_repack --extract --version {{ runtime_version }}
-      --target-platform {{ cross_target_platform }}
+      python -m vc_repack --install-runtime
     build:
       skip: True  # [cross_target_platform != target_platform]
       binary_relocation: false
@@ -57,10 +106,10 @@ outputs:
         - "*.DLL"
     requirements:
       build:
-        - m2-p7zip <10  # [build_platform.startswith("win")]
-        - p7zip     # [not build_platform.startswith("win")]
       host:
+        - {{ pin_subpackage("vcomp" ~ vc_major, exact=True) }}
       run:
+        - {{ pin_subpackage("vcomp" ~ vc_major, exact=True) }}
         # Need ucrt for windows<10 and when the VC runtime does not bundle it
         - ucrt >=10.0.20348.0  # [(vsver >=17 or (vsver == 16 and update_version >= 10)) and (cross_target_platform == "win-64" or cross_target_platform == "win-32")]
       run_constrained:

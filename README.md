@@ -37,6 +37,15 @@ Package license: LicenseRef-MicrosoftVisualCpp2015-2022Runtime
 
 Summary: MSVC runtimes associated with cl.exe version 19.44.35207 (VS 2022 update 14)
 
+About vcomp14
+-------------
+
+Home: https://visualstudio.microsoft.com/downloads/
+
+Package license: LicenseRef-MicrosoftVisualCpp2015-2022Runtime
+
+Summary: MSVC OpenMP runtime associated with cl.exe version 19.44.35207 (VS 2022 update 14)
+
 About vs2015_runtime
 --------------------
 
@@ -193,6 +202,7 @@ Current release info
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vc-green.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vc.svg)](https://anaconda.org/conda-forge/vc) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vc14__runtime-green.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vc14_runtime.svg)](https://anaconda.org/conda-forge/vc14_runtime) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vcomp14-green.svg)](https://anaconda.org/conda-forge/vcomp14) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vcomp14.svg)](https://anaconda.org/conda-forge/vcomp14) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vcomp14.svg)](https://anaconda.org/conda-forge/vcomp14) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vcomp14.svg)](https://anaconda.org/conda-forge/vcomp14) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2015__runtime-green.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2019__win--64-green.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022__win--64-green.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) |
@@ -210,16 +220,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `vc, vc14_runtime, vs2015_runtime, vs2019_win-64, vs2022_win-64, vs2022_win-arm64, vs_win-64, vs_win-arm64` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `vc, vc14_runtime, vcomp14, vs2015_runtime, vs2019_win-64, vs2022_win-64, vs2022_win-arm64, vs_win-64, vs_win-arm64` can be installed with `conda`:
 
 ```
-conda install vc vc14_runtime vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs_win-64 vs_win-arm64
+conda install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs_win-64 vs_win-arm64
 ```
 
 or with `mamba`:
 
 ```
-mamba install vc vc14_runtime vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs_win-64 vs_win-arm64
+mamba install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs_win-64 vs_win-arm64
 ```
 
 It is possible to list all of the versions of `vc` available on your platform with `conda`:

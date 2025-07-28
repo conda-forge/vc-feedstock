@@ -156,11 +156,11 @@ def unpack_cab(cabfile, tmpdir, env):
         # The DLLs needed for executing 7z are in Library\usr\bin,
         # relative to the prefix directory, so temporarily set the
         # current directory to contain them.
-        os.chdir(os.path.join(env.prefix, "Library", "usr", "bin"))
+        os.chdir(os.path.join(env.build_prefix, "Library", "usr", "bin"))
 
         # The executable for 7z is not installed on the path either
         cmd = [
-            os.path.join(env.prefix, "Library", "usr", "lib", "p7zip", "7z")
+            os.path.join(env.build_prefix, "Library", "usr", "lib", "p7zip", "7z")
         ]
 
         # And because it's a Cygwin executable, the drive name is
@@ -244,7 +244,7 @@ def decode_manifest(directory):
     )
 
 
-def fix_filename_and_copy(source, dest):
+def fix_filename(source):
     cwd = os.getcwd()
     os.chdir(source)
     # as of VS 17.6, the artefact contains intermediate DLL extensions,
@@ -259,9 +259,36 @@ def fix_filename_and_copy(source, dest):
             # 10 == len(".dll_amd64") == len(".dll_arm64")
             new_fname = fname[:-10] + ".dll"
             os.rename(fname, new_fname)
+        elif fname.endswith(".dll_system_arm64"):
+            # 17 == len(".dll_system_arm64")
+            new_fname = fname[:-17] + ".dll"
+            os.rename(fname, new_fname)
         else:
             new_fname = fname
-        shutil.copyfile(new_fname, os.path.join(dest, new_fname))
+    os.chdir(cwd)
+
+def copy_vcomp(env):
+    cwd = os.getcwd()
+    os.chdir(os.path.join(env.src_dir, "dest"))
+    os.makedirs(env.library_bin, exist_ok=True)
+    os.makedirs(env.prefix, exist_ok=True)
+    for fname in glob("vcomp*.dll"):
+        print(f"Copying DLL: {fname}")
+        shutil.copyfile(fname, os.path.join(env.library_bin, fname))
+        shutil.copyfile(fname, os.path.join(env.prefix, fname))
+    os.chdir(cwd)
+
+def copy_runtime(env):
+    cwd = os.getcwd()
+    os.chdir(os.path.join(env.src_dir, "dest"))
+    os.makedirs(env.library_bin, exist_ok=True)
+    os.makedirs(env.prefix, exist_ok=True)
+    for fname in glob("*.dll"):
+        if fname in glob("vcomp*.dll"):
+            continue
+        print(f"Copying DLL: {fname}")
+        shutil.copyfile(fname, os.path.join(env.library_bin, fname))
+        shutil.copyfile(fname, os.path.join(env.prefix, fname))
     os.chdir(cwd)
 
 def unpack_exe(exe_filename, env, version):
@@ -285,11 +312,12 @@ def unpack_exe(exe_filename, env, version):
 
         with tempfile.TemporaryDirectory() as cabdir2:
             unpack_cab(os.path.join(tmpdir, cabs[1]), cabdir2, env)
-            os.makedirs(env.library_bin)
+            dest = os.path.join(env.src_dir, "dest")
+            os.makedirs(dest)
             unpack_cab(
-                os.path.join(cabdir2, payload["cabfile"]), env.library_bin, env
+                os.path.join(cabdir2, payload["cabfile"]), dest, env
             )
-        fix_filename_and_copy(env.library_bin, env.prefix)
+            fix_filename(dest)
 
 
 def main():
@@ -308,7 +336,13 @@ def main():
         default="win-64",
     )
     parser.add_argument(
-        "--extract", help="install files to LIBRARY_BIN", action="store_true"
+        "--extract", help="extract files to SRC_DIR/dest", action="store_true"
+    )
+    parser.add_argument(
+        "--install-runtime", help="install runtimes to LIBRARY_BIN", action="store_true"
+    )
+    parser.add_argument(
+        "--install-vcomp", help="install OpenMP runtimes to LIBRARY_BIN", action="store_true"
     )
     parser.add_argument(
         "--activate", help="install activate.bat", action="store_true"
@@ -334,8 +368,9 @@ def main():
     )
     args = parser.parse_args()
 
-    if not (args.extract or args.activate):
+    if not (args.extract or args.activate or args.install_vcomp or args.install_runtime):
         parser.print_help()
+        print("Need one of --extract, --activate, --install-vcomp, --install-runtime")
         sys.exit(1)
 
     try:
@@ -357,6 +392,10 @@ def main():
                 raise RuntimeError(f"{exe_path} not found")
         else:
             raise RuntimeError(f"Architecture {args.target_platform} not supported")
+    elif args.install_vcomp:
+        copy_vcomp(env)
+    elif args.install_runtime:
+        copy_runtime(env)
     elif args.activate:
         # Populate the activate.bat template, which is used to include
         # the Visual Studio tools into the conda environment.
