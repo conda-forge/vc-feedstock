@@ -18,7 +18,7 @@
 {% set vcvars_ver_maj = cl_version.split(".")[0]|int - 5 %}
 {% set vcvars_ver_min = cl_version.split(".")[1]|int %}
 {% set vcvars_ver = vcvars_ver_maj ~ "." ~ vcvars_ver_min %}
-{% set build_num = 31 %}
+{% set build_num = 32 %}
 
 package:
   name: vs{{ vsyear }}
@@ -109,7 +109,6 @@ outputs:
       host:
         - {{ pin_subpackage("vcomp" ~ vc_major, exact=True) }}
       run:
-        - {{ pin_subpackage("vcomp" ~ vc_major, exact=True) }}
         # Need ucrt for windows<10 and when the VC runtime does not bundle it
         - ucrt >=10.0.20348.0  # [(vsver >=17 or (vsver == 16 and update_version >= 10)) and (cross_target_platform == "win-64" or cross_target_platform == "win-32")]
       run_constrained:
@@ -175,7 +174,6 @@ outputs:
             'ucrtbase.dll',
             'vcamp140.dll',
             'vccorlib140.dll',
-            'vcomp140.dll',
             'vcruntime140.dll',
         ] + (vsyear | int >= 2019) * [
             'msvcp140_atomic_wait.dll',
@@ -187,6 +185,8 @@ outputs:
         - if not exist %LIBRARY_BIN%\{{ dllname }} exit 1
         - if not exist %PREFIX%\{{ dllname }} exit 1
         {% endfor %}
+        - if exist %LIBRARY_BIN%\vcomp140.dll exit 1
+        - if exist %PREFIX%\vcomp140.dll exit 1
 
   - name: vs{{ runtime_year }}_runtime
     version: {{ runtime_version }}
