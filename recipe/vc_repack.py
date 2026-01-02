@@ -233,16 +233,22 @@ def decode_manifest(directory):
     payloads = dom.documentElement.getElementsByTagName("Payload")
 
     # Find the licence file.
-    licences = [
+    files = [
         x.attributes
         for x in payloads
         if "FilePath" in x.attributes
-        and x.attributes["FilePath"].value.lower() == "license.rtf"
+    ]
+    licences = [
+        x
+        for x in files
+        if x["FilePath"].value.lower().startswith("license")
     ]
     if len(licences) == 0:
-        raise RuntimeError("Found no licences in the manifest")
+        paths = [x["FilePath"].value for x in files]
+        raise RuntimeError(f"Found no licences in the manifest; not present in {paths}")
     elif len(licences) > 1:
-        raise RuntimeError("Found more than one licence in the manfiest")
+        paths = [x["FilePath"].value for x in licences]
+        raise RuntimeError(f"Found more than one licence in the manifest: {paths}")
 
     # Find the files that are in the second CAB file. These have
     # helpful filenames of u0, u1, etc.
