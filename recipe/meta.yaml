@@ -21,7 +21,7 @@
 
 {% set clang_test_version = "21.1.7" %}
 
-{% set build_num = 35 %}
+{% set build_num = 36 %}
 
 package:
   name: vs{{ vsyear }}
@@ -235,7 +235,7 @@ outputs:
         dependencies within an environment
       doc_url: https://github.com/conda/conda/wiki/VC-features
       dev_url: https://github.com/conda/conda/wiki/VC-features
-  
+
   - name: vs{{ vsyear }}_{{ cross_target_platform }}
     version: {{ cl_version }}
     script: vc_repack.py
