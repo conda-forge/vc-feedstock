@@ -105,9 +105,11 @@ set "CMAKE_PLAT=@{target_msbuild_plat}"
 set "VCVARSBAT=@{vcvarsbat}"
 
 set "CMAKE_ARGS=-DCMAKE_BUILD_TYPE=Release"
+set "MESON_ARGS=-Dbuildtype=release"
 IF "%CONDA_BUILD%" == "1" (
   :: for -DPython_FIND_REGISTRY see https://github.com/conda-forge/conda-smithy/issues/2319
   set "CMAKE_ARGS=%CMAKE_ARGS% -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DPython_FIND_REGISTRY=NEVER -DPython3_FIND_REGISTRY=NEVER -DCMAKE_PROGRAM_PATH=%BUILD_PREFIX%\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\Library\bin;%PREFIX%\bin;%PREFIX%\Scripts;%PREFIX%\Library\bin"
+  set "MESON_ARGS=%MESON_ARGS% --prefix=%LIBRARY_PREFIX% -Dlibdir=lib"
 )
 
 :: set CMAKE_* variables
