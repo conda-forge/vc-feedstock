@@ -1,10 +1,10 @@
-azure:
-  store_build_artifacts: true
 build_platform:
   win_arm64: linux_64
 conda_build:
-  pkg_format: '2'
+  pkg_format: "2"
+conda_build_tool: rattler-build
 conda_forge_output_validation: true
+conda_install_tool: pixi
 github:
   branch_name: main
   tooling_branch_name: main

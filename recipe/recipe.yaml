@@ -1,0 +1,337 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+# version numbering is explained at
+# https://stackoverflow.com/questions/42730478/version-numbers-for-visual-studio-2017-boost-and-cmake
+#
+# VS2017 is fundamentally compatible with VS2015. We name our package
+# vs2015_runtime so that it can't be mixed up with the runtime from
+# VS2015 - you do actually need VS2017 runtime for things compiled
+# with VS2017, and the runtime we have here is backwards-compatible
+# with things compiled with VS2015.
+
+context:
+  runtime_year: "2015"
+  vc_major: ${{ (vcver | split(".")) [0] }}
+  vcvars_ver_maj: ${{ ((cl_version | split(".")) [0] | int) - 5 }}
+  vcvars_ver_min: ${{ (cl_version | split(".")) [1] | int }}
+  vcvars_ver: ${{ vcvars_ver_maj }}.${{ vcvars_ver_min }}
+  clang_test_version: "21.1.7"
+  build_num: 34
+  needs_ucrt: ${{ (vsver | int >= 17 or (vsver | int == 16 and update_version | int >= 10)) and (cross_target_platform == "win-64" or cross_target_platform == "win-32") }}
+
+recipe:
+  name: vc-feedstock
+  version: ${{ runtime_version }}
+
+build:
+  number: ${{ build_num }}
+  skip: not win
+
+outputs:
+  # Staging output: extract the vc_redist.exe payload once, install all DLLs into
+  # $PREFIX. Inheriting outputs (vcomp, vc<X>_runtime) then partition the DLLs by
+  # filename glob.
+  - staging:
+      name: vc-stage
+    source:
+      - if: cross_target_platform == "win-64"
+        then:
+          # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x64.exe
+          url: https://download.visualstudio.microsoft.com/download/pr/${{ uuid }}/${{ sha256 }}/vc_redist.x64.exe
+          sha256: ${{ sha256 | lower }}
+      - if: cross_target_platform == "win-arm64"
+        then:
+          # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.arm64.exe
+          url: https://download.visualstudio.microsoft.com/download/pr/${{ uuid }}/${{ sha256 }}/vc_redist.arm64.exe
+          sha256: ${{ sha256 | lower }}
+      - if: cross_target_platform == "win-32"
+        then:
+          # Latest version redirect: https://aka.ms/vs/16/release/vc_redist.x86.exe
+          url: https://download.visualstudio.microsoft.com/download/pr/${{ uuid }}/${{ sha256 }}/vc_redist.x86.exe
+          sha256: ${{ sha256 | lower }}
+    build:
+      script:
+        - python "${{ RECIPE_DIR }}/vc_repack.py" --extract --version ${{ runtime_version }} --target-platform ${{ cross_target_platform }}
+        - python "${{ RECIPE_DIR }}/vc_repack.py" --install-vcomp
+        - python "${{ RECIPE_DIR }}/vc_repack.py" --install-runtime
+    requirements:
+      build:
+        - if: build_platform == "win-64" or build_platform == "win-32" or build_platform == "win-arm64"
+          then: m2-p7zip <10
+          else: p7zip
+        - python *
+
+  - package:
+      name: vcomp${{ vc_major }}
+      version: ${{ runtime_version }}
+    inherit: vc-stage
+    build:
+      number: ${{ build_num }}
+      skip: cross_target_platform != target_platform
+      dynamic_linking:
+        binary_relocation: false
+      prefix_detection:
+        ignore_binary_files: true
+      always_copy_files:
+        - Library/bin/*.dll
+      files:
+        - Library/bin/vcomp*.dll
+        - vcomp*.dll
+    requirements:
+      run:
+        - if: needs_ucrt
+          then: ucrt >=10.0.20348.0
+      run_exports:
+        strong:
+          - ${{ pin_subpackage("vcomp" ~ vc_major, upper_bound=None) }}
+      run_constraints:
+        - if: cross_target_platform == "win-64" or cross_target_platform == "win-32"
+          then: vs${{ runtime_year }}_runtime ${{ runtime_version }}.* *_${{ build_num }}
+    tests:
+      - package_contents:
+          # ships to %LIBRARY_BIN% (= $PREFIX/Library/bin)
+          bin:
+            - vcomp140.dll
+          # vc_repack.py also copies the DLL to %PREFIX% directly
+          files:
+            - vcomp140.dll
+    about:
+      summary: |
+        MSVC OpenMP runtime associated with cl.exe version ${{ cl_version }}
+        (VS ${{ vsyear }} update ${{ update_version }})
+      homepage: https://visualstudio.microsoft.com/downloads/
+      license: LicenseRef-MicrosoftVisualCpp2015-2022Runtime
+      license_file:
+        - LICENSE.TXT
+        - LICENSE.RTF
+
+  - package:
+      name: vc${{ vc_major }}_runtime
+      version: ${{ runtime_version }}
+    inherit: vc-stage
+    build:
+      number: ${{ build_num }}
+      skip: cross_target_platform != target_platform
+      dynamic_linking:
+        binary_relocation: false
+      prefix_detection:
+        ignore_binary_files: true
+      always_copy_files:
+        - Library/bin/*.dll
+      files:
+        include:
+          - Library/bin/*.dll
+          - "*.dll"
+        exclude:
+          - Library/bin/vcomp*.dll
+          - vcomp*.dll
+    requirements:
+      host:
+        - ${{ pin_subpackage("vcomp" ~ vc_major, exact=true) }}
+      run:
+        - ${{ pin_subpackage("vcomp" ~ vc_major, exact=true) }}
+        - if: needs_ucrt
+          then: ucrt >=10.0.20348.0
+      run_constraints:
+        - if: cross_target_platform == "win-64" or cross_target_platform == "win-32"
+          then: vs${{ runtime_year }}_runtime ${{ runtime_version }}.* *_${{ build_num }}
+    tests:
+      # The vc_redist payload only contains the non-CRT runtime DLLs; the
+      # api-ms-win-* / ucrtbase.dll DLLs come from the `ucrt` run dependency.
+      # The v0 test asserted those too via `if not exist`, but only because the
+      # test env activated ucrt; package_contents inspects the .conda directly,
+      # so we must restrict to what this package actually ships.
+      # Each DLL is shipped to BOTH %LIBRARY_BIN% (= $PREFIX/Library/bin) and
+      # %PREFIX%; conditional entries reflect VS-version-specific additions.
+      - package_contents:
+          bin:
+            - concrt140.dll
+            - msvcp140_1.dll
+            - msvcp140_2.dll
+            - msvcp140.dll
+            - vcamp140.dll
+            - vccorlib140.dll
+            - vcruntime140.dll
+            - if: vsyear | int >= 2019
+              then:
+                - msvcp140_atomic_wait.dll
+                - msvcp140_codecvt_ids.dll
+                - vcruntime140_1.dll
+            - if: vsyear | int >= 2022
+              then:
+                - vcruntime140_threads.dll
+          files:
+            - concrt140.dll
+            - msvcp140_1.dll
+            - msvcp140_2.dll
+            - msvcp140.dll
+            - vcamp140.dll
+            - vccorlib140.dll
+            - vcruntime140.dll
+            - if: vsyear | int >= 2019
+              then:
+                - msvcp140_atomic_wait.dll
+                - msvcp140_codecvt_ids.dll
+                - vcruntime140_1.dll
+            - if: vsyear | int >= 2022
+              then:
+                - vcruntime140_threads.dll
+    about:
+      summary: |
+        MSVC runtimes associated with cl.exe version ${{ cl_version }}
+        (VS ${{ vsyear }} update ${{ update_version }})
+      homepage: https://visualstudio.microsoft.com/downloads/
+      license: LicenseRef-MicrosoftVisualCpp2015-2022Runtime
+      license_file:
+        - LICENSE.TXT
+        - LICENSE.RTF
+
+  - package:
+      name: vs${{ runtime_year }}_runtime
+      version: ${{ runtime_version }}
+    build:
+      skip: cross_target_platform != target_platform or (win and arm64)
+    requirements:
+      run:
+        - vc${{ vc_major }}_runtime >=${{ runtime_version }}
+    tests:
+      - script:
+          - echo "this is an empty wrapper package"
+    about:
+      homepage: https://github.com/conda-forge/vc-feedstock
+      license: BSD-3-Clause
+      summary: |
+        A backwards compatible meta-package. See vc${{ vc_major }}_runtime
+        for the new package.
+
+  - package:
+      name: vc
+      version: ${{ vcver }}
+    build:
+      skip: cross_target_platform != target_platform
+      # v0 had build.track_features here, but the package name plus the
+      # run_constraints below already provide the practical exclusivity. recipe
+      # v1 does not expose equivalent track_features metadata, and
+      # down_prioritize_variant is not equivalent.
+    requirements:
+      run:
+        # Set lower bound for runtime (no upper bound). Upper bound is part of
+        # the run_exports for the compiler: when vcver's major version changes
+        # MSFT has broken our binary compatibility.
+        - vc${{ vc_major }}_runtime >=${{ runtime_version }}
+    tests:
+      - script:
+          - echo "this is an empty wrapper package"
+    about:
+      homepage: https://github.com/conda/conda/wiki/VC-features
+      repository: https://github.com/conda/conda/wiki/VC-features
+      documentation: https://github.com/conda/conda/wiki/VC-features
+      license: BSD-3-Clause
+      summary: |
+        A meta-package to impose mutual exclusivity among software
+        built with different VS versions
+      description: |
+        This metapackage is used to enforce consistency of runtime
+        dependencies within an environment
+
+  - package:
+      name: vs${{ vsyear }}_${{ cross_target_platform }}
+      version: ${{ cl_version }}
+    # v0 had build.track_features here (see vc package above for context).
+    build:
+      number: ${{ build_num }}
+      script:
+        - >-
+          python "${{ RECIPE_DIR }}/vc_repack.py" --activate
+          --host-platform ${{ target_platform }} --target-platform ${{ cross_target_platform }}
+          --version ${{ runtime_version }} --activate-year ${{ vsyear }}
+          --activate-major ${{ vsver }} --activate-vcver ${{ vcver }}
+          --activate-vcvars-ver ${{ vcvars_ver }}
+    requirements:
+      build:
+        - python
+      run:
+        # Used to set up the path in the activate script
+        - vswhere
+      run_exports:
+        strong:
+          # compatible within major version. This is MSFT's incrementing of the
+          # UCRT version. It was 14.0 with VS2015, and 14.1 with VS2017 - if the
+          # major version changes, we're assuming that binary compatibility breaks.
+          # This has a minimum bound equal to vcver, so building with vs2017 here
+          # will require the vs2017-era runtime.
+          - vc >=${{ vcver }},<${{ vc_major | int + 1 }}
+          - vc${{ vc_major }}_runtime >=${{ runtime_version }}
+          - if: needs_ucrt
+            then: ucrt >=10.0.20348.0
+      run_constraints:
+        - vs_${{ cross_target_platform }} ==${{ vsyear }}.${{ update_version }}
+    tests:
+      - script:
+          - echo "%CMAKE_GENERATOR%"
+          - echo "%CMAKE_GENERATOR_PLATFORM%"
+          - echo "%CMAKE_GENERATOR_TOOLSET%"
+    about:
+      summary: |
+        Activation and version verification of MSVC ${{ vcver }}
+        (VS ${{ vsyear }} compiler, update ${{ update_version }})
+      license: BSD-3-Clause
+
+  - package:
+      name: vs_${{ cross_target_platform }}
+      version: ${{ vsyear }}.${{ update_version }}
+    # v0 had build.track_features here (see vc package above for context).
+    requirements:
+      run:
+        - vs${{ vsyear }}_${{ cross_target_platform }} ==${{ cl_version }}
+      run_exports:
+        strong:
+          - vc >=${{ vcver }},<${{ vc_major | int + 1 }}
+          - vc${{ vc_major }}_runtime >=${{ runtime_version }}
+          - if: needs_ucrt
+            then: ucrt >=10.0.20348.0
+    tests:
+      - script:
+          - echo "%CMAKE_GENERATOR%"
+          - echo "%CMAKE_GENERATOR_PLATFORM%"
+          - echo "%CMAKE_GENERATOR_TOOLSET%"
+          - echo "CC=%CC%"
+          - echo "CC_FOR_BUILD=%CC_FOR_BUILD%"
+          # newer clang requires newer msvc; verify our clang gets picked up
+          # before the one bundled with the CI image.
+          - if: vsyear | int >= 2022
+            then:
+              - 'for /f "tokens=3" %%i in (''clang --version^| findstr /R "[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*"'') do set "FOUND_CLANG_VERSION=%%i"'
+              - 'echo found clang %FOUND_CLANG_VERSION%'
+              - 'if not "%FOUND_CLANG_VERSION%"=="${{ clang_test_version }}" exit /b 1'
+        requirements:
+          run:
+            # intentionally unactivated; testing to find our clang before the
+            # one from the image
+            - if: vsyear | int >= 2022
+              then: clang ==${{ clang_test_version }}
+    about:
+      summary: |
+        Activation and version verification of MSVC ${{ vcver }}
+        (VS ${{ vsyear }} compiler, update ${{ update_version }})
+      license: BSD-3-Clause
+
+about:
+  homepage: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-${{ vsyear }}
+  license: LicenseRef-ProprietaryMicrosoft
+  license_file: LICENSE.TXT
+  summary: |
+    Activation and version verification of MSVC ${{ vcver }} (VS ${{ vsyear }}
+    compiler, update ${{ update_version }})
+
+extra:
+  feedstock-name: vc
+  recipe-maintainers:
+    - jakirkham
+    - 183amir
+    - pelson
+    - patricksnape
+    - msarahan
+    - isuruf
+    - h-vetinari
