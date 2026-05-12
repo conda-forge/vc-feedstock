@@ -5,9 +5,9 @@ SET DISTUTILS_USE_SDK=1
 :: This is probably not good. It is for the pre-UCRT msvccompiler.py *not* _msvccompiler.py
 SET MSSdk=1
 
-SET "VS_VERSION=@{ver}.0"
-SET "VS_MAJOR=@{ver}"
-SET "VS_YEAR=@{year}"
+SET "VS_VERSION=@{vsver}.0"
+SET "VS_MAJOR=@{vsver}"
+SET "VS_YEAR=@{vsyear}"
 
 set "MSYS2_ARG_CONV_EXCL=/AI;/AL;/OUT;/out"
 set "MSYS2_ENV_CONV_EXCL=CL"
@@ -24,14 +24,22 @@ set "VSINSTALLDIR="
 set "NEWER_VS_WITH_OLDER_VC=0"
 
 :: Try to find actual vs2017 installations
-for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -version ^[@{ver}.0^,@{ver_plus_one}.0^) -property installationPath`) do (
+for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -version ^[@{vsver}.0^,@{vsver_plus_one}.0^) -property installationPath`) do (
   :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
   set "VSINSTALLDIR=%%i\"
 )
 
 if not exist "%VSINSTALLDIR%" (
+  :: VS2025+ install but with vs2019/vs2022 compiler stuff installed
+  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -requires Microsoft.VisualStudio.Component.VC.@{vc_component} -property installationPath`) do (
+    :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
+    set "VSINSTALLDIR=%%i\"
+    set "NEWER_VS_WITH_OLDER_VC=1"
+  )
+)
+if not exist "%VSINSTALLDIR%" (
   :: VS2022+ install but with vs2017/vs2019 compiler stuff installed
-  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.ComponentGroup.VC.Tools.@{vcver_nodots}.x86.x64 -property installationPath`) do (
+  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.ComponentGroup.VC.Tools.@{vcver_nodots}.@{vc_component_name} -property installationPath`) do (
     :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
     set "VSINSTALLDIR=%%i\"
     set "NEWER_VS_WITH_OLDER_VC=1"
@@ -40,7 +48,7 @@ if not exist "%VSINSTALLDIR%" (
 
 if not exist "%VSINSTALLDIR%" (
   :: VS2019 install but with vs2017 compiler stuff installed
-  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v@{vcver_nodots}.x86.x64 -property installationPath`) do (
+  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.v@{vcver_nodots}.@{vc_component_name} -property installationPath`) do (
     :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
     set "VSINSTALLDIR=%%i\"
     set "NEWER_VS_WITH_OLDER_VC=1"
@@ -48,16 +56,25 @@ if not exist "%VSINSTALLDIR%" (
 )
 
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Professional\"
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{vsyear}\Professional\"
 )
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Community\"
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{vsyear}\Community\"
 )
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\BuildTools\"
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{vsyear}\BuildTools\"
 )
 if not exist "%VSINSTALLDIR%" (
-set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{year}\Enterprise\"
+set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{vsyear}\Enterprise\"
+)
+
+if not exist "%VSINSTALLDIR%" (
+  :: Fallback to latest version of VS
+  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -latest -property installationPath`) do (
+    :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
+    set "VSINSTALLDIR=%%i\"
+    set "NEWER_VS_WITH_OLDER_VC=1"
+  )
 )
 
 IF NOT "%CONDA_BUILD%" == "" (
@@ -95,14 +112,14 @@ IF "%CONDA_BUILD%" == "1" (
 
 :: set CMAKE_* variables
 :: platform selection changed with VS 16 2019, but for compatibility we keep the older way
-IF @{year} GEQ 2019  (
-    set "CMAKE_GEN=Visual Studio @{ver} @{year}"
+IF @{vsyear} GEQ 2019  (
+    set "CMAKE_GEN=Visual Studio @{vsver} @{vsyear}"
     set "USE_NEW_CMAKE_GEN_SYNTAX=1"
 ) ELSE (
     IF "@{target_platform}" == "win-64" (
-        set "CMAKE_GEN=Visual Studio @{ver} @{year} Win64"
+        set "CMAKE_GEN=Visual Studio @{vsver} @{vsyear} Win64"
     ) else (
-        set "CMAKE_GEN=Visual Studio @{ver} @{year}"
+        set "CMAKE_GEN=Visual Studio @{vsver} @{vsyear}"
     )
     set "USE_NEW_CMAKE_GEN_SYNTAX=0"
 )

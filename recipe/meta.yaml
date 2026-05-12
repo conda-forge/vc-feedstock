@@ -21,7 +21,7 @@
 
 {% set clang_test_version = "21.1.7" %}
 
-{% set build_num = 34 %}
+{% set build_num = 35 %}
 
 package:
   name: vs{{ vsyear }}
@@ -42,7 +42,7 @@ build:
   number: {{ build_num }}
   skip: True  # [not win]
   script: |
-    python {{ RECIPE_DIR }}/vc_repack.py --extract --version {{ runtime_version }} --target-platform {{ cross_target_platform }}
+    python {{ RECIPE_DIR }}/vc_repack.py --extract --runtime-version {{ runtime_version }} --target-platform {{ cross_target_platform }}
 
 requirements:
   build:
@@ -209,7 +209,7 @@ outputs:
         for the new package.
 
   - name: vc
-    version: {{ vcver }}
+    version: "{{ vcver }}"
     build:
       track_features:
         - vc{{ vc_major }}
@@ -241,9 +241,9 @@ outputs:
     script: vc_repack.py
     script_interpreter: >-
       python -m vc_repack --activate --host-platform {{ target_platform }}
-      --target-platform {{ cross_target_platform }} --version {{ runtime_version }}
-      --activate-year {{ vsyear }} --activate-major {{ vsver }} --activate-vcver {{ vcver }}
-      --activate-vcvars-ver {{ vcvars_ver }}
+      --target-platform {{ cross_target_platform }} --runtime-version {{ runtime_version }}
+      --vsyear {{ vsyear }} --vsver {{ vsver }} --vcver {{ vcver }}
+      --vcvars-ver {{ vcvars_ver }} --update-version {{ update_version }}
     build:
       track_features:
         - vc{{ vc_major }}

@@ -5,7 +5,7 @@
 jobs:
 - job: win
   pool:
-    vmImage: windows-2022
+    vmImage: windows-2025-vs2026
   strategy:
     matrix:
       ? win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-_hacb78b8f
