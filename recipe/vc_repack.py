@@ -84,6 +84,20 @@ def get_msbuild_plat(target_platform):
     raise ValueError(f"Unknown target_platform {target_platform}")
 
 
+def get_vc_component_name(args):
+    if args.target_platform in ("win-32", "win-64"):
+        return "x86.x64"
+    elif args.target_platform == "win-arm64":
+        return "ARM64"
+    else:
+        raise ValueError(f"Unknown target_platform {args.target_platform}")
+
+
+def get_vc_component(args):
+    comp = get_vc_component_name(args)
+    return f"{args.vcvars_ver}.{args.vsver}.{args.update_version}.{comp}"
+
+
 def get_vcvarsbat(target_platform, host_platform):
     t = target_platform
     h = host_platform
@@ -122,19 +136,21 @@ def get_target_processor(target_platform):
 def subs(line, args):
     t = AtTemplate(line)
     d = {
-        "year": args.activate_year,
-        "ver": args.activate_major,
+        "vsyear": args.vsyear,
+        "vsver": args.vsver,
         "target_platform": args.target_platform,
         "target_processor": get_target_processor(args.target_platform),
         "host_platform": args.host_platform,
-        "vcvars_ver": args.activate_vcvars_ver,
-        "ver_plus_one": str(int(args.activate_major)+1),
-        "vcver_nodots": args.activate_vcver.replace(".", ""),
+        "vcvars_ver": args.vcvars_ver,
+        "vsver_plus_one": str(int(args.vsver)+1),
+        "vcver_nodots": args.vcver.replace(".", ""),
         "host_msbuild_plat": get_msbuild_plat(args.host_platform),
         "target_msbuild_plat": get_msbuild_plat(args.target_platform),
         "host_msbuild_plat_lower": get_msbuild_plat(args.host_platform).lower(),
         "target_msbuild_plat_lower": get_msbuild_plat(args.target_platform).lower(),
         "vcvarsbat": get_vcvarsbat(args.target_platform, args.host_platform),
+        "vc_component": get_vc_component(args),
+        "vc_component": get_vc_component_name(args),
     }
     return t.substitute(d)
 
@@ -367,19 +383,22 @@ def main():
         "--activate", help="install activate.bat", action="store_true"
     )
     parser.add_argument(
-        "--version", help="Runtime version number", default=None,
+        "--runtime-version", help="Runtime version number", default=None,
     )
     parser.add_argument(
-        "--activate-year", help="VS Version Year", default=None,
+        "--vsyear", help="VS Version Year", default=None,
     )
     parser.add_argument(
-        "--activate-vcver", help="VC Version", default=None,
+        "--vcver", help="VC Version", default=None,
     )
     parser.add_argument(
-        "--activate-vcvars-ver", help="VC Version", default=None,
+        "--vcvars-ver", help="VC Version", default=None,
     )
     parser.add_argument(
-        "--activate-major", help="VS Major Version", default=None,
+        "--vsver", help="VS Major Version", default=None,
+    )
+    parser.add_argument(
+        "--update-version", help="VS Update", default=None,
     )
     # This is needed due to a limitation of conda build
     parser.add_argument(
@@ -406,7 +425,7 @@ def main():
         if args.target_platform in EXE_FILENAMES:
             exe_path = os.path.join(env.src_dir, EXE_FILENAMES[args.target_platform])
             if os.path.exists(exe_path):
-                unpack_exe(exe_path, env, args.version)
+                unpack_exe(exe_path, env, args.runtime_version)
             else:
                 raise RuntimeError(f"{exe_path} not found")
         else:
@@ -423,7 +442,7 @@ def main():
         with open(os.path.join(env.recipe_dir, "activate.bat"), "r") as r:
             with open(
                 os.path.join(
-                    targetdir, f"vs{args.activate_year}_compiler_vars.bat"
+                    targetdir, f"vs{args.vsyear}_compiler_vars.bat"
                 ),
                 "w",
             ) as w:
