@@ -209,7 +209,7 @@ outputs:
         for the new package.
 
   - name: vc
-    version: {{ vcver }}
+    version: "{{ vcver }}"
     build:
       track_features:
         - vc{{ vc_major }}
