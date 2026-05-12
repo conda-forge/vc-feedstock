@@ -150,7 +150,7 @@ def subs(line, args):
         "target_msbuild_plat_lower": get_msbuild_plat(args.target_platform).lower(),
         "vcvarsbat": get_vcvarsbat(args.target_platform, args.host_platform),
         "vc_component": get_vc_component(args),
-        "vc_component": get_vc_component_name(args),
+        "vc_component_name": get_vc_component_name(args),
     }
     return t.substitute(d)
 
