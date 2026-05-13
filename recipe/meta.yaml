@@ -21,7 +21,7 @@
 
 {% set clang_test_version = "21.1.7" %}
 
-{% set build_num = 35 %}
+{% set build_num = 36 %}
 
 package:
   name: vs{{ vsyear }}
@@ -54,7 +54,7 @@ requirements:
 
 outputs:
   - name: vcomp{{ vc_major }}
-    version: {{ runtime_version }}
+    version: "{{ runtime_version }}"
     script: vc_repack.py
     script_interpreter: >-
       python -m vc_repack --install-vcomp
@@ -94,7 +94,7 @@ outputs:
         - if not exist %PREFIX%\vcomp140.dll exit 1
 
   - name: vc{{ vc_major }}_runtime
-    version: {{ runtime_version }}
+    version: "{{ runtime_version }}"
     script: vc_repack.py
     script_interpreter: >-
       python -m vc_repack --install-runtime
@@ -192,7 +192,7 @@ outputs:
         {% endfor %}
 
   - name: vs{{ runtime_year }}_runtime
-    version: {{ runtime_version }}
+    version: "{{ runtime_version }}"
     build:
       skip: True  # [cross_target_platform != target_platform or (win and arm64)]
     requirements:
@@ -235,9 +235,9 @@ outputs:
         dependencies within an environment
       doc_url: https://github.com/conda/conda/wiki/VC-features
       dev_url: https://github.com/conda/conda/wiki/VC-features
-  
+
   - name: vs{{ vsyear }}_{{ cross_target_platform }}
-    version: {{ cl_version }}
+    version: "{{ cl_version }}"
     script: vc_repack.py
     script_interpreter: >-
       python -m vc_repack --activate --host-platform {{ target_platform }}
