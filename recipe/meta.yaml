@@ -19,9 +19,9 @@
 {% set vcvars_ver_min = cl_version.split(".")[1]|int %}
 {% set vcvars_ver = vcvars_ver_maj ~ "." ~ vcvars_ver_min %}
 
-{% set clang_test_version = "21.1.7" %}
+{% set clang_test_version = "21.1.8" %}
 
-{% set build_num = 36 %}
+{% set build_num = 37 %}
 
 package:
   name: vs{{ vsyear }}
