@@ -1,5 +1,7 @@
-workflow_settings:
-  store_build_artifacts: true
+azure:
+  settings_win:
+    pool:
+      vmImage: windows-2025-vs2026
 build_platform:
   win_arm64: linux_64
 conda_build:
@@ -9,3 +11,6 @@ github:
   branch_name: main
   tooling_branch_name: main
 test: native_and_emulated
+workflow_settings:
+  store_build_artifacts:
+    - value: true

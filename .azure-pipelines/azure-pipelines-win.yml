@@ -8,18 +8,31 @@ jobs:
     vmImage: windows-2025-vs2026
   strategy:
     matrix:
-      ? win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-_hacb78b8f
-      : CONFIG: win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c89-4553-_hacb78b8f
+      ? win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c8_hacb78b8f
+      : CONFIG: win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c8_hacb78b8f
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: true
         SHORT_CONFIG: win_64_cl_version19.29.30139cross_target_hacb78b8f
-      ? win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-1480-4caf-_h1f00c6cd
-      : CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-1480-4caf-_h1f00c6cd
+      ? win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-148_h1f00c6cd
+      : CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-148_h1f00c6cd
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: true
         SHORT_CONFIG: win_64_cl_version19.44.35207cross_target_h1f00c6cd
-      ? win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-1480-4c_h0ffcc03f
-      : CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-1480-4c_h0ffcc03f
+      ? win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-_h0ffcc03f
+      : CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-_h0ffcc03f
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: true
         SHORT_CONFIG: win_64_cl_version19.44.35207cross_target_h0ffcc03f
+      ? win_64_cl_version19.51.36231cross_target_platformwin-64runtime_version14.51.36231sha25690E48ADE404E4576D023ABFA374F323555F233982A8805EA9AC63DCA9491A16Bupdate_version1uuidc1bd4f2c-3672_h7528ba2c
+      : CONFIG: win_64_cl_version19.51.36231cross_target_platformwin-64runtime_version14.51.36231sha25690E48ADE404E4576D023ABFA374F323555F233982A8805EA9AC63DCA9491A16Bupdate_version1uuidc1bd4f2c-3672_h7528ba2c
+        UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: true
+        SHORT_CONFIG: win_64_cl_version19.51.36231cross_target_h7528ba2c
+      ? win_64_cl_version19.51.36231cross_target_platformwin-arm64runtime_version14.51.36231sha256E912E9E653A5295A382BF86521F9B852AEECA823F4A9BF10BB2FBA7DD9445288update_version1uuid0dd156af-8_heb59edae
+      : CONFIG: win_64_cl_version19.51.36231cross_target_platformwin-arm64runtime_version14.51.36231sha256E912E9E653A5295A382BF86521F9B852AEECA823F4A9BF10BB2FBA7DD9445288update_version1uuid0dd156af-8_heb59edae
+        UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: true
+        SHORT_CONFIG: win_64_cl_version19.51.36231cross_target_heb59edae
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
@@ -45,20 +58,21 @@ jobs:
         BINSTAR_TOKEN: $(BINSTAR_TOKEN)
         FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
         STAGING_BINSTAR_TOKEN: $(STAGING_BINSTAR_TOKEN)
+
     - script: |
         set MINIFORGE_HOME=$(MINIFORGE_HOME)
         set CI=azure
         set CI_RUN_ID=$(build.BuildNumber).$(system.JobAttempt)
         set FEEDSTOCK_NAME=$(build.Repository.Name)
         set ARTIFACT_STAGING_DIR=$(Build.ArtifactStagingDirectory)
-        set CONDA_BLD_DIR=$(CONDA_BLD_PATH)
+        set CONDA_BLD_PATH=$(CONDA_BLD_PATH)
         set BLD_ARTIFACT_PREFIX=conda_artifacts
         if "%AGENT_JOBSTATUS%" == "Failed" (
             set ENV_ARTIFACT_PREFIX=conda_envs
         )
         call ".scripts\create_conda_build_artifacts.bat"
       displayName: Prepare conda build artifacts
-      condition: succeededOrFailed()
+      condition: and(succeededOrFailed(), eq(variables.store_build_artifacts, true))
 
     - task: PublishPipelineArtifact@1
       displayName: Store conda build artifacts
