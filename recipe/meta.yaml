@@ -270,6 +270,11 @@ outputs:
         - echo "%CMAKE_GENERATOR%"
         - echo "%CMAKE_GENERATOR_PLATFORM%"
         - echo "%CMAKE_GENERATOR_TOOLSET%"
+      # compare https://github.com/conda-forge/vc-feedstock/issues/94
+      downstreams:          # [win]
+        - clang_win-64      # [win]
+        - clangxx_win-64    # [win]
+        - clang-cl_win-64   # [win]
     about:
       summary: >-
         Activation and version verification of MSVC {{ vcver }}
