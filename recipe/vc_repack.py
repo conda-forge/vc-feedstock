@@ -454,6 +454,12 @@ def main():
             ) as w:
                 for line in r:
                     w.write(subs(line, args))
+        targetdir = os.path.join(env.prefix, "etc", "conda", "deactivate.d")
+        os.makedirs(targetdir)
+        shutil.copyfile(
+            os.path.join(env.recipe_dir, "deactivate.bat"),
+            os.path.join(targetdir, f"vs{args.activate_year}_compiler_vars.bat"),
+        )
         targetdir = os.path.join(env.prefix, "etc", "conda-build", "dsolists.d")
         os.makedirs(targetdir)
         # Implement CEP-28
