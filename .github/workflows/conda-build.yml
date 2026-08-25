@@ -22,8 +22,8 @@ jobs:
       max-parallel: 50
       matrix:
         include:
-          - CONFIG: win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-_hea466f03
-            CONFIG_SHORT: win_arm64_cl_version19.29.30139cross_tar_hea466f03
+          - CONFIG: win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019
+            CONFIG_SHORT: win_arm64_cl_version19.29.30139cross_tar_h73f03d9f
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
@@ -35,8 +35,8 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-_h369391eb
-            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_h369391eb
+          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_he5ec4ace
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
@@ -48,8 +48,8 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c_hb89f60bd
-            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_hb89f60bd
+          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_hee533ad3
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
@@ -61,8 +61,8 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247sha256843068991DAAA1F73AD9F6239BCE4D0F6A07A51F18C37EA2A867E9BECA71295Cupdate_version1uuidebdab8e5-1_h8429ef0f
-            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_h8429ef0f
+          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_h99a9f0bd
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
@@ -74,8 +74,8 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247sha256B70EF586669A620A0A30A1156969C05C6A3831DC8F8BC992DA75779D2A92F944update_version1uuidddfd326_hea6ffe32
-            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_hea6ffe32
+          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_hce6402bb
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
@@ -90,7 +90,7 @@ jobs:
     steps:
 
     - name: Checkout code
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Configure binfmt_misc
       if: matrix.os == 'ubuntu'
       shell: bash
@@ -119,7 +119,7 @@ jobs:
       run: |
         export CONDA_BLD_PATH="${CONDA_BLD_PATH/#~/${HOME}}"
         export FEEDSTOCK_NAME="$(basename $GITHUB_REPOSITORY)"
-        export GIT_BRANCH="$(basename $GITHUB_REF)"
+        export GIT_BRANCH="${GITHUB_REF_NAME}"
         export MINIFORGE_HOME="${MINIFORGE_HOME/#~/${HOME}}"
         export flow_run_id="github_$GITHUB_RUN_ID"
         export remote_url="https://github.com/$GITHUB_REPOSITORY"
@@ -149,7 +149,7 @@ jobs:
       run: |
         export CONDA_BLD_PATH="${CONDA_BLD_PATH/#~/${HOME}}"
         export FEEDSTOCK_NAME="$(basename $GITHUB_REPOSITORY)"
-        export GIT_BRANCH="$(basename $GITHUB_REF)"
+        export GIT_BRANCH="${GITHUB_REF_NAME}"
         export MINIFORGE_HOME="${MINIFORGE_HOME/#~/${HOME}}"
         export flow_run_id="github_$GITHUB_RUN_ID"
         export remote_url="https://github.com/$GITHUB_REPOSITORY"
@@ -171,6 +171,7 @@ jobs:
         set "sha=%GITHUB_SHA%"
         call ".scripts\run_win_build.bat"
       env:
+        BUILD_PLATFORM: ${{ matrix.build_platform }}
         CI: github_actions
         CONDA_BLD_PATH: ${{ matrix.build_workspace_dir }}
         CONFIG: ${{ matrix.CONFIG }}

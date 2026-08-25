@@ -3,25 +3,34 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cl_version:
-- 19.44.35207
+- 19.51.36247
 cross_target_platform:
 - win-64
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.10.* *_cpython
+- 3.11.* *_cpython
+- 3.12.* *_cpython
+- 3.13.* *_cp313
 runtime_version:
-- 14.44.35208
+- 14.51.36247
 sha256:
-- D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14A
+- 843068991DAAA1F73AD9F6239BCE4D0F6A07A51F18C37EA2A867E9BECA71295C
 target_platform:
 - win-64
 update_version:
-- '14'
+- '1'
 uuid:
-- 40b59c73-1480-4caf-ab5b-4886f176bf71
+- ebdab8e5-1d7b-4d9f-a11b-cbb1720c3b12
 vcver:
-- '14.3'
+- '14.5'
 vsver:
-- '17'
+- '18'
 vsyear:
-- '2022'
+- '2026'
 zip_keys:
 - - vcver
   - vsyear

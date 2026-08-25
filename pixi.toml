@@ -1,0 +1,134 @@
+# -*- mode: toml -*-
+# This file was generated automatically from conda-smithy. To update this configuration,
+# update the conda-forge.yml and/or the recipe/meta.yaml.
+"$schema" = "https://pixi.sh/v0.59.0/schema/manifest/schema.json"
+
+[workspace]
+name = "vc-feedstock"
+version = "2026.8.9"  # conda-smithy version used to generate this file
+description = "Pixi configuration for conda-forge/vc-feedstock"
+authors = ["@conda-forge/vc"]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-64", "win-64", "win-arm64"]
+requires-pixi = ">=0.59.0"
+
+[tasks.build-locally]
+cmd = "pixi exec --force-reinstall --list='^python$' python ./build-locally.py"
+description = "Build packages locally using the same setup scripts used in conda-forge's CI"
+[tasks.smithy]
+cmd = "pixi exec --force-reinstall --list='^conda-smithy$' conda-smithy"
+description = "Run conda-smithy. Pass necessary arguments."
+[tasks.rerender]
+cmd = "pixi exec --force-reinstall --list='^conda-smithy$' conda-smithy rerender"
+description = "Rerender the feedstock."
+
+[tasks.lint]
+cmd = "pixi exec --list='^conda-smithy$' conda-smithy lint --conda-forge recipe"
+description = "Lint the feedstock recipe"
+
+[feature.build.dependencies]
+conda-build = ">=26.3"
+conda-forge-ci-setup = "4.*"
+rattler-build = "*"
+
+[feature.build.tasks.inspect-all]
+cmd = "inspect_artifacts --all-packages"
+description = "List contents of all packages found in rattler-build build directory."
+[feature.build.tasks.build]
+cmd = "rattler-build build --recipe recipe"
+description = "Build vc-feedstock directly (without setup scripts), no particular variant specified"
+[feature.build.tasks."build-win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019.yaml"
+description = "Build vc-feedstock with variant win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019 directly (without setup scripts)"
+[feature.build.tasks."debug-win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019.yaml"
+description = "Build vc-feedstock with variant win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019 directly (without setup scripts)"
+[feature.build.tasks."inspect-win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019.yaml"
+description = "List contents of vc-feedstock packages built for variant win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019"
+[feature.build.tasks."build-win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "Build vc-feedstock with variant win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022 directly (without setup scripts)"
+[feature.build.tasks."debug-win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "Build vc-feedstock with variant win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022 directly (without setup scripts)"
+[feature.build.tasks."inspect-win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "List contents of vc-feedstock packages built for variant win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"
+[feature.build.tasks."build-win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "Build vc-feedstock with variant win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022 directly (without setup scripts)"
+[feature.build.tasks."debug-win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "Build vc-feedstock with variant win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022 directly (without setup scripts)"
+[feature.build.tasks."inspect-win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "List contents of vc-feedstock packages built for variant win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"
+[feature.build.tasks."build-win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "Build vc-feedstock with variant win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026 directly (without setup scripts)"
+[feature.build.tasks."debug-win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "Build vc-feedstock with variant win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026 directly (without setup scripts)"
+[feature.build.tasks."inspect-win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "List contents of vc-feedstock packages built for variant win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"
+[feature.build.tasks."build-win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "Build vc-feedstock with variant win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026 directly (without setup scripts)"
+[feature.build.tasks."debug-win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "Build vc-feedstock with variant win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026 directly (without setup scripts)"
+[feature.build.tasks."inspect-win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "List contents of vc-feedstock packages built for variant win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"
+[feature.build.tasks."build-win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019.yaml"
+description = "Build vc-feedstock with variant win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019 directly (without setup scripts)"
+[feature.build.tasks."debug-win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019.yaml"
+description = "Build vc-feedstock with variant win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019 directly (without setup scripts)"
+[feature.build.tasks."inspect-win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019.yaml"
+description = "List contents of vc-feedstock packages built for variant win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019"
+[feature.build.tasks."build-win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "Build vc-feedstock with variant win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022 directly (without setup scripts)"
+[feature.build.tasks."debug-win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "Build vc-feedstock with variant win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022 directly (without setup scripts)"
+[feature.build.tasks."inspect-win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "List contents of vc-feedstock packages built for variant win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"
+[feature.build.tasks."build-win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "Build vc-feedstock with variant win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022 directly (without setup scripts)"
+[feature.build.tasks."debug-win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "Build vc-feedstock with variant win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022 directly (without setup scripts)"
+[feature.build.tasks."inspect-win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022.yaml"
+description = "List contents of vc-feedstock packages built for variant win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022"
+[feature.build.tasks."build-win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "Build vc-feedstock with variant win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026 directly (without setup scripts)"
+[feature.build.tasks."debug-win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "Build vc-feedstock with variant win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026 directly (without setup scripts)"
+[feature.build.tasks."inspect-win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "List contents of vc-feedstock packages built for variant win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"
+[feature.build.tasks."build-win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "Build vc-feedstock with variant win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026 directly (without setup scripts)"
+[feature.build.tasks."debug-win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "rattler-build debug setup --recipe recipe -m .ci_support/win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "Build vc-feedstock with variant win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026 directly (without setup scripts)"
+[feature.build.tasks."inspect-win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026.yaml"
+description = "List contents of vc-feedstock packages built for variant win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026"
+
+[environments]
+build = ["build"]
+# This is a copy of 'build', to be enabled by build_steps.sh during Docker builds
+# __PLATFORM_SPECIFIC_ENV__ = ["build"]

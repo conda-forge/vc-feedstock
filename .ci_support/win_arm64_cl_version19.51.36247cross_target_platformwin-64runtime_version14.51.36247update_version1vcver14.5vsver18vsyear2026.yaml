@@ -3,25 +3,33 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cl_version:
-- 19.29.30139
+- 19.51.36247
 cross_target_platform:
 - win-64
+docker_image:
+- quay.io/condaforge/linux-anvil-x86_64:alma10
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.14.* *_cp314
 runtime_version:
-- 14.29.30139
+- 14.51.36247
 sha256:
-- 296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932F
+- 843068991DAAA1F73AD9F6239BCE4D0F6A07A51F18C37EA2A867E9BECA71295C
 target_platform:
-- win-64
+- win-arm64
 update_version:
-- '11'
+- '1'
 uuid:
-- b929b7fe-5c89-4553-9abe-6324631dcc3a
+- ebdab8e5-1d7b-4d9f-a11b-cbb1720c3b12
 vcver:
-- '14.2'
+- '14.5'
 vsver:
-- '16'
+- '18'
 vsyear:
-- '2019'
+- '2026'
 zip_keys:
 - - vcver
   - vsyear

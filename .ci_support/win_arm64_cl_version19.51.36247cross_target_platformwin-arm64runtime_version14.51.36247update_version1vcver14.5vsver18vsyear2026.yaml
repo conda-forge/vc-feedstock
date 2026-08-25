@@ -8,6 +8,12 @@ cross_target_platform:
 - win-arm64
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma10
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.14.* *_cp314
 runtime_version:
 - 14.51.36247
 sha256:
