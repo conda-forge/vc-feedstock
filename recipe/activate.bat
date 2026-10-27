@@ -114,7 +114,7 @@ IF "%CONDA_BUILD%" == "1" (
 IF "%CONDA_BUILD%" == "1" (
   :: use conda-forge Python version even if the system Python is newer
   :: see https://github.com/conda-forge/cmake-feedstock/issues/196
-  IF EXIST %PREFIX%/python.exe (
+  IF EXIST "%PREFIX%\python.exe" (
     set "CMAKE_ARGS=%CMAKE_ARGS% -DCMAKE_POLICY_DEFAULT_CMP0094=NEW"
   )
 )
