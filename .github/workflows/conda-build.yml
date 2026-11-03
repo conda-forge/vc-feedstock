@@ -22,81 +22,148 @@ jobs:
       max-parallel: 50
       matrix:
         include:
-          - CONFIG: win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-_hea466f03
-            CONFIG_SHORT: win_arm64_cl_version19.29.30139cross_tar_hea466f03
+          - CONFIG: win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019
+            CONFIG_SHORT: win_64_cl_version19.29.30139cross_target_h7e39477d
+            STORE_BUILD_ARTIFACTS: True
+            UPLOAD_PACKAGES: True
+            build_platform: win-64
+            build_workspace_dir: D:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-2022']
+            tools_install_dir: D:\Miniforge
+          - CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_64_cl_version19.44.35207cross_target_h5c0c2303
+            STORE_BUILD_ARTIFACTS: True
+            UPLOAD_PACKAGES: True
+            build_platform: win-64
+            build_workspace_dir: D:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-2022']
+            tools_install_dir: D:\Miniforge
+          - CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_64_cl_version19.44.35207cross_target_hf351e1b6
+            STORE_BUILD_ARTIFACTS: True
+            UPLOAD_PACKAGES: True
+            build_platform: win-64
+            build_workspace_dir: D:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-2022']
+            tools_install_dir: D:\Miniforge
+          - CONFIG: win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_64_cl_version19.51.36247cross_target_h06a8ae4a
+            STORE_BUILD_ARTIFACTS: True
+            UPLOAD_PACKAGES: True
+            build_platform: win-64
+            build_workspace_dir: D:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-2022']
+            tools_install_dir: D:\Miniforge
+          - CONFIG: win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_64_cl_version19.51.36247cross_target_h2407d444
+            STORE_BUILD_ARTIFACTS: True
+            UPLOAD_PACKAGES: True
+            build_platform: win-64
+            build_workspace_dir: D:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-2022']
+            tools_install_dir: D:\Miniforge
+          - CONFIG: win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019
+            CONFIG_SHORT: win_arm64_cl_version19.29.30139cross_tar_h73f03d9f
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
-            build_workspace_dir: C:\\bld\\
+            build_workspace_dir: build_artifacts
             docker_run_args: 
             free_disk_space: skip
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
             runs_on: ['ubuntu-latest']
-            tools_install_dir: C:\Miniforge
-          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-_h369391eb
-            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_h369391eb
+            tools_install_dir: ~/miniforge3
+          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_he5ec4ace
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
-            build_workspace_dir: C:\\bld\\
+            build_workspace_dir: build_artifacts
             docker_run_args: 
             free_disk_space: skip
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
             runs_on: ['ubuntu-latest']
-            tools_install_dir: C:\Miniforge
-          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c_hb89f60bd
-            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_hb89f60bd
+            tools_install_dir: ~/miniforge3
+          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_hee533ad3
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
-            build_workspace_dir: C:\\bld\\
+            build_workspace_dir: build_artifacts
             docker_run_args: 
             free_disk_space: skip
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
             runs_on: ['ubuntu-latest']
-            tools_install_dir: C:\Miniforge
-          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247sha256843068991DAAA1F73AD9F6239BCE4D0F6A07A51F18C37EA2A867E9BECA71295Cupdate_version1uuidebdab8e5-1_h8429ef0f
-            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_h8429ef0f
+            tools_install_dir: ~/miniforge3
+          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_h99a9f0bd
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
-            build_workspace_dir: C:\\bld\\
+            build_workspace_dir: build_artifacts
             docker_run_args: 
             free_disk_space: skip
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
             runs_on: ['ubuntu-latest']
-            tools_install_dir: C:\Miniforge
-          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247sha256B70EF586669A620A0A30A1156969C05C6A3831DC8F8BC992DA75779D2A92F944update_version1uuidddfd326_hea6ffe32
-            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_hea6ffe32
+            tools_install_dir: ~/miniforge3
+          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_hce6402bb
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
-            build_workspace_dir: C:\\bld\\
+            build_workspace_dir: build_artifacts
             docker_run_args: 
             free_disk_space: skip
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
             runs_on: ['ubuntu-latest']
-            tools_install_dir: C:\Miniforge
+            tools_install_dir: ~/miniforge3
     steps:
 
     - name: Checkout code
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Configure binfmt_misc
       if: matrix.os == 'ubuntu'
       shell: bash
       run: |
         if [[ "$(uname -m)" == "x86_64" ]]; then
           docker run --rm --privileged multiarch/qemu-user-static:register --reset --credential yes
+        elif [[ "$(uname -m)" == "aarch64" ]]; then
+          docker run --rm --privileged --entrypoint /opt/docker/bin/register-binfmt ${{ matrix.DOCKER_IMAGE }} aarch64
         fi
 
     - name: Build on Linux
@@ -119,7 +186,7 @@ jobs:
       run: |
         export CONDA_BLD_PATH="${CONDA_BLD_PATH/#~/${HOME}}"
         export FEEDSTOCK_NAME="$(basename $GITHUB_REPOSITORY)"
-        export GIT_BRANCH="$(basename $GITHUB_REF)"
+        export GIT_BRANCH="${GITHUB_REF_NAME}"
         export MINIFORGE_HOME="${MINIFORGE_HOME/#~/${HOME}}"
         export flow_run_id="github_$GITHUB_RUN_ID"
         export remote_url="https://github.com/$GITHUB_REPOSITORY"
@@ -149,7 +216,7 @@ jobs:
       run: |
         export CONDA_BLD_PATH="${CONDA_BLD_PATH/#~/${HOME}}"
         export FEEDSTOCK_NAME="$(basename $GITHUB_REPOSITORY)"
-        export GIT_BRANCH="$(basename $GITHUB_REF)"
+        export GIT_BRANCH="${GITHUB_REF_NAME}"
         export MINIFORGE_HOME="${MINIFORGE_HOME/#~/${HOME}}"
         export flow_run_id="github_$GITHUB_RUN_ID"
         export remote_url="https://github.com/$GITHUB_REPOSITORY"
@@ -171,6 +238,7 @@ jobs:
         set "sha=%GITHUB_SHA%"
         call ".scripts\run_win_build.bat"
       env:
+        BUILD_PLATFORM: ${{ matrix.build_platform }}
         CI: github_actions
         CONDA_BLD_PATH: ${{ matrix.build_workspace_dir }}
         CONFIG: ${{ matrix.CONFIG }}
@@ -217,6 +285,7 @@ jobs:
         CONFIG: ${{ matrix.CONFIG }}
         CONFIG_SHORT: ${{ matrix.CONFIG_SHORT }}
         JOB_STATUS: ${{ steps.determine-status.outputs.status }}
+        MINIFORGE_HOME: ${{ matrix.tools_install_dir }}
         OS: ${{ matrix.os }}
       run: |
         export ARTIFACT_STAGING_DIR="$GITHUB_WORKSPACE"
@@ -229,8 +298,9 @@ jobs:
         # Use different prefix for successful and failed build artifacts
         # so random failures don't prevent rebuilds from creating artifacts.
         if [ $JOB_STATUS == "failure" ]; then
-          export BLD_ARTIFACT_PREFIX="conda_artifacts"
+          export BLD_ARTIFACT_PREFIX="conda_pkgs_failed"
           export ENV_ARTIFACT_PREFIX="conda_envs"
+          export WRK_ARTIFACT_PREFIX="conda_work"
         else
           export BLD_ARTIFACT_PREFIX="conda_pkgs"
         fi
@@ -242,19 +312,31 @@ jobs:
 
     - name: Store conda build artifacts
       uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-      if: ${{ always() && steps.prepare-artifacts.outcome == 'success' }}
+      if: ${{ always() && steps.prepare-artifacts.outcome == 'success' && steps.prepare-artifacts.outputs.BLD_ARTIFACT_PATH != '' }}
       with:
         name: ${{ steps.prepare-artifacts.outputs.BLD_ARTIFACT_NAME }}
         path: ${{ steps.prepare-artifacts.outputs.BLD_ARTIFACT_PATH }}
         retention-days: 14
+        archive: false
+      continue-on-error: true
+
+    - name: Store conda work directory artifacts
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      if: ${{ always() && steps.prepare-artifacts.outcome == 'success' && steps.prepare-artifacts.outputs.WRK_ARTIFACT_PATH != '' }}
+      with:
+        name: ${{ steps.prepare-artifacts.outputs.WRK_ARTIFACT_NAME }}
+        path: ${{ steps.prepare-artifacts.outputs.WRK_ARTIFACT_PATH }}
+        retention-days: 14
+        archive: false
       continue-on-error: true
 
     - name: Store conda build environment artifacts
       uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
       # only relevant if build failed, see above
-      if: ${{ always() && steps.determine-status.outputs.status == 'failure' && steps.prepare-artifacts.outcome == 'success' }}
+      if: ${{ always() && steps.prepare-artifacts.outcome == 'success' && steps.prepare-artifacts.outputs.ENV_ARTIFACT_PATH != '' }}
       with:
         name: ${{ steps.prepare-artifacts.outputs.ENV_ARTIFACT_NAME }}
         path: ${{ steps.prepare-artifacts.outputs.ENV_ARTIFACT_PATH }}
         retention-days: 14
+        archive: false
       continue-on-error: true

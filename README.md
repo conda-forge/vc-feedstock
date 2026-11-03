@@ -1,17 +1,8 @@
 About vc-feedstock
 ==================
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/vc-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/vcf-feedstock/blob/main/LICENSE.txt)
 
-
-About vc
---------
-
-Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-
-
-Package license: LicenseRef-ProprietaryMicrosoft
-
-Summary: Activation and version verification of MSVC  (VS  compiler, update update_version)
 
 About vc
 --------
@@ -58,7 +49,7 @@ Summary: A backwards compatible meta-package. See vc14_runtime for the new packa
 About vs2019_win-64
 -------------------
 
-
+Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2019
 
 Package license: BSD-3-Clause
 
@@ -67,7 +58,7 @@ Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, upd
 About vs2022_win-64
 -------------------
 
-
+Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2022
 
 Package license: BSD-3-Clause
 
@@ -76,7 +67,7 @@ Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, upd
 About vs2022_win-arm64
 ----------------------
 
-
+Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2022
 
 Package license: BSD-3-Clause
 
@@ -85,7 +76,7 @@ Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, upd
 About vs2026_win-64
 -------------------
 
-
+Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
 
 Package license: BSD-3-Clause
 
@@ -94,7 +85,7 @@ Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, upd
 About vs2026_win-arm64
 ----------------------
 
-
+Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
 
 Package license: BSD-3-Clause
 
@@ -103,7 +94,7 @@ Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, upd
 About vs_win-64
 ---------------
 
-
+Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
 
 Package license: BSD-3-Clause
 
@@ -112,7 +103,7 @@ Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, upd
 About vs_win-arm64
 ------------------
 
-
+Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
 
 Package license: BSD-3-Clause
 
@@ -125,62 +116,9 @@ Current build status
 <table><tr>
     <td>GitHub Actions</td>
     <td>
-      <a href="https://github.com/conda-forge/vc-feedstock/actions/workflows/conda-build.yml">
-        <img src="https://github.com/conda-forge/vc-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
+      <a href="https://github.com/conda-forge/vcf-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/vcf-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
-    </td>
-  </tr>
-    
-  <tr>
-    <td>Azure</td>
-    <td>
-      <details>
-        <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main">
-          </a>
-        </summary>
-        <table>
-          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
-          <tbody><tr>
-              <td>win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c8_hacb78b8f</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139sha256296F96CD102250636BCD23AB6E6CF70935337B1BBB3507FE8521D8D9CFAA932Fupdate_version11uuidb929b7fe-5c8_hacb78b8f" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-148_h1f00c6cd</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208sha256D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14Aupdate_version14uuid40b59c73-148_h1f00c6cd" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-_h0ffcc03f</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208sha2561DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724Cupdate_version14uuid40b59c73-_h0ffcc03f" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247sha256843068991DAAA1F73AD9F6239BCE4D0F6A07A51F18C37EA2A867E9BECA71295Cupdate_version1uuidebdab8e5-1d7b_hc0c8fc65</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247sha256843068991DAAA1F73AD9F6239BCE4D0F6A07A51F18C37EA2A867E9BECA71295Cupdate_version1uuidebdab8e5-1d7b_hc0c8fc65" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247sha256B70EF586669A620A0A30A1156969C05C6A3831DC8F8BC992DA75779D2A92F944update_version1uuidddfd326a-0_h6107cf24</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=3629&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/vc-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247sha256B70EF586669A620A0A30A1156969C05C6A3831DC8F8BC992DA75779D2A92F944update_version1uuidddfd326a-0_h6107cf24" alt="variant">
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </details>
     </td>
   </tr>
 </table>
@@ -212,31 +150,73 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `vc, vc14_runtime, vcomp14, vs2015_runtime, vs2019_win-64, vs2022_win-64, vs2022_win-arm64, vs2026_win-64, vs2026_win-arm64, vs_win-64, vs_win-arm64` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs2026_win-64 vs2026_win-arm64 vs_win-64 vs_win-arm64
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs2026_win-64 vs2026_win-arm64 vs_win-64 vs_win-arm64
 ```
 
-It is possible to list all of the versions of `vc` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs2026_win-64 vs2026_win-arm64 vs_win-64 vs_win-arm64
+# for installing globally
+pixi global install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs2026_win-64 vs2026_win-arm64 vs_win-64 vs_win-arm64
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `vc` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search vc --channel conda-forge
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search vc --channel conda-forge
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search vc --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -248,6 +228,9 @@ mamba repoquery whoneeds vc --channel conda-forge
 # List dependencies of `vc`:
 mamba repoquery depends vc --channel conda-forge
 ```
+
+</details>
+
 
 
 About conda-forge
@@ -264,9 +247,7 @@ for each of the installable packages. Such a repository is known as a *feedstock
 A feedstock is made up of a conda recipe (the instructions on what and how to build
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
-[Azure](https://azure.microsoft.com/en-us/services/devops/), [GitHub](https://github.com/),
-[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
-[Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
+[Azure](https://azure.microsoft.com/en-us/services/devops/) and [GitHub](https://github.com/)
 it is possible to build and upload installable packages to the
 [conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.

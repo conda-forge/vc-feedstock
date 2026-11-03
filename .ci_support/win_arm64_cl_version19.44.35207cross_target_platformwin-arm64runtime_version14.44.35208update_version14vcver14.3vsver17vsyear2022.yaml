@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/amd64
 channel_sources:
 - conda-forge
 channel_targets:
@@ -5,13 +7,13 @@ channel_targets:
 cl_version:
 - 19.44.35207
 cross_target_platform:
-- win-64
+- win-arm64
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma10
 runtime_version:
 - 14.44.35208
 sha256:
-- D62841375B90782B1829483AC75695CCEF680A8F13E7DE569B992EF33C6CD14A
+- 1DB5C25643A3A4E4C99BFD0D0931A702A49C73DADC4B30672687F32188C1724C
 target_platform:
 - win-arm64
 update_version:
