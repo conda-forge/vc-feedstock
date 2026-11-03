@@ -213,8 +213,6 @@ outputs:
   - name: vc
     version: "{{ vcver }}"
     build:
-      track_features:
-        - vc{{ vc_major }}
       skip: True  # [cross_target_platform != target_platform]
     requirements:
       run:
@@ -247,8 +245,6 @@ outputs:
       --vsyear {{ vsyear }} --vsver {{ vsver }} --vcver {{ vcver }}
       --vcvars-ver {{ vcvars_ver }} --update-version {{ update_version }}
     build:
-      track_features:
-        - vc{{ vc_major }}
       run_exports:
         strong:
           # compatible within major version.  This is MSFT's
@@ -281,8 +277,6 @@ outputs:
   - name: vs_{{ cross_target_platform }}
     version: "{{ vsyear }}.{{ update_version }}"
     build:
-      track_features:
-        - vc{{ vc_major }}
       run_exports:
         strong:
           # compatible within major version.  This is MSFT's
