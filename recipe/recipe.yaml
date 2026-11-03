@@ -202,6 +202,7 @@ outputs:
     about:
       homepage: https://github.com/conda-forge/vc-feedstock
       license: BSD-3-Clause
+      license_file: LICENSE-feedstock.txt
       summary: >-
         A backwards compatible meta-package. See vc${{ vc_major }}_runtime
         for the new package.
@@ -226,6 +227,7 @@ outputs:
       repository: https://github.com/conda/conda/wiki/VC-features
       documentation: https://github.com/conda/conda/wiki/VC-features
       license: BSD-3-Clause
+      license_file: LICENSE-feedstock.txt
       summary: >-
         A meta-package to impose mutual exclusivity among software
         built with different VS versions
@@ -276,6 +278,7 @@ outputs:
         Activation and version verification of MSVC ${{ vcver }}
         (VS ${{ vsyear }} compiler, update ${{ update_version }})
       license: BSD-3-Clause
+      license_file: LICENSE-feedstock.txt
 
   - package:
       name: vs_${{ cross_target_platform }}
@@ -314,6 +317,7 @@ outputs:
         Activation and version verification of MSVC ${{ vcver }}
         (VS ${{ vsyear }} compiler, update ${{ update_version }})
       license: BSD-3-Clause
+      license_file: LICENSE-feedstock.txt
 
 about:
   homepage: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-${{ vsyear }}
@@ -321,6 +325,7 @@ about:
     Activation and version verification of MSVC ${{ vcver }} (VS ${{ vsyear }}
     compiler, update ${{ update_version }})
   license: LicenseRef-ProprietaryMicrosoft
+  license_file: LICENSE.TXT
 
 extra:
   feedstock-name: vc
