@@ -332,7 +332,12 @@ def fix_filename(source):
     os.chdir(source)
     # as of VS 17.6, the artefact contains intermediate DLL extensions,
     # which get renamed correctly upon installation; do it manually
-    dlls = glob("*.dll") + glob("*.dll_amd64") + glob("*.dll_arm64")
+    dlls = (
+        glob("*.dll")
+        + glob("*.dll_amd64")
+        + glob("*.dll_arm64")
+        + glob("*.dll_system_arm64")
+    )
     for fname in dlls:
         print(f"Found DLL: {fname}")
         if fname.startswith("api_"):
@@ -355,7 +360,12 @@ def copy_vcomp(env):
     os.chdir(os.path.join(env.src_dir, "dest"))
     os.makedirs(env.library_bin, exist_ok=True)
     os.makedirs(env.prefix, exist_ok=True)
-    for fname in glob("vcomp*.dll"):
+    vcomp_dlls = glob("vcomp*.dll")
+    if not vcomp_dlls:
+        # Tests don't run for cross-built targets, so an empty vcomp package
+        # would otherwise only be noticed by its users.
+        raise RuntimeError(f"no vcomp*.dll found in {os.getcwd()}")
+    for fname in vcomp_dlls:
         print(f"Copying DLL: {fname}")
         shutil.copyfile(fname, os.path.join(env.library_bin, fname))
         shutil.copyfile(fname, os.path.join(env.prefix, fname))

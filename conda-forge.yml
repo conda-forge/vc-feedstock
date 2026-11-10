@@ -1,12 +1,10 @@
-azure:
-  settings_win:
-    pool:
-      vmImage: windows-2025-vs2026
 build_platform:
   win_arm64: linux_64
 conda_build:
   pkg_format: '2'
+conda_build_tool: rattler-build
 conda_forge_output_validation: true
+conda_install_tool: pixi
 github:
   branch_name: main
   tooling_branch_name: main
@@ -14,3 +12,6 @@ test: native_and_emulated
 workflow_settings:
   store_build_artifacts:
     - value: true
+  vm_image:
+    - value: windows-2025-vs2026
+      platform: win_64
