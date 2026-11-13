@@ -22,7 +22,7 @@ context:
   # Need ucrt for windows<10 and when the VC runtime does not bundle it
   needs_ucrt: ${{ (vsver | int >= 17 or (vsver | int == 16 and update_version | int >= 10)) and cross_target_platform == "win-64" }}
   # Architecture suffix of the vc_redist.<arch>.exe installer
-  redist_arch: ${{ "arm64" if cross_target_platform == "win-arm64" else "x64" }}
+  redist_arch: ${{ "arm64" if cross_target_platform == "win-arm64" else ("x86" if cross_target_platform == "win-32" else "x64") }}
 
 recipe:
   name: vc-feedstock
@@ -157,7 +157,9 @@ outputs:
               then:
                 - msvcp140_atomic_wait.dll
                 - msvcp140_codecvt_ids.dll
-                - vcruntime140_1.dll
+            # vcruntime140_1.dll holds the x64 and arm64 exception handling (__CxxFrameHandler4).
+            - if: vsyear | int >= 2019 and cross_target_platform != "win-32"
+              then: vcruntime140_1.dll
             - if: vsyear | int >= 2022
               then:
                 - vcruntime140_threads.dll
@@ -173,7 +175,8 @@ outputs:
               then:
                 - msvcp140_atomic_wait.dll
                 - msvcp140_codecvt_ids.dll
-                - vcruntime140_1.dll
+            - if: vsyear | int >= 2019 and cross_target_platform != "win-32"
+              then: vcruntime140_1.dll
             - if: vsyear | int >= 2022
               then:
                 - vcruntime140_threads.dll
@@ -240,6 +243,8 @@ outputs:
       version: ${{ cl_version }}
     build:
       number: ${{ build_num }}
+      # win-32 carries only the runtimes; compilers run on win-64 or win-arm64.
+      skip: target_platform == "win-32"
       script:
         - >-
           python "${{ RECIPE_DIR }}/vc_repack.py" --activate
@@ -283,6 +288,8 @@ outputs:
   - package:
       name: vs_${{ cross_target_platform }}
       version: ${{ vsyear }}.${{ update_version }}
+    build:
+      skip: target_platform == "win-32"
     requirements:
       run:
         - vs${{ vsyear }}_${{ cross_target_platform }} ${{ cl_version }}.*

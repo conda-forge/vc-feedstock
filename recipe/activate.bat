@@ -256,8 +256,11 @@ setlocal enabledelayedexpansion
 set "input_var_name=%~1"
 set "output_var_name=%~2"
 :: We replace paths like C:\Program Files (x86)\Windows Kits\10\\lib\10.0.26100.0\\um\ARM64
-:: to contain x64 for use in _FOR_BUILD variables
+:: to contain x64 for use in _FOR_BUILD variables. x86 library directories end in
+:: \x86 rather than the MSBuild platform name Win32, so they are replaced separately;
+:: the leading backslash keeps "Program Files (x86)" intact.
 set "temp_var=!input_var_name:@{target_msbuild_plat}=@{host_msbuild_plat}!"
 set "temp_var2=!temp_var:@{target_msbuild_plat_lower}=@{host_msbuild_plat_lower}!"
-endlocal & set "%output_var_name%=%temp_var2%"
+set "temp_var3=!temp_var2:\@{target_lib_arch}=\@{host_lib_arch}!"
+endlocal & set "%output_var_name%=%temp_var3%"
 exit /B 0
