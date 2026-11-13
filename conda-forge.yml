@@ -1,5 +1,6 @@
 build_platform:
   win_arm64: linux_64
+  win_32: win_64
 conda_build:
   pkg_format: '2'
 conda_build_tool: rattler-build
@@ -14,4 +15,4 @@ workflow_settings:
     - value: true
   vm_image:
     - value: windows-2025-vs2026
-      platform: win_64
+      platform: [win_64, win_32]
