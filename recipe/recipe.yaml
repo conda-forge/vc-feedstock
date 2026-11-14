@@ -13,7 +13,7 @@ schema_version: 1
 context:
   runtime_year: "2015"
   clang_test_version: "21.1.8"
-  build_num: 43
+  build_num: 44
   # These derive from variant variables (see conda_build_config.yaml).
   vc_major: ${{ (vcver | split(".")) [0] }}
   vcvars_ver_maj: ${{ ((cl_version | split(".")) [0] | int) - 5 }}

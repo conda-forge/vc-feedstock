@@ -31,7 +31,7 @@ for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -version ^[@
 
 if not exist "%VSINSTALLDIR%" (
   :: VS2025+ install but with vs2019/vs2022 compiler stuff installed
-  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -requires Microsoft.VisualStudio.Component.VC.@{vc_component} -property installationPath`) do (
+  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -requires Microsoft.VisualStudio.Component.VC.@{vc_component} -property installationPath`) do (
     :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
     set "VSINSTALLDIR=%%i\"
     set "NEWER_VS_WITH_OLDER_VC=1"
@@ -70,7 +70,7 @@ set "VSINSTALLDIR=%ProgramFiles(x86)%\Microsoft Visual Studio\@{vsyear}\Enterpri
 
 if not exist "%VSINSTALLDIR%" (
   :: Fallback to latest version of VS
-  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -latest -property installationPath`) do (
+  for /f "usebackq tokens=*" %%i in (`vswhere.exe -nologo -products * -latest -property installationPath`) do (
     :: There is no trailing back-slash from the vswhere, and may make vcvars64.bat fail, so force add it
     set "VSINSTALLDIR=%%i\"
     set "NEWER_VS_WITH_OLDER_VC=1"
