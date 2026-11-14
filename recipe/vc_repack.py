@@ -87,6 +87,17 @@ def get_msbuild_plat(target_platform):
     raise ValueError(f"Unknown target_platform {target_platform}")
 
 
+def get_lib_arch(target_platform):
+    """Directory name of the platform's MSVC and Windows SDK libraries."""
+    if target_platform == "win-32":
+        return "x86"
+    elif target_platform == "win-64":
+        return "x64"
+    elif target_platform == "win-arm64":
+        return "arm64"
+    raise ValueError(f"Unknown target_platform {target_platform}")
+
+
 def get_vc_component_name(args):
     if args.target_platform in ("win-32", "win-64"):
         return "x86.x64"
@@ -171,6 +182,8 @@ def subs(line, args):
         "target_msbuild_plat": get_msbuild_plat(args.target_platform),
         "host_msbuild_plat_lower": get_msbuild_plat(args.host_platform).lower(),
         "target_msbuild_plat_lower": get_msbuild_plat(args.target_platform).lower(),
+        "host_lib_arch": get_lib_arch(args.host_platform),
+        "target_lib_arch": get_lib_arch(args.target_platform),
         "vcvarsbat": get_vcvarsbat(args.target_platform, args.host_platform),
         "vc_component": get_vc_component(args),
         "vc_component_name": get_vc_component_name(args),
@@ -336,6 +349,7 @@ def fix_filename(source):
         glob("*.dll")
         + glob("*.dll_amd64")
         + glob("*.dll_arm64")
+        + glob("*.dll_x86")
         + glob("*.dll_system_arm64")
     )
     for fname in dlls:
@@ -350,6 +364,10 @@ def fix_filename(source):
         elif fname.endswith(".dll_system_arm64"):
             # 17 == len(".dll_system_arm64")
             new_fname = fname[:-17] + ".dll"
+            os.rename(fname, new_fname)
+        elif fname.endswith(".dll_x86"):
+            # 8 == len(".dll_x86")
+            new_fname = fname[:-8] + ".dll"
             os.rename(fname, new_fname)
         else:
             new_fname = fname

@@ -22,8 +22,47 @@ jobs:
       max-parallel: 50
       matrix:
         include:
+          - CONFIG: win_32_cl_version19.44.35207cross_target_platformwin-32runtime_version14.44.35211update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_32_cl_version19.44.35207cross_target_h1d1072e8
+            STORE_BUILD_ARTIFACTS: True
+            UPLOAD_PACKAGES: True
+            build_platform: win-64
+            build_workspace_dir: D:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-2022']
+            tools_install_dir: D:\Miniforge
+          - CONFIG: win_32_cl_version19.51.36247cross_target_platformwin-32runtime_version14.52.37029update_version1vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_32_cl_version19.51.36247cross_target_h4f8d10f7
+            STORE_BUILD_ARTIFACTS: True
+            UPLOAD_PACKAGES: True
+            build_platform: win-64
+            build_workspace_dir: D:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-2022']
+            tools_install_dir: D:\Miniforge
           - CONFIG: win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019
             CONFIG_SHORT: win_64_cl_version19.29.30139cross_target_h7e39477d
+            STORE_BUILD_ARTIFACTS: True
+            UPLOAD_PACKAGES: True
+            build_platform: win-64
+            build_workspace_dir: C:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-2025-vs2026']
+            tools_install_dir: C:\Miniforge
+          - CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-32runtime_version14.44.35211update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_64_cl_version19.44.35207cross_target_hbfedf49f
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -50,6 +89,19 @@ jobs:
             tools_install_dir: C:\Miniforge
           - CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
             CONFIG_SHORT: win_64_cl_version19.44.35207cross_target_hf351e1b6
+            STORE_BUILD_ARTIFACTS: True
+            UPLOAD_PACKAGES: True
+            build_platform: win-64
+            build_workspace_dir: C:\\bld\\
+            docker_run_args: 
+            free_disk_space: skip
+            os: windows
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['windows-2025-vs2026']
+            tools_install_dir: C:\Miniforge
+          - CONFIG: win_64_cl_version19.51.36247cross_target_platformwin-32runtime_version14.52.37029update_version1vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_64_cl_version19.51.36247cross_target_hddb3501b
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -100,6 +152,19 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
+          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-32runtime_version14.44.35211update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_h92a9d869
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
+            STORE_BUILD_ARTIFACTS: True
+            UPLOAD_PACKAGES: True
+            build_workspace_dir: build_artifacts
+            docker_run_args: 
+            free_disk_space: skip
+            os: ubuntu
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['ubuntu-latest']
+            tools_install_dir: ~/miniforge3
           - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
             CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_he5ec4ace
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
@@ -115,6 +180,19 @@ jobs:
             tools_install_dir: ~/miniforge3
           - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
             CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_hee533ad3
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
+            STORE_BUILD_ARTIFACTS: True
+            UPLOAD_PACKAGES: True
+            build_workspace_dir: build_artifacts
+            docker_run_args: 
+            free_disk_space: skip
+            os: ubuntu
+            pagefile_size: 0
+            resize_partitions: False
+            runs_on: ['ubuntu-latest']
+            tools_install_dir: ~/miniforge3
+          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-32runtime_version14.52.37029update_version1vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_h66d0d4e5
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
