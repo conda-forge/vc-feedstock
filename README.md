@@ -55,6 +55,15 @@ Package license: BSD-3-Clause
 
 Summary: Activation and version verification of MSVC 14.2 (VS 2019 compiler, update 11)
 
+About vs2022_win-32
+-------------------
+
+Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2022
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 14)
+
 About vs2022_win-64
 -------------------
 
@@ -73,6 +82,15 @@ Package license: BSD-3-Clause
 
 Summary: Activation and version verification of MSVC 14.3 (VS 2022 compiler, update 14)
 
+About vs2026_win-32
+-------------------
+
+Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 1)
+
 About vs2026_win-64
 -------------------
 
@@ -84,6 +102,15 @@ Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, upd
 
 About vs2026_win-arm64
 ----------------------
+
+Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
+
+Package license: BSD-3-Clause
+
+Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 1)
+
+About vs_win-32
+---------------
 
 Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
 
@@ -133,10 +160,13 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vcomp14-green.svg)](https://anaconda.org/conda-forge/vcomp14) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vcomp14.svg)](https://anaconda.org/conda-forge/vcomp14) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vcomp14.svg)](https://anaconda.org/conda-forge/vcomp14) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vcomp14.svg)](https://anaconda.org/conda-forge/vcomp14) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2015__runtime-green.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2015_runtime.svg)](https://anaconda.org/conda-forge/vs2015_runtime) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2019__win--64-green.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2019_win-64.svg)](https://anaconda.org/conda-forge/vs2019_win-64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022__win--32-green.svg)](https://anaconda.org/conda-forge/vs2022_win-32) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_win-32.svg)](https://anaconda.org/conda-forge/vs2022_win-32) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_win-32.svg)](https://anaconda.org/conda-forge/vs2022_win-32) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_win-32.svg)](https://anaconda.org/conda-forge/vs2022_win-32) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022__win--64-green.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_win-64.svg)](https://anaconda.org/conda-forge/vs2022_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2022__win--arm64-green.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2022_win-arm64.svg)](https://anaconda.org/conda-forge/vs2022_win-arm64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs2026__win--32-green.svg)](https://anaconda.org/conda-forge/vs2026_win-32) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2026_win-32.svg)](https://anaconda.org/conda-forge/vs2026_win-32) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2026_win-32.svg)](https://anaconda.org/conda-forge/vs2026_win-32) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2026_win-32.svg)](https://anaconda.org/conda-forge/vs2026_win-32) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2026__win--64-green.svg)](https://anaconda.org/conda-forge/vs2026_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2026_win-64.svg)](https://anaconda.org/conda-forge/vs2026_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2026_win-64.svg)](https://anaconda.org/conda-forge/vs2026_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2026_win-64.svg)](https://anaconda.org/conda-forge/vs2026_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs2026__win--arm64-green.svg)](https://anaconda.org/conda-forge/vs2026_win-arm64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs2026_win-arm64.svg)](https://anaconda.org/conda-forge/vs2026_win-arm64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs2026_win-arm64.svg)](https://anaconda.org/conda-forge/vs2026_win-arm64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs2026_win-arm64.svg)](https://anaconda.org/conda-forge/vs2026_win-arm64) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-vs__win--32-green.svg)](https://anaconda.org/conda-forge/vs_win-32) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs_win-32.svg)](https://anaconda.org/conda-forge/vs_win-32) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs_win-32.svg)](https://anaconda.org/conda-forge/vs_win-32) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs_win-32.svg)](https://anaconda.org/conda-forge/vs_win-32) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs__win--64-green.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs_win-64.svg)](https://anaconda.org/conda-forge/vs_win-64) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vs__win--arm64-green.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/vs_win-arm64.svg)](https://anaconda.org/conda-forge/vs_win-arm64) |
 
@@ -157,7 +187,7 @@ How to use
 <summary>With conda</summary>
 
 ```
-conda install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs2026_win-64 vs2026_win-arm64 vs_win-64 vs_win-arm64
+conda install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-32 vs2022_win-64 vs2022_win-arm64 vs2026_win-32 vs2026_win-64 vs2026_win-arm64 vs_win-32 vs_win-64 vs_win-arm64
 ```
 
 </details>
@@ -166,7 +196,7 @@ conda install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64
 <summary>With mamba</summary>
 
 ```
-mamba install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs2026_win-64 vs2026_win-arm64 vs_win-64 vs_win-arm64
+mamba install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-32 vs2022_win-64 vs2022_win-arm64 vs2026_win-32 vs2026_win-64 vs2026_win-arm64 vs_win-32 vs_win-64 vs_win-arm64
 ```
 
 </details>
@@ -176,9 +206,9 @@ mamba install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64
 
 ```
 # for adding to your local project
-pixi add vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs2026_win-64 vs2026_win-arm64 vs_win-64 vs_win-arm64
+pixi add vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-32 vs2022_win-64 vs2022_win-arm64 vs2026_win-32 vs2026_win-64 vs2026_win-arm64 vs_win-32 vs_win-64 vs_win-arm64
 # for installing globally
-pixi global install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-64 vs2022_win-arm64 vs2026_win-64 vs2026_win-arm64 vs_win-64 vs_win-arm64
+pixi global install vc vc14_runtime vcomp14 vs2015_runtime vs2019_win-64 vs2022_win-32 vs2022_win-64 vs2022_win-arm64 vs2026_win-32 vs2026_win-64 vs2026_win-arm64 vs_win-32 vs_win-64 vs_win-arm64
 ```
 
 </details>
