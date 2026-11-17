@@ -22,7 +22,7 @@ context:
   # Need ucrt for windows<10 and when the VC runtime does not bundle it
   needs_ucrt: ${{ (vsver | int >= 17 or (vsver | int == 16 and update_version | int >= 10)) and cross_target_platform == "win-64" }}
   # Architecture suffix of the vc_redist.<arch>.exe installer
-  redist_arch: ${{ "arm64" if cross_target_platform == "win-arm64" else "x64" }}
+  redist_arch: ${{ "arm64" if cross_target_platform == "win-arm64" else ("x86" if cross_target_platform == "win-32" else "x64") }}
 
 recipe:
   name: vc-feedstock
@@ -157,7 +157,9 @@ outputs:
               then:
                 - msvcp140_atomic_wait.dll
                 - msvcp140_codecvt_ids.dll
-                - vcruntime140_1.dll
+            # vcruntime140_1.dll holds the x64 and arm64 exception handling (__CxxFrameHandler4).
+            - if: vsyear | int >= 2019 and cross_target_platform != "win-32"
+              then: vcruntime140_1.dll
             - if: vsyear | int >= 2022
               then:
                 - vcruntime140_threads.dll
@@ -173,7 +175,8 @@ outputs:
               then:
                 - msvcp140_atomic_wait.dll
                 - msvcp140_codecvt_ids.dll
-                - vcruntime140_1.dll
+            - if: vsyear | int >= 2019 and cross_target_platform != "win-32"
+              then: vcruntime140_1.dll
             - if: vsyear | int >= 2022
               then:
                 - vcruntime140_threads.dll
@@ -300,8 +303,8 @@ outputs:
           - echo "%CMAKE_GENERATOR_TOOLSET%"
           - echo "CC=%CC%"
           - echo "CC_FOR_BUILD=%CC_FOR_BUILD%"
-          # newer clang requires newer msvc
-          - if: vsyear | int >= 2022
+          # newer clang requires newer msvc; conda-forge has no win-32 clang
+          - if: vsyear | int >= 2022 and target_platform != "win-32"
             then:
               - 'for /f "tokens=3" %%i in (''clang --version^| findstr /R "[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*"'') do set "FOUND_CLANG_VERSION=%%i"'
               - 'echo found clang %FOUND_CLANG_VERSION%'
@@ -310,7 +313,7 @@ outputs:
           run:
             # intentionally unactivated; testing to find our clang before the
             # one from the image
-            - if: vsyear | int >= 2022
+            - if: vsyear | int >= 2022 and target_platform != "win-32"
               then: clang ${{ clang_test_version }}.*
     about:
       summary: >-
