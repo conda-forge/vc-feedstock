@@ -151,6 +151,13 @@ if "%NEWER_VS_WITH_OLDER_VC%" == "1" (
   set "USE_NEW_CMAKE_GEN_SYNTAX=1"
 )
 
+:: conda-build presets CMAKE_GENERATOR from the compiler package name, which may
+:: not match the VS that is actually used; always use ours when building packages
+IF "%CONDA_BUILD%" == "1" (
+  SET "CMAKE_GENERATOR="
+  SET "CMAKE_GENERATOR_PLATFORM="
+  SET "CMAKE_GENERATOR_TOOLSET="
+)
 IF "%CMAKE_GENERATOR%" == "" SET "CMAKE_GENERATOR=%CMAKE_GEN%"
 :: see https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR_PLATFORM.html
 IF "%USE_NEW_CMAKE_GEN_SYNTAX%" == "1" (
