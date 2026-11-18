@@ -26,7 +26,7 @@ Home: https://visualstudio.microsoft.com/downloads/
 
 Package license: LicenseRef-MicrosoftVisualCpp2015-2022Runtime
 
-Summary: MSVC runtimes associated with cl.exe version 19.51.36247 (VS 2026 update 1)
+Summary: MSVC runtimes associated with cl.exe version 19.52.37029 (VS 2026 update 2)
 
 About vcomp14
 -------------
@@ -35,7 +35,7 @@ Home: https://visualstudio.microsoft.com/downloads/
 
 Package license: LicenseRef-MicrosoftVisualCpp2015-2022Runtime
 
-Summary: MSVC OpenMP runtime associated with cl.exe version 19.51.36247 (VS 2026 update 1)
+Summary: MSVC OpenMP runtime associated with cl.exe version 19.52.37029 (VS 2026 update 2)
 
 About vs2015_runtime
 --------------------
@@ -89,7 +89,7 @@ Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 1)
+Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 2)
 
 About vs2026_win-64
 -------------------
@@ -98,7 +98,7 @@ Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 1)
+Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 2)
 
 About vs2026_win-arm64
 ----------------------
@@ -107,7 +107,7 @@ Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 1)
+Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 2)
 
 About vs_win-32
 ---------------
@@ -116,7 +116,7 @@ Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 1)
+Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 2)
 
 About vs_win-64
 ---------------
@@ -125,7 +125,7 @@ Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 1)
+Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 2)
 
 About vs_win-arm64
 ------------------
@@ -134,7 +134,7 @@ Home: https://docs.microsoft.com/en-us/visualstudio/windows/?view=vs-2026
 
 Package license: BSD-3-Clause
 
-Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 1)
+Summary: Activation and version verification of MSVC 14.5 (VS 2026 compiler, update 2)
 
 Current build status
 ====================
