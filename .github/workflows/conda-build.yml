@@ -22,8 +22,8 @@ jobs:
       max-parallel: 50
       matrix:
         include:
-          - CONFIG: win_32_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019
-            CONFIG_SHORT: win_32_cl_version19.29.30139cross_target_h908b9562
+          - CONFIG: win_32_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30157update_version11vcver14.2vsver16vsyear2019
+            CONFIG_SHORT: win_32_cl_version19.29.30139cross_target_he71bb8bd
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -48,8 +48,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_32_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
-            CONFIG_SHORT: win_32_cl_version19.44.35207cross_target_hef9fc807
+          - CONFIG: win_32_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35211update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_32_cl_version19.44.35207cross_target_h3c8940eb
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -61,8 +61,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_32_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
-            CONFIG_SHORT: win_32_cl_version19.44.35207cross_target_h103b52a7
+          - CONFIG: win_32_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35211update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_32_cl_version19.44.35207cross_target_h706a5e09
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -74,8 +74,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_32_cl_version19.51.36247cross_target_platformwin-32runtime_version14.52.37029update_version1vcver14.5vsver18vsyear2026
-            CONFIG_SHORT: win_32_cl_version19.51.36247cross_target_h4f8d10f7
+          - CONFIG: win_32_cl_version19.52.37029cross_target_platformwin-32runtime_version14.52.37029update_version2vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_32_cl_version19.52.37029cross_target_hb8e37ac8
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -87,8 +87,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_32_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
-            CONFIG_SHORT: win_32_cl_version19.51.36247cross_target_h3f02a236
+          - CONFIG: win_32_cl_version19.52.37029cross_target_platformwin-64runtime_version14.52.37029update_version2vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_32_cl_version19.52.37029cross_target_h087121ab
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -100,8 +100,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_32_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
-            CONFIG_SHORT: win_32_cl_version19.51.36247cross_target_hb73e0243
+          - CONFIG: win_32_cl_version19.52.37029cross_target_platformwin-arm64runtime_version14.52.37029update_version2vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_32_cl_version19.52.37029cross_target_h91192122
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -113,8 +113,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019
-            CONFIG_SHORT: win_64_cl_version19.29.30139cross_target_h7e39477d
+          - CONFIG: win_64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30157update_version11vcver14.2vsver16vsyear2019
+            CONFIG_SHORT: win_64_cl_version19.29.30139cross_target_h3a4347f8
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -139,8 +139,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
-            CONFIG_SHORT: win_64_cl_version19.44.35207cross_target_h5c0c2303
+          - CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35211update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_64_cl_version19.44.35207cross_target_h1950383f
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -152,8 +152,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
-            CONFIG_SHORT: win_64_cl_version19.44.35207cross_target_hf351e1b6
+          - CONFIG: win_64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35211update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_64_cl_version19.44.35207cross_target_h6848693a
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -165,8 +165,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_64_cl_version19.51.36247cross_target_platformwin-32runtime_version14.52.37029update_version1vcver14.5vsver18vsyear2026
-            CONFIG_SHORT: win_64_cl_version19.51.36247cross_target_hddb3501b
+          - CONFIG: win_64_cl_version19.52.37029cross_target_platformwin-32runtime_version14.52.37029update_version2vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_64_cl_version19.52.37029cross_target_hdf3e4ac5
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -178,8 +178,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
-            CONFIG_SHORT: win_64_cl_version19.51.36247cross_target_h06a8ae4a
+          - CONFIG: win_64_cl_version19.52.37029cross_target_platformwin-64runtime_version14.52.37029update_version2vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_64_cl_version19.52.37029cross_target_hcf1ab09d
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -191,8 +191,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
-            CONFIG_SHORT: win_64_cl_version19.51.36247cross_target_h2407d444
+          - CONFIG: win_64_cl_version19.52.37029cross_target_platformwin-arm64runtime_version14.52.37029update_version2vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_64_cl_version19.52.37029cross_target_hfbb9a675
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
             build_platform: win-64
@@ -204,8 +204,8 @@ jobs:
             resize_partitions: False
             runs_on: ['windows-2025-vs2026']
             tools_install_dir: C:\Miniforge
-          - CONFIG: win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30139update_version11vcver14.2vsver16vsyear2019
-            CONFIG_SHORT: win_arm64_cl_version19.29.30139cross_tar_h73f03d9f
+          - CONFIG: win_arm64_cl_version19.29.30139cross_target_platformwin-64runtime_version14.29.30157update_version11vcver14.2vsver16vsyear2019
+            CONFIG_SHORT: win_arm64_cl_version19.29.30139cross_tar_he9797dd6
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
@@ -230,8 +230,8 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
-            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_he5ec4ace
+          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-64runtime_version14.44.35211update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_h68fa2357
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
@@ -243,8 +243,8 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35208update_version14vcver14.3vsver17vsyear2022
-            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_hee533ad3
+          - CONFIG: win_arm64_cl_version19.44.35207cross_target_platformwin-arm64runtime_version14.44.35211update_version14vcver14.3vsver17vsyear2022
+            CONFIG_SHORT: win_arm64_cl_version19.44.35207cross_tar_h26a8ee56
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
@@ -256,8 +256,8 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-32runtime_version14.52.37029update_version1vcver14.5vsver18vsyear2026
-            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_h66d0d4e5
+          - CONFIG: win_arm64_cl_version19.52.37029cross_target_platformwin-32runtime_version14.52.37029update_version2vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_arm64_cl_version19.52.37029cross_tar_ha1934dc1
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
@@ -269,8 +269,8 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
-            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_h99a9f0bd
+          - CONFIG: win_arm64_cl_version19.52.37029cross_target_platformwin-64runtime_version14.52.37029update_version2vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_arm64_cl_version19.52.37029cross_tar_hc2ba8d36
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
@@ -282,8 +282,8 @@ jobs:
             resize_partitions: False
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
-          - CONFIG: win_arm64_cl_version19.51.36247cross_target_platformwin-arm64runtime_version14.51.36247update_version1vcver14.5vsver18vsyear2026
-            CONFIG_SHORT: win_arm64_cl_version19.51.36247cross_tar_hce6402bb
+          - CONFIG: win_arm64_cl_version19.52.37029cross_target_platformwin-arm64runtime_version14.52.37029update_version2vcver14.5vsver18vsyear2026
+            CONFIG_SHORT: win_arm64_cl_version19.52.37029cross_tar_hede44831
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: True
             UPLOAD_PACKAGES: True
